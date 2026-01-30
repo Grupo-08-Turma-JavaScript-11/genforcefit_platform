@@ -1,45 +1,28 @@
+import axios from "axios"
+
+const api = axios.create({
+  baseURL: "https://genforcefit.onrender.com",
+})
+
 export async function cadastrar(
   url: string,
   dados: any,
-  setDados: any,
-  headers: any = {}
+  setDados: any
 ) {
-  const resposta = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: JSON.stringify(dados),
-  })
-
-  setDados(await resposta.json())
+  const response = await api.post(url, dados)
+  setDados(response.data)
 }
 
 export async function buscar(
   url: string,
-  setDados: any,
-  headers: any = {}
+  setDados: any
 ) {
-  const resposta = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-  })
-
-  setDados(await resposta.json())
+  const response = await api.get(url)
+  setDados(response.data)
 }
 
 export async function deletar(
-  url: string,
-  headers: any = {}
+  url: string
 ) {
-  await fetch(url, {
-    method: "DELETE",
-    headers: {
-      ...headers,
-    },
-  })
+  await api.delete(url)
 }

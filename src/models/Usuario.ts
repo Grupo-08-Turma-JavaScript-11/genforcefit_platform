@@ -1,9 +1,9 @@
 export default interface Usuario {
   id?: number
   nome: string
-  usuario: string // email
+  usuario: string
   senha?: string
-  tipo: "Aluno"
+  grupoMuscular?: string
   altura?: number
   peso?: number
   IMC?: number

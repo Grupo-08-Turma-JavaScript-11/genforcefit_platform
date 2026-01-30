@@ -1,56 +1,46 @@
 import { useState } from "react"
 import type { ChangeEvent, FormEvent } from "react"
-
 import type Usuario from "../../../models/Usuario"
 import { cadastrar } from "../../../services/Service"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function FormUsuario() {
   const [usuario, setUsuario] = useState<Usuario>({
     nome: "",
     usuario: "",
     senha: "",
-    tipo: "" as "Aluno",
     altura: undefined,
     peso: undefined,
-    IMC: undefined,
     foto: "",
-    exercicio: []
   })
 
   function atualizarEstado(
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement>
   ) {
+    const { name, value } = e.target
+
     setUsuario({
       ...usuario,
-      [e.target.name]: e.target.value
+      [name]:
+        name === "altura" || name === "peso"
+          ? Number(value)
+          : value
     })
-  }
-
-  function calcularIMC(peso?: number, altura?: number) {
-    if (peso && altura) {
-      return Number((peso / (altura * altura)).toFixed(2))
-    }
-    return undefined
   }
 
   async function cadastrarUsuario(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
-    const imcCalculado = calcularIMC(usuario.peso, usuario.altura)
-
-    const usuarioFinal: Usuario = {
-      ...usuario,
-      IMC: imcCalculado
+    try {
+      await cadastrar("/usuarios", usuario, setUsuario)
+      ToastAlerta("Usuário cadastrado com sucesso!", "sucesso")
+    } catch {
+      ToastAlerta("Erro ao cadastrar usuário", "erro")
     }
-
-    await cadastrar("/usuarios/cadastrar", usuarioFinal, setUsuario)
-
-    alert("Usuário cadastrado com sucesso!")
   }
 
   return (
     <form onSubmit={cadastrarUsuario}>
-      <h2>Cadastro de Usuário</h2>
 
       <input
         type="text"
@@ -58,6 +48,7 @@ function FormUsuario() {
         placeholder="Nome"
         value={usuario.nome}
         onChange={atualizarEstado}
+        className="w-full mb-4 p-2 border rounded"
         required
       />
 
@@ -67,6 +58,7 @@ function FormUsuario() {
         placeholder="Email"
         value={usuario.usuario}
         onChange={atualizarEstado}
+        className="w-full mb-4 p-2 border rounded"
         required
       />
 
@@ -74,61 +66,45 @@ function FormUsuario() {
         type="password"
         name="senha"
         placeholder="Senha"
-        value={usuario.senha}
+        value={usuario.senha ?? ""}
         onChange={atualizarEstado}
+        className="w-full mb-4 p-2 border rounded"
         required
       />
-
-      {/* SELECT DE TIPO */}
-      <select
-        name="tipo"
-        value={usuario.tipo}
-        onChange={atualizarEstado}
-        required
-      >
-        <option value="" disabled>
-          Selecione o tipo
-        </option>
-        <option value="Aluno">Aluno</option>
-      </select>
 
       <input
         type="number"
         name="altura"
-        placeholder="Altura (ex: 1.70)"
-        step="0.01"
+        placeholder="Altura (cm)"
         value={usuario.altura ?? ""}
-        onChange={(e) =>
-          setUsuario({
-            ...usuario,
-            altura: Number(e.target.value)
-          })
-        }
+        onChange={atualizarEstado}
+        className="w-full mb-4 p-2 border rounded"
       />
 
       <input
         type="number"
         name="peso"
         placeholder="Peso (kg)"
-        step="0.1"
         value={usuario.peso ?? ""}
-        onChange={(e) =>
-          setUsuario({
-            ...usuario,
-            peso: Number(e.target.value)
-          })
-        }
+        onChange={atualizarEstado}
+        className="w-full mb-4 p-2 border rounded"
       />
 
       <input
         type="text"
         name="foto"
         placeholder="URL da foto"
-        value={usuario.foto}
+        value={usuario.foto ?? ""}
         onChange={atualizarEstado}
+        className="w-full mb-6 p-2 border rounded"
       />
 
-      <button type="submit">Cadastrar</button>
+      <button
+        type="submit"
+        className="w-full bg-black text-white py-2 rounded hover:bg-gray-800"
+      >
+        Cadastrar
+      </button>
     </form>
   )
 }

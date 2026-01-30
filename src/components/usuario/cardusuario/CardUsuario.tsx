@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import type Usuario from "../../../models/Usuario"
 
 interface CardUsuarioProps {
@@ -7,26 +6,26 @@ interface CardUsuarioProps {
 
 function CardUsuario({ usuario }: CardUsuarioProps) {
   return (
-    <div>
-      {usuario.foto && (
-        <img
-          src={usuario.foto}
-          alt={usuario.nome}
-          width={100}
-        />
+    <div className="bg-white border rounded shadow-md p-6 w-full max-w-sm">
+      <h3 className="text-lg font-bold mb-2">
+        {usuario.nome}
+      </h3>
+
+      <p className="text-sm text-gray-700">
+        <strong>Email:</strong> {usuario.usuario}
+      </p>
+
+      {usuario.altura && (
+        <p className="text-sm text-gray-700">
+          <strong>Altura:</strong> {usuario.altura} cm
+        </p>
       )}
 
-      <h3>{usuario.nome}</h3>
-      <p>Email: {usuario.usuario}</p>
-      <p>Tipo: {usuario.tipo}</p>
-      {usuario.IMC && <p>IMC: {usuario.IMC}</p>}
-
-      <Link
-        to={`/deletarusuario/${usuario.id}`}
-        className="text-red-600 font-bold"
-      >
-        Deletar
-      </Link>
+      {usuario.peso && (
+        <p className="text-sm text-gray-700">
+          <strong>Peso:</strong> {usuario.peso} kg
+        </p>
+      )}
     </div>
   )
 }

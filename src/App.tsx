@@ -12,17 +12,18 @@ function App() {
     <BrowserRouter>
       <ToastContainer />
       <Routes>
+
         {/* Login */}
+        <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
 
-        {/* Cadastro de usuário */}
+        {/* Cadastro */}
         <Route path="/cadastro" element={<CadastroUsuario />} />
 
-        {/* Listagem (listarcaronas) */}
-        <Route path="/listarcaronas" element={<ListarUsuarios />} />
-
-        {/* Deletar usuário */}
+        {/* Usuários */}
+        <Route path="/listarusuarios" element={<ListarUsuarios />} />
         <Route path="/deletarusuario/:id" element={<DeletarUsuario />} />
+
       </Routes>
     </BrowserRouter>
   )
