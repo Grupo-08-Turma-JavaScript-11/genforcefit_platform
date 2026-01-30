@@ -1,4 +1,4 @@
-import FormUsuario from "../../components/usuario/formUsuario/FormUsuario"
+import FormUsuario from "../../components/usuario/formusuario/FormUsuario"
 
 function CadastroUsuario() {
   return (
