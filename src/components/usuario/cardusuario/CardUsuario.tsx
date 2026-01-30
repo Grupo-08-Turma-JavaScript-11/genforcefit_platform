@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import type Usuario from "../../../models/Usuario"
 
 interface CardUsuarioProps {
@@ -18,8 +19,14 @@ function CardUsuario({ usuario }: CardUsuarioProps) {
       <h3>{usuario.nome}</h3>
       <p>Email: {usuario.usuario}</p>
       <p>Tipo: {usuario.tipo}</p>
-
       {usuario.IMC && <p>IMC: {usuario.IMC}</p>}
+
+      <Link
+        to={`/deletarusuario/${usuario.id}`}
+        className="text-red-600 font-bold"
+      >
+        Deletar
+      </Link>
     </div>
   )
 }
