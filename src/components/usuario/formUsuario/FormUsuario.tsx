@@ -1,15 +1,15 @@
 import { useState } from "react"
-import type { ChangeEvent } from "react"
-import type Usuario from "../../../models/Usuario"
-import { cadastrar } from "../../../services/Service"
+import type { ChangeEvent, FormEvent } from "react"
 
+import Usuario from "../../../models/Usuario"
+import { cadastrar } from "../../../services/Service"
 
 function FormUsuario() {
   const [usuario, setUsuario] = useState<Usuario>({
     nome: "",
     usuario: "",
     senha: "",
-    tipo: "Aluno",
+    tipo: "" as "Aluno",
     altura: undefined,
     peso: undefined,
     IMC: undefined,
@@ -17,7 +17,9 @@ function FormUsuario() {
     exercicio: []
   })
 
-  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+  function atualizarEstado(
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) {
     setUsuario({
       ...usuario,
       [e.target.name]: e.target.value
@@ -31,12 +33,12 @@ function FormUsuario() {
     return undefined
   }
 
-  async function cadastrarUsuario(e: ChangeEvent<HTMLFormElement>) {
+  async function cadastrarUsuario(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
 
     const imcCalculado = calcularIMC(usuario.peso, usuario.altura)
 
-    const usuarioFinal = {
+    const usuarioFinal: Usuario = {
       ...usuario,
       IMC: imcCalculado
     }
@@ -76,6 +78,19 @@ function FormUsuario() {
         onChange={atualizarEstado}
         required
       />
+
+      {/* SELECT DE TIPO */}
+      <select
+        name="tipo"
+        value={usuario.tipo}
+        onChange={atualizarEstado}
+        required
+      >
+        <option value="" disabled>
+          Selecione o tipo
+        </option>
+        <option value="Aluno">Aluno</option>
+      </select>
 
       <input
         type="number"
