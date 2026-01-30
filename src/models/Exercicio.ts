@@ -2,10 +2,10 @@ export default interface Exercicio {
     id: number;
     nome: string;
     descricao: string;
-    repeticao: string;
-    intervalo: string;
-    intensidade: string;
-    equipamento: string | null;
+    repeticoes: string;
+    duracao: string;
+    video: string;
+    equipamento: string ;
     usuario?: Usuario | null;
-    grupoMuscular?: GrupoMucular | null
+    grupoMuscular?: GrupoMuscular | null
 }
