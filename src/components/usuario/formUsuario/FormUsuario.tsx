@@ -1,7 +1,7 @@
 import { useState } from "react"
 import type { ChangeEvent, FormEvent } from "react"
 
-import Usuario from "../../../models/Usuario"
+import type Usuario from "../../../models/Usuario"
 import { cadastrar } from "../../../services/Service"
 
 function FormUsuario() {
