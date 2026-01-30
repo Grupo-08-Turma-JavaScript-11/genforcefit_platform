@@ -1,7 +1,10 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://genforcefit.onrender.com"
+  baseURL: "https://genforcefit.onrender.com",
+  headers: {
+    Authorization : "Bearer xx"
+  }
 });
 
 // 🔐 Se o backend NÃO exigir login, pode deixar assim

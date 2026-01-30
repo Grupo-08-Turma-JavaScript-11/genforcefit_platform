@@ -15,7 +15,7 @@ function FormGrupoMuscular() {
 
   useEffect(() => {
     if (id) {
-      buscar(`/gruposmusculares/${id}`, setGrupoMuscular);
+      buscar(`/grupoMuscular/${id}`, setGrupoMuscular);
     }
   }, [id]);
 
@@ -30,9 +30,9 @@ function FormGrupoMuscular() {
     e.preventDefault();
 
     if (id) {
-      await atualizar("/gruposmusculares", grupoMuscular, setGrupoMuscular);
+      await atualizar("/grupoMuscular", grupoMuscular, setGrupoMuscular);
     } else {
-      await cadastrar("/gruposmusculares", grupoMuscular, setGrupoMuscular);
+      await cadastrar("/grupoMuscular", grupoMuscular, setGrupoMuscular);
     }
 
     navigate("/gruposmusculares");
