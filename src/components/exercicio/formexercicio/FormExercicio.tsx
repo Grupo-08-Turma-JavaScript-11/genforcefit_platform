@@ -229,10 +229,8 @@ function FormExercicio() {
                             <span>{ id === undefined ? "Cadastrar" : "Atualizar" }</span>    
                         }
                     </button>
-
                 </form>
             </div>
-
         </>
     )
 
