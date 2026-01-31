@@ -1,3 +1,5 @@
+import type Exercicio from "./Exercicio"
+
 export default interface Usuario {
   id?: number
   nome: string
@@ -8,5 +10,5 @@ export default interface Usuario {
   peso?: number
   IMC?: number
   foto?: string
-  exercicio?: string[]
+  exercicio?: Exercicio[]
 }

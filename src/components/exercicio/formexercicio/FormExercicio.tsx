@@ -1,4 +1,4 @@
-import { useContext, useEffect, useEffectEvent, useState, type ChangeEvent, type FormEvent } from "react";
+import { useContext, useEffect,  useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type Exercicio from "../../../models/Exercicio";
 import { ClipLoader } from "react-spinners";
@@ -14,13 +14,15 @@ function FormExercicio() {
 
     const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
 
-    const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular>({} as GrupoMuscular)
-
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    const [gruposMusculares, setGrupoMusculares] = useState<GrupoMuscular[]>([])
+    const [gruposMusculares, setGruposMusculares] = useState<GrupoMuscular[]>([])
+
+    const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular>({} as GrupoMuscular)
+    
 
     const {usuario, handleLogout} = useContext(autenticarUsuario)
+
     const token = usuario.token
 
     const {id} =  useParams<{id: string}>()
@@ -28,7 +30,7 @@ function FormExercicio() {
 
     async function buscarGrupoMuscular() {
         try {
-            await buscar('/grupoMuscular', setGrupoMuscular)
+            await buscar('/grupoMuscular', setGruposMusculares)
         }catch (error: any) {
             if(error.toString().includes('401')){
             }
@@ -81,8 +83,7 @@ function FormExercicio() {
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
         setExercicio({
             ...exercicio,
-            [e.target.name]: e.target.value
-            grupoMuscular: grupoMuscular,
+            [e.target.name]: e.target.value,
             usuario: usuario,
         })
     }
@@ -141,7 +142,7 @@ function FormExercicio() {
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
                     </div>
-                    <div className="flex flex-col gap-2"></div>
+                    <div className="flex flex-col gap-2">
                         <label htmlFor="descricao">Descrição</label>
                         <input 
                             type="text"
