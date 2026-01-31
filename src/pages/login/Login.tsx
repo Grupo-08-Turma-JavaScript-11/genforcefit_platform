@@ -8,9 +8,9 @@ function Login() {
   const navigate = useNavigate()
 
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
-  usuario: "",
-  senha: "",
-})
+    usuario: "",
+    senha: "",
+  })
 
   function atualizarEstado(e: React.ChangeEvent<HTMLInputElement>) {
     setUsuarioLogin({
@@ -23,7 +23,12 @@ function Login() {
     e.preventDefault()
 
     try {
-      await autenticarUsuario(usuarioLogin)
+      const response = await autenticarUsuario(usuarioLogin)
+
+      // 🔹 ACRESCENTADO
+      localStorage.setItem("token", response.token)
+      localStorage.setItem("tipo", response.tipo)
+
       ToastAlerta("Login realizado com sucesso!", "sucesso")
       navigate("/home")
     } catch {
@@ -42,15 +47,14 @@ function Login() {
         </h1>
 
         <input
-        type="email"
-        name="usuario"
-        placeholder="Email"
-        value={usuarioLogin.usuario}
-        onChange={atualizarEstado}
-        className="w-full mb-4 p-2 border rounded"
-        required
+          type="email"
+          name="usuario"
+          placeholder="Email"
+          value={usuarioLogin.usuario}
+          onChange={atualizarEstado}
+          className="w-full mb-4 p-2 border rounded"
+          required
         />
-
 
         <input
           type="password"
