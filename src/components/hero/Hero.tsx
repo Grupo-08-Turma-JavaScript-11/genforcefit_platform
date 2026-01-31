@@ -1,4 +1,4 @@
-import { Navbar } from "../Navbar/Navbar";
+import { Navbar } from "../navbar/Navbar";
 
 export const Hero = () => {
   return (

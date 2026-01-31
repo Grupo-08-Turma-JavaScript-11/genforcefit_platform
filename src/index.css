@@ -7,20 +7,6 @@
   --fit-input: #0a0a0a;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  background-color: var(--fit-black);
-  color: #fff !important;
-  overflow-x: hidden;
-  width: 100vw;
-}
-
 .container {
   width: 100%;
   max-width: 1200px;
@@ -101,7 +87,7 @@ body {
 
 .hero-subtitle {
   display: block;
-  font-size: 1.2rem;
+  font-size: 5.0rem;
   margin-bottom: 40px; /* espaco pro botao pular linha */
   color: #ccc;
   text-transform: none !important;

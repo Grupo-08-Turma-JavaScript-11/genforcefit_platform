@@ -33,7 +33,7 @@ export const Cadastro = () => {
               </div>
             </div>
 
-            <button type="submit" className="btn-main">enviar cadastro</button>
+            <button type="submit" className="btn-main">Cadastre-se</button>
           </form>
         </div>
       </div>
