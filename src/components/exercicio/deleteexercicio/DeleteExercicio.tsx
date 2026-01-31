@@ -75,3 +75,5 @@ function DeleteExercicio() {
     </div>
   )
 }
+
+export default DeleteExercicio

@@ -5,6 +5,7 @@ import { ClipLoader } from "react-spinners";
 import type GrupoMuscular from "../../../models/GrupoMuscular";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { autenticarUsuario } from "../../../services/authService";
 
 
 function FormExercicio() {
@@ -13,9 +14,13 @@ function FormExercicio() {
 
     const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
 
-    const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular[]>([])
+    const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular>({} as GrupoMuscular)
 
-    const { usuario, handleLogout } = useContext(AuthContext)
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+
+    const [gruposMusculares, setGrupoMusculares] = useState<GrupoMuscular[]>([])
+
+    const {usuario, handleLogout} = useContext(autenticarUsuario)
     const token = usuario.token
 
     const {id} =  useParams<{id: string}>()
@@ -23,10 +28,9 @@ function FormExercicio() {
 
     async function buscarGrupoMuscular() {
         try {
-            await buscar('/grupomuscular', setGrupoMuscular)
+            await buscar('/grupoMuscular', setGrupoMuscular)
         }catch (error: any) {
             if(error.toString().includes('401')){
-                handleLogout()
             }
         }
         
@@ -37,7 +41,6 @@ function FormExercicio() {
             await buscar(`/exercicio/${id}`, setExercicio)
         }catch (error: any) {
             if(error.toString().includes('401')){
-                handleLogout()
             }
         }
         
@@ -45,23 +48,12 @@ function FormExercicio() {
 
     async function buscarGrupoMuscularPorId(id: string) {
         try {
-            await buscar(`/grupomuscular/${id}`, setGrupoMuscular)
+            await buscar(`/grupoMuscular/${id}`, setGrupoMuscular)
         }catch (error: any) {
             if(error.toString().includes('401')){
-                handleLogout()
             }
         }
         
-    }
-
-    async function buscarPorId(id: string) {
-        try{
-            await buscar(`/exercicio/${id}`, setExercicio)
-        }catch (error: any){
-            if (error.toString().includes('403')){
-                handleLogout()
-            }
-        }
     }
 
     useEffect(() => {
@@ -81,7 +73,7 @@ function FormExercicio() {
     useEffect(() => {
         setExercicio({
             ...exercicio,
-            grupoMuscular: grupoMuscular.nome,
+            grupoMuscular: grupoMuscular,
         })
     }, [grupoMuscular])
 
@@ -109,7 +101,6 @@ function FormExercicio() {
                 ToastAlerta("O Exercicio foi atualizado com sucesso!", "sucesso")
             }catch(error: any) {
                 if (error.toString().includes('401')){
-                    handleLogout()
                 }else {
                     ToastAlerta("O Exercico não foi localizado!", "erro")
                 }
@@ -120,13 +111,13 @@ function FormExercicio() {
                 ToastAlerta("O Exercicio foi com sucesso!", "sucesso")
             } catch (error:any) {
                 if (error.toString().includes('401')){
-                    handleLogout()
                 } else {
                     ToastAlerta('Erro ao cadastrar exercicio.', "erro")
                 }
             }
         }
-            retornar()
+        setIsLoading(false)
+        retornar()
     }
 
     const carregandoGrupoMuscular = grupoMuscular.nome === ''
@@ -211,7 +202,7 @@ function FormExercicio() {
                                 className="border-2 border-slate-700 rounded p-2 bg-slate-300" 
                                 onChange={(e) => buscarGrupoMuscularPorId(e.currentTarget.value)}>
                             <option value="" selected disabled>Selecione o grupo muscular</option>
-                            {grupoMuscular.map((grupoMuscular) => (
+                            {gruposMusculares.map((grupoMuscular) => (
                                         <option value={grupoMuscular.id}> {grupoMuscular.nome}</option>
                                     ))}
                         </select>
