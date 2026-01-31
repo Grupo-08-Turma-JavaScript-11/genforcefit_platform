@@ -9,6 +9,6 @@ export default interface Exercicio {
     duracao: string;
     video: string;
     equipamento: string ;
-    usuario?: Usuario | null;
-    grupoMuscular?: GrupoMuscular | null
+    usuario: Usuario;
+    grupoMuscular: GrupoMuscular
 }
