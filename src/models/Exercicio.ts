@@ -1,3 +1,5 @@
+import type GrupoMuscular from "./GrupoMuscular";
+
 export default interface Exercicio {
     id: number;
     nome: string;

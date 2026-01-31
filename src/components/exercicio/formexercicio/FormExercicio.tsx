@@ -1,7 +1,10 @@
-import { useContext, useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { useContext, useEffect, useEffectEvent, useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type Exercicio from "../../../models/Exercicio";
 import { ClipLoader } from "react-spinners";
+import type GrupoMuscular from "../../../models/GrupoMuscular";
+import { atualizar, buscar, cadastrar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 
 function FormExercicio() {
@@ -10,16 +13,50 @@ function FormExercicio() {
 
     const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
 
+    const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular[]>([])
+
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
 
     const {id} =  useParams<{id: string}>()
 
+
+    async function buscarGrupoMuscular() {
+        try {
+            await buscar('/grupomuscular', setGrupoMuscular)
+        }catch (error: any) {
+            if(error.toString().includes('401')){
+                handleLogout()
+            }
+        }
+        
+    }
+
+    async function buscarExercicioPorId(id: string) {
+        try {
+            await buscar(`/exercicio/${id}`, setExercicio)
+        }catch (error: any) {
+            if(error.toString().includes('401')){
+                handleLogout()
+            }
+        }
+        
+    }
+
+    async function buscarGrupoMuscularPorId(id: string) {
+        try {
+            await buscar(`/grupomuscular/${id}`, setGrupoMuscular)
+        }catch (error: any) {
+            if(error.toString().includes('401')){
+                handleLogout()
+            }
+        }
+        
+    }
+
     async function buscarPorId(id: string) {
         try{
-            await buscar(`/exercicio/${id}`, setExercicio, {
-                headers: { Authorization: token}
-            })
+            await buscar(`/exercicio/${id}`, setExercicio)
         }catch (error: any){
             if (error.toString().includes('403')){
                 handleLogout()
@@ -35,20 +72,31 @@ function FormExercicio() {
     }, [token])
 
     useEffect(() => {
+        buscarGrupoMuscular()
         if (id !== undefined){
-            buscarPorId(id)
+            buscarGrupoMuscularPorId(id)
         }
     }, [id])
+
+    useEffect(() => {
+        setExercicio({
+            ...exercicio,
+            grupoMuscular: grupoMuscular.nome,
+        })
+    }, [grupoMuscular])
+
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
         setExercicio({
             ...exercicio,
             [e.target.name]: e.target.value
+            grupoMuscular: grupoMuscular,
+            usuario: usuario,
         })
     }
 
     function retornar() {
-        navigate("/listaexercicio")
+        navigate("/exercicios")
     }
 
 
@@ -57,9 +105,7 @@ function FormExercicio() {
 
         if(id !== undefined){
             try{
-                await atualizar(`/exercicio/:${id}`, exercicio, {
-                    headers: {Authorization: token}
-                })
+                await atualizar(`/exercicio/:${id}`, exercicio, setExercicio)
                 ToastAlerta("O Exercicio foi atualizado com sucesso!", "sucesso")
             }catch(error: any) {
                 if (error.toString().includes('401')){
@@ -70,9 +116,7 @@ function FormExercicio() {
             }
         }else {
              try {
-                await cadastrar(`/exercicio`, exercicio, setExercicio, {
-                    headers: { 'Authorization': token}
-                })
+                await cadastrar(`/exercicio`, exercicio, setExercicio)
                 ToastAlerta("O Exercicio foi com sucesso!", "sucesso")
             } catch (error:any) {
                 if (error.toString().includes('401')){
@@ -89,11 +133,11 @@ function FormExercicio() {
 
     return (
         <>
-            <div className="container flex flex items-center justify-center mx-auto bg-[#0D0D0D]"> {/*  container principal do form, margem das laterais automatica bachgroud-preto  */}
+            <div className="container flex flex items-center justify-center mx-auto bg-[#0D0D0D]"> 
                 <h1 className="text-6x1 text-center my-8 text-white">
                     {id === undefined ? "Cadastrar Exercicio" : "Editar Exercicio"}
                 </h1>
-                <form className="w-1/2 flex flex-col gap-4"
+                <form className="w-1/2 flex flex-col gap-4" 
                     onSubmit={gerarNovoExercicio}>
                     <div className="flex flex-col gap-2">
                         <label htmlFor="descricao">Nome</label>
@@ -175,8 +219,8 @@ function FormExercicio() {
                     <button 
                         type="submit"
                         className="rounded disabled:bg-slate-200  bg:[#6FD904] shadow-[#6FD904]/50 hover:[#1B7302] text-[#0D0D0D] font-bold w-1/2 mx-auto py-2 flex justify-center"
-                        disabled={carregandoExercicio}>
-                        
+                        disabled={carregandoGrupoMuscular}
+                    >
                         {isLoading ?
                             <ClipLoader
                                 color="[#6FD904]"
@@ -184,7 +228,6 @@ function FormExercicio() {
                             />:
                             <span>{ id === undefined ? "Cadastrar" : "Atualizar" }</span>    
                         }
-
                     </button>
 
                 </form>
@@ -195,3 +238,5 @@ function FormExercicio() {
 
 
 }
+
+export default FormExercicio
