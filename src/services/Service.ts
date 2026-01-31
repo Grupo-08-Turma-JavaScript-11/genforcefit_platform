@@ -2,6 +2,9 @@ import axios from "axios";
 
 const api = axios.create({
   baseURL: "https://genforcefit.onrender.com",
+  headers:{
+    Authorization :  "XXX"
+  }
 });
 
 export async function cadastrar(
@@ -26,3 +29,12 @@ export async function deletar(
 ) {
   await api.delete(url);
 }
+
+export const atualizar = async (
+  url: string,
+  dados: object,
+  setDados: Function
+) => {
+  const resposta = await api.put(url, dados);
+  setDados(resposta.data);
+};

@@ -18,9 +18,7 @@ function ListarGrupoMuscular() {
         <h1 className="text-4xl font-bold text-center mb-12 text-[#1E3A8A]">
           Grupos Musculares
         </h1>
-            <FormGrupoMuscular>
-
-            </FormGrupoMuscular>
+           
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
           {grupos.map((grupo) => (
             <CardGrupoMuscular
