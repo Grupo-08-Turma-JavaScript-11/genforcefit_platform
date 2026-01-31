@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+import { AuthProvider } from "./context/AuthContext";
+
 import Login from "./pages/login/Login";
 import CadastroUsuario from "./pages/cadastro/CadastroUsuario";
 import ListarUsuarios from "./components/usuario/listarusuarios/ListarUsuarios";
@@ -13,31 +15,33 @@ import DeletarGrupoMuscular from "./components/GrupoMuscular/deleteGrupoMuscular
 
 function App() {
   return (
-    <BrowserRouter>
-      <ToastContainer />
+    <AuthProvider>
+      <BrowserRouter>
+        <ToastContainer />
 
-      <Routes>
-        {/* Login */}
-        <Route path="/" element={<Login />} />
-        <Route path="/login" element={<Login />} />
+        <Routes>
+          {/* Login */}
+          <Route path="/" element={<Login />} />
+          <Route path="/login" element={<Login />} />
 
-        {/* Cadastro */}
-        <Route path="/cadastro" element={<CadastroUsuario />} />
+          {/* Cadastro */}
+          <Route path="/cadastro" element={<CadastroUsuario />} />
 
-        {/* Usuários */}
-        <Route path="/listarusuarios" element={<ListarUsuarios />} />
-        <Route path="/deletarusuario/:id" element={<DeletarUsuario />} />
+          {/* Usuários */}
+          <Route path="/listarusuarios" element={<ListarUsuarios />} />
+          <Route path="/deletarusuario/:id" element={<DeletarUsuario />} />
 
-        {/* Grupo Muscular */}
-        <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
-        <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
-        <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
-        <Route
-          path="/deletargrupomuscular/:id"
-          element={<DeletarGrupoMuscular />}
-        />
-      </Routes>
-    </BrowserRouter>
+          {/* Grupo Muscular */}
+          <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
+          <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
+          <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
+          <Route
+            path="/deletargrupomuscular/:id"
+            element={<DeletarGrupoMuscular />}
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 
