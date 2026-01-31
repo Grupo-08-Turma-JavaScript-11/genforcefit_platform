@@ -1,3 +1,4 @@
+
 import { toast } from 'react-toastify';
 
 export function ToastAlerta(mensagem: string, tipo: string) {
@@ -43,4 +44,5 @@ export function ToastAlerta(mensagem: string, tipo: string) {
             });
             break;
     }
+
 }

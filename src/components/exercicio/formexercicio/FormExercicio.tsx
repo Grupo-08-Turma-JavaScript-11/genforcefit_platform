@@ -1,10 +1,11 @@
-import { useContext, useEffect, useEffectEvent, useState, type ChangeEvent, type FormEvent } from "react";
+import { useContext, useEffect,  useState, type ChangeEvent, type FormEvent } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type Exercicio from "../../../models/Exercicio";
 import { ClipLoader } from "react-spinners";
 import type GrupoMuscular from "../../../models/GrupoMuscular";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { autenticarUsuario } from "../../../services/authService";
 
 
 function FormExercicio() {
@@ -13,20 +14,25 @@ function FormExercicio() {
 
     const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
 
-    const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
-    const { usuario, handleLogout } = useContext(AuthContext)
-    const token = usuario.token
+    const [gruposMusculares, setGruposMusculares] = useState<GrupoMuscular[]>([])
+
+    const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular>({} as GrupoMuscular)
+    
+
+    //onst {usuario, handleLogout} = useContext(autenticarUsuario)
+
+    //const token = usuario.token
 
     const {id} =  useParams<{id: string}>()
 
 
     async function buscarGrupoMuscular() {
         try {
-            await buscar('/grupomuscular', setGrupoMuscular)
+            await buscar('/grupoMuscular', setGruposMusculares)
         }catch (error: any) {
             if(error.toString().includes('401')){
-                handleLogout()
             }
         }
         
@@ -37,7 +43,6 @@ function FormExercicio() {
             await buscar(`/exercicio/${id}`, setExercicio)
         }catch (error: any) {
             if(error.toString().includes('401')){
-                handleLogout()
             }
         }
         
@@ -45,31 +50,20 @@ function FormExercicio() {
 
     async function buscarGrupoMuscularPorId(id: string) {
         try {
-            await buscar(`/grupomuscular/${id}`, setGrupoMuscular)
+            await buscar(`/grupoMuscular/${id}`, setGrupoMuscular)
         }catch (error: any) {
             if(error.toString().includes('401')){
-                handleLogout()
             }
         }
         
     }
 
-    async function buscarPorId(id: string) {
-        try{
-            await buscar(`/exercicio/${id}`, setExercicio)
-        }catch (error: any){
-            if (error.toString().includes('403')){
-                handleLogout()
-            }
-        }
-    }
-
-    useEffect(() => {
+    /*useEffect(() => {
         if (token === ''){
             alert("Voce precisa estar logado!")
             navigate('/')
         }
-    }, [token])
+    }, [token]) */
 
     useEffect(() => {
         buscarGrupoMuscular()
@@ -81,7 +75,7 @@ function FormExercicio() {
     useEffect(() => {
         setExercicio({
             ...exercicio,
-            grupoMuscular: grupoMuscular.nome,
+            grupoMuscular: grupoMuscular,
         })
     }, [grupoMuscular])
 
@@ -89,9 +83,8 @@ function FormExercicio() {
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
         setExercicio({
             ...exercicio,
-            [e.target.name]: e.target.value
-            grupoMuscular: grupoMuscular,
-            usuario: usuario,
+            [e.target.name]: e.target.value,
+           //usuario: usuario,
         })
     }
 
@@ -109,7 +102,6 @@ function FormExercicio() {
                 ToastAlerta("O Exercicio foi atualizado com sucesso!", "sucesso")
             }catch(error: any) {
                 if (error.toString().includes('401')){
-                    handleLogout()
                 }else {
                     ToastAlerta("O Exercico não foi localizado!", "erro")
                 }
@@ -120,13 +112,13 @@ function FormExercicio() {
                 ToastAlerta("O Exercicio foi com sucesso!", "sucesso")
             } catch (error:any) {
                 if (error.toString().includes('401')){
-                    handleLogout()
                 } else {
                     ToastAlerta('Erro ao cadastrar exercicio.', "erro")
                 }
             }
         }
-            retornar()
+        setIsLoading(false)
+        retornar()
     }
 
     const carregandoGrupoMuscular = grupoMuscular.nome === ''
@@ -150,7 +142,7 @@ function FormExercicio() {
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
                     </div>
-                    <div className="flex flex-col gap-2"></div>
+                    <div className="flex flex-col gap-2">
                         <label htmlFor="descricao">Descrição</label>
                         <input 
                             type="text"
@@ -211,7 +203,7 @@ function FormExercicio() {
                                 className="border-2 border-slate-700 rounded p-2 bg-slate-300" 
                                 onChange={(e) => buscarGrupoMuscularPorId(e.currentTarget.value)}>
                             <option value="" selected disabled>Selecione o grupo muscular</option>
-                            {grupoMuscular.map((grupoMuscular) => (
+                            {gruposMusculares.map((grupoMuscular) => (
                                         <option value={grupoMuscular.id}> {grupoMuscular.nome}</option>
                                     ))}
                         </select>

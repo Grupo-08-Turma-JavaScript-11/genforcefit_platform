@@ -1,4 +1,5 @@
 import type GrupoMuscular from "./GrupoMuscular";
+import type Usuario from "./Usuario";
 
 export default interface Exercicio {
     id: number;

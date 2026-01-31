@@ -1,27 +1,40 @@
-import ListarGrupoMuscular from "../src/components/GrupoMuscular/ListGrupoMuscular/ListGrupoMuscular"
-import FormGrupoMuscular from "../src/components/GrupoMuscular/formGrupoMuscular/FormGrupoMuscular"
-import DeletarGrupoMuscular from "../src/components/GrupoMuscular/deleteGrupoMuscular/DeleteGrupoMuscular"
-import FormExercicio from "./components/exercicio/formexercicio/FormExercicio";
-import Footer from "./components/footer/Footer";
-import Navbar from "./components/navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import ListExercicio from "./components/exercicio/listexercicio/ListExercicio";
+import { ToastContainer } from "react-toastify";
+import Login from "./pages/login/Login";
+import CadastroUsuario from "./pages/cadastro/CadastroUsuario";
+import ListarUsuarios from "./components/usuario/listarusuarios/ListarUsuarios";
+import DeletarUsuario from "./components/usuario/deletarusuario/DeletarUsuario";
+import ListarGrupoMuscular from "./components/GrupoMuscular/ListGrupoMuscular/ListGrupoMuscular";
+import FormGrupoMuscular from "./components/GrupoMuscular/formGrupoMuscular/FormGrupoMuscular";
+import DeletarGrupoMuscular from "./components/GrupoMuscular/deleteGrupoMuscular/DeleteGrupoMuscular";
+
 
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-        <Routes> 
-          <Route path="/exercicios" element={<ListExercicio />} />
-          <Route path="/cadastrarexercicio" element={<FormExercicio />} />
-          <Route path="/editarexercicio/:id" element={<FormExercicio />} />
-          <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
-          <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
-          <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
-          <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
-        </Routes>
-      <Footer />
+      <ToastContainer />
+
+      <Routes>
+        {/* Login */}
+        <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />
+
+        {/* Cadastro */}
+        <Route path="/cadastro" element={<CadastroUsuario />} />
+
+        {/* Usuários */}
+        <Route path="/listarusuarios" element={<ListarUsuarios />} />
+        <Route path="/deletarusuario/:id" element={<DeletarUsuario />} />
+
+        {/* Grupo Muscular */}
+        <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
+        <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
+        <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
+        <Route
+          path="/deletargrupomuscular/:id"
+          element={<DeletarGrupoMuscular />} />
+      </Routes>
     </BrowserRouter>
   );
 }
