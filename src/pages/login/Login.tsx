@@ -25,7 +25,6 @@ function Login() {
     try {
       const response = await autenticarUsuario(usuarioLogin)
 
-      // 🔹 ACRESCENTADO
       localStorage.setItem("token", response.token)
       localStorage.setItem("tipo", response.tipo)
 
