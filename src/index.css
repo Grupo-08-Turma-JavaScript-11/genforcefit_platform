@@ -1,1 +1,192 @@
 @import "tailwindcss";
+/* cores utilizadas 
+:root {
+  --black-main: #000000;
+  --black-soft: #0E0E0E;
+  --dark-gray: #1A1A1A;
+
+  --fit-green: #1FDFCC;
+  --olive-green: #7B7457;
+
+  --light-gray: #B5B5B5;
+  --white: #FFFFFF;
+}
+*/
+
+/* pagina */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* variáveis */
+
+:root {
+  --white: #ffffff;
+  --fit-green: #1FDFCC;       /* Verde destaque (principal) */
+  --black-88: #0E0E0E;
+  --black: #000000;
+}
+
+/* navbar */
+
+.navbar {
+  height: 80px;
+  padding: 0 80px;
+  background: var(--black-88);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+/* links do navbar */
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--white);
+  font-size: 15px;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--fit-green);
+  transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* botoes */
+
+.nav-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-outline {
+  background: transparent;
+  color: white;
+  border: 1px solid #444;
+  padding: 10px 22px;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  border-color: var(--fit-green);
+  color: var(--fit-green);
+}
+
+.btn-primary {
+  background: var(--fit-green);
+  color: black;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+}
+
+/* footer */
+
+.footer {
+  background: var(--black-88);
+  padding: 60px 80px 30px;
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #222;
+  padding-bottom: 30px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 35px;
+}
+
+.footer-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: var(--fit-green);
+}
+
+.footer-social {
+  display: flex;
+  gap: 20px;
+  font-size: 14px;
+}
+
+.footer-social span {
+  cursor: pointer;
+}
+
+.footer-social span:hover {
+  color: var(--fit-green);
+}
+
+.footer-bottom {
+  text-align: right;
+  margin-top: 25px;
+  font-size: 13px;
+  color: #777;
+}
+
+/* responsivo */
+
+@media (max-width: 900px) {
+
+  .navbar {
+    padding: 0 25px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .footer-bottom {
+    text-align: center;
+  }
+}
