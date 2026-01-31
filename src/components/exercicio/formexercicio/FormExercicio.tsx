@@ -233,8 +233,6 @@ function FormExercicio() {
             </div>
         </>
     )
-
-
 }
 
 export default FormExercicio
