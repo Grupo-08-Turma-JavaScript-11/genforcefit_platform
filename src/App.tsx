@@ -5,6 +5,7 @@ import FormExercicio from "./components/exercicio/formexercicio/FormExercicio";
 import Footer from "./components/footer/Footer";
 import Navbar from "./components/navbar/Navbar";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import ListExercicio from "./components/exercicio/listexercicio/ListExercicio";
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Navbar />
         <Routes> 
-          <Route path="/exercicios" element={} />
+          <Route path="/exercicios" element={<ListExercicio />} />
           <Route path="/cadastrarexercicio" element={<FormExercicio />} />
           <Route path="/editarexercicio/:id" element={<FormExercicio />} />
           <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
