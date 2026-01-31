@@ -21,9 +21,9 @@ function FormExercicio() {
     const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular>({} as GrupoMuscular)
     
 
-    const {usuario, handleLogout} = useContext(autenticarUsuario)
+    //onst {usuario, handleLogout} = useContext(autenticarUsuario)
 
-    const token = usuario.token
+    //const token = usuario.token
 
     const {id} =  useParams<{id: string}>()
 
@@ -58,12 +58,12 @@ function FormExercicio() {
         
     }
 
-    useEffect(() => {
+    /*useEffect(() => {
         if (token === ''){
             alert("Voce precisa estar logado!")
             navigate('/')
         }
-    }, [token])
+    }, [token]) */
 
     useEffect(() => {
         buscarGrupoMuscular()
@@ -84,7 +84,7 @@ function FormExercicio() {
         setExercicio({
             ...exercicio,
             [e.target.name]: e.target.value,
-            usuario: usuario,
+           //usuario: usuario,
         })
     }
 
