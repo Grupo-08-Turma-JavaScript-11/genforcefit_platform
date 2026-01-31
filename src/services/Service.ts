@@ -1,52 +1,41 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://genforcefit.onrender.com"
+  baseURL: "https://genforcefit.onrender.com",
 });
 
-// 🔐 Se o backend NÃO exigir login, pode deixar assim
-// Se exigir, a gente adiciona depois
-// api.interceptors.request.use(config => {
-//   const token = localStorage.getItem("token");
-//   if (token) {
-//     config.headers.Authorization = `Bearer ${token}`;
-//   }
-//   return config;
-// });
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
 
-// 👤 USUÁRIO
-export const cadastrarUsuario = async (
+  if (token) {
+    config.headers.Authorization = token;
+  }
+
+  return config;
+});
+
+export async function cadastrar(
   url: string,
-  dados: object,
-  setDados: Function
-) => {
-  const resposta = await api.post(url, dados);
-  setDados(resposta.data);
-};
+  dados: any,
+  setDados: any
+) {
+  const response = await api.post(url, dados);
+  setDados(response.data);
+}
 
-export const login = async (
+export async function buscar(
   url: string,
-  dados: object,
-  setDados: Function
-) => {
-  const resposta = await api.post(url, dados);
-  setDados(resposta.data);
-};
+  setDados: any
+) {
+  const response = await api.get(url);
+  setDados(response.data);
+}
 
-// 📦 GENÉRICOS (Categoria, Grupo Muscular, Exercício etc.)
-export const buscar = async (url: string, setDados: Function) => {
-  const resposta = await api.get(url);
-  setDados(resposta.data);
-};
-
-export const cadastrar = async (
-  url: string,
-  dados: object,
-  setDados: Function
-) => {
-  const resposta = await api.post(url, dados);
-  setDados(resposta.data);
-};
+export async function deletar(
+  url: string
+) {
+  await api.delete(url);
+}
 
 export const atualizar = async (
   url: string,
@@ -55,8 +44,4 @@ export const atualizar = async (
 ) => {
   const resposta = await api.put(url, dados);
   setDados(resposta.data);
-};
-
-export const deletar = async (url: string) => {
-  await api.delete(url);
 };

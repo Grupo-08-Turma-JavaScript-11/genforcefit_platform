@@ -26,7 +26,7 @@ function DeletarGrupoMuscular() {
 
   async function deletarGrupoMuscular() {
     try {
-      await deletar(`/gruposmusculares/${id}`);
+      await deletar(`/grupoMuscular/${id}`);
       ToastAlerta("Grupo muscular deletado com sucesso!", "sucesso");
       retornar();
     } catch {
