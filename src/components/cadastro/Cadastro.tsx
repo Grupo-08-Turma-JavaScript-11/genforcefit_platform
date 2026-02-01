@@ -28,7 +28,7 @@ export const Cadastro = () => {
               
               <div className="class-input">
                 <label>Objetivo</label>
-                <input type="text" placeholder="ex: emagrecimento, hipertrofia" />
+                <input type="text" placeholder="ex: emagrecimento ou hipertrofia" />
               </div>
             </div>
 
