@@ -3,7 +3,6 @@ import { useEffect, useState } from "react"
 import type Usuario from "../../../models/Usuario"
 import { buscar, deletar } from "../../../services/Service"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
-import { ClipLoader } from "react-spinners"
 
 function DeletarUsuario() {
   const navigate = useNavigate()
@@ -38,39 +37,62 @@ function DeletarUsuario() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-96">
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed"
+      style={{
+        backgroundImage:
+          "url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48')",
+      }}
+    >
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/80" />
 
-        <h1 className="text-2xl font-bold mb-4 text-center">
-          Deletar usuário
-        </h1>
+      {/* Card */}
+      <div className="relative z-10 w-full max-w-lg px-6">
+        <div className="bg-black/30 backdrop-blur-md border border-white/5 p-10 shadow-xl">
 
-        <p className="text-sm text-gray-600 text-center mb-6">
-          Tem certeza que deseja excluir este usuário?
-        </p>
+          {/* Título */}
+          <div className="text-center mb-10">
+            <h1 className="text-3xl font-bold text-white mb-4">
+              CONFIRMAR EXCLUSÃO
+            </h1>
+            <p className="text-gray-400">
+              Confirme a exclusão do usuário abaixo
+            </p>
+          </div>
 
-        <div className="text-sm text-gray-700 space-y-2 mb-6">
-          <p><strong>Nome:</strong> {usuario.nome}</p>
-          <p><strong>Email:</strong> {usuario.usuario}</p>
+          {/* Informações do usuário */}
+          <div className="bg-white/5 border border-gray-700 p-6 mb-10">
+            <p className="text-white mb-3">
+              <span className="text-gray-400">Nome:</span>{" "}
+              <strong>{usuario.nome}</strong>
+            </p>
+            <p className="text-white">
+              <span className="text-gray-400">Email:</span>{" "}
+              <strong>{usuario.usuario}</strong>
+            </p>
+          </div>
+
+          {/* Ações */}
+          <div className="flex gap-6">
+            <button
+              onClick={deletarUsuario}
+              disabled={isLoading}
+              className="w-1/2 h-14 bg-green-500 hover:bg-green-600 text-black font-bold transition disabled:opacity-70 disabled:cursor-not-allowed"
+              style={{ borderRadius: "2px" }}
+            >
+              {isLoading ? "DELETANDO..." : "CONFIRMAR"}
+            </button>
+
+            <button
+              onClick={() => navigate("/listarusuarios")}
+              className="w-1/2 h-14 bg-transparent border border-gray-600 text-white hover:border-green-500 transition"
+              style={{ borderRadius: "2px" }}
+            >
+              CANCELAR
+            </button>
+          </div>
         </div>
-
-        <div className="flex gap-4">
-          <button
-            onClick={deletarUsuario}
-            disabled={isLoading}
-            className="w-1/2 bg-black text-white py-2 rounded hover:bg-gray-800 transition flex justify-center"
-          >
-            {isLoading ? <ClipLoader size={20} color="#fff" /> : "Deletar"}
-          </button>
-
-          <button
-            onClick={() => navigate("/listarusuarios")}
-            className="w-1/2 bg-gray-300 text-black py-2 rounded hover:bg-gray-400 transition"
-          >
-            Cancelar
-          </button>
-        </div>
-
       </div>
     </div>
   )

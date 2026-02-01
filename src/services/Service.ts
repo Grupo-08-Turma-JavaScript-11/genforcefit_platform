@@ -19,8 +19,29 @@ export async function cadastrar(
   dados: any,
   setDados: any
 ) {
-  const response = await api.post(url, dados);
-  setDados(response.data);
+  try {
+    const body = {
+      id: 0,
+      nome: dados.nome,
+      usuario: dados.usuario,
+      senha: dados.senha,
+      tipo: "USUARIO",
+      altura: dados.altura ?? 0,
+      peso: dados.peso ?? 0,
+      IMC: 0,
+      foto: dados.foto ?? "",
+      exercicio: [],
+    };
+
+    const response = await api.post(url, body);
+    setDados(response.data);
+  } catch (error: any) {
+    console.error(
+      "❌ Erro no cadastro:",
+      error.response?.data || error
+    );
+    throw error;
+  }
 }
 
 export async function buscar(
@@ -31,17 +52,15 @@ export async function buscar(
   setDados(response.data);
 }
 
-export async function deletar(
-  url: string
-) {
+export async function deletar(url: string) {
   await api.delete(url);
 }
 
-export const atualizar = async (
+export async function atualizar(
   url: string,
   dados: object,
-  setDados: Function
-) => {
-  const resposta = await api.put(url, dados);
-  setDados(resposta.data);
-};
+  setDados: any
+) {
+  const response = await api.put(url, dados);
+  setDados(response.data);
+}

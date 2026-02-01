@@ -1,8 +1,8 @@
-import { useState } from "react"
-import type { ChangeEvent, FormEvent } from "react"
-import type Usuario from "../../../models/Usuario"
-import { cadastrar } from "../../../services/Service"
-import { ToastAlerta } from "../../../utils/ToastAlerta"
+import { useState } from "react";
+import type { ChangeEvent, FormEvent } from "react";
+import type Usuario from "../../../models/Usuario";
+import { cadastrar } from "../../../services/Service";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormUsuario() {
   const [usuario, setUsuario] = useState<Usuario>({
@@ -12,36 +12,33 @@ function FormUsuario() {
     altura: undefined,
     peso: undefined,
     foto: "",
-  })
+  });
 
-  function atualizarEstado(
-    e: ChangeEvent<HTMLInputElement>
-  ) {
-    const { name, value } = e.target
+  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
 
     setUsuario({
       ...usuario,
       [name]:
         name === "altura" || name === "peso"
           ? Number(value)
-          : value
-    })
+          : value,
+    });
   }
 
   async function cadastrarUsuario(e: FormEvent<HTMLFormElement>) {
-    e.preventDefault()
+    e.preventDefault();
 
     try {
-      await cadastrar("/usuarios", usuario, setUsuario)
-      ToastAlerta("Usuário cadastrado com sucesso!", "sucesso")
+      await cadastrar("/usuarios", usuario, setUsuario);
+      ToastAlerta("Usuário cadastrado com sucesso!", "sucesso");
     } catch {
-      ToastAlerta("Erro ao cadastrar usuário", "erro")
+      ToastAlerta("Erro ao cadastrar usuário", "erro");
     }
   }
 
   return (
     <form onSubmit={cadastrarUsuario}>
-
       <input
         type="text"
         name="nome"
@@ -66,7 +63,7 @@ function FormUsuario() {
         type="password"
         name="senha"
         placeholder="Senha"
-        value={usuario.senha ?? ""}
+        value={usuario.senha}
         onChange={atualizarEstado}
         className="w-full mb-4 p-2 border rounded"
         required
@@ -106,7 +103,7 @@ function FormUsuario() {
         Cadastrar
       </button>
     </form>
-  )
+  );
 }
 
-export default FormUsuario
+export default FormUsuario;

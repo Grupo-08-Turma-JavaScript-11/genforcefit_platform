@@ -38,10 +38,13 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       const response = await autenticarUsuario(dados);
 
-      setToken(response.token);
+      // ✅ token salvo JÁ com Bearer
+      const tokenComBearer = `Bearer ${response.token}`;
+
+      setToken(tokenComBearer);
       setTipo(response.tipo);
 
-      localStorage.setItem("token", response.token);
+      localStorage.setItem("token", tokenComBearer);
       localStorage.setItem("tipo", response.tipo);
 
       ToastAlerta("Login realizado com sucesso!", "sucesso");

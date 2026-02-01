@@ -29,13 +29,13 @@ function App() {
           {/* Usuários */}
           <Route path="/listarusuarios" element={<ListarUsuarios />} />
           <Route path="/deletarusuario/:id" element={<DeletarUsuario />} />
-        {/* Grupo Muscular */}
-        <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
-        <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
-        <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
-        <Route
-          path="/deletargrupomuscular/:id"
-          element={<DeletarGrupoMuscular />} />
+
+          {/* Grupo Muscular */}
+          <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
+          <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
+          <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
+          <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
+          
       </Routes>
     </BrowserRouter>
     </AuthProvider>
