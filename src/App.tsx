@@ -1,17 +1,72 @@
-import './App.css'
-import Footer from './components/footer/Footer'
-import Navbar from './components/navbar/Navbar';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { AuthProvider } from "./context/AuthContext";
+import Login from "./pages/login/Login";
+import CadastroUsuario from "./pages/cadastro/CadastroUsuario";
+import ListarUsuarios from "./components/usuario/listarusuarios/ListarUsuarios";
+import ListarGrupoMuscular from "./components/GrupoMuscular/ListGrupoMuscular/ListGrupoMuscular";
+import FormGrupoMuscular from "./components/GrupoMuscular/formGrupoMuscular/FormGrupoMuscular";
+import DeletarGrupoMuscular from "./components/GrupoMuscular/deleteGrupoMuscular/DeleteGrupoMuscular";
 
+
+import { useEffect } from 'react';
+import AOS from 'aos';
+import { Hero } from './components/hero/Hero';
+import { Sobrenos } from './components/sobrenos/Sobrenos';
+import { Planos } from './components/planos/Planos';
+import { Calculo } from './components/calculo/Calculo';
+import { Cadastro } from './components/cadastro/Cadastro';
+import { Footer } from './components/footer/Footer';
+import 'aos/dist/aos.css';
+import './index.css';
+
+
+function Home (){ 
+  return (
+    <>
+    <main>
+      <Hero />
+      <Cadastro />
+      <Planos />
+      <Calculo />
+      <Sobrenos />
+    </main>
+    <Footer />
+    </>
+  );
+}
 function App() {
-return (
-<>
-<Navbar />
-<main>
-    <h1>Página home vai ficar aqui</h1>
-</main>
-<Footer />
-</>
-);
+  useEffect(() => {
+    AOS.init({
+      offset: 120,
+      delay: 50,
+      duration: 400,
+      once: true,
+    });
+  }, []);
+
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <ToastContainer />
+
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<CadastroUsuario />} />
+
+          <Route path="/listarusuarios" element={<ListarUsuarios />} />
+
+          <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
+          <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
+          <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
+          <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
+        </Routes>
+
+      </BrowserRouter>
+    </AuthProvider>
+  );
 }
 
 export default App;
