@@ -265,20 +265,7 @@ function CadastroUsuario() {
 
             <div className="my-12 border-t border-gray-800"></div>
 
-            {/* Link para Login */}
-            <div className="text-center space-y-6">
-              <p className="text-gray-400 text-base">
-                Já tem uma conta?
-              </p>
-              <button
-                type="button"
-                onClick={() => navigate("/login")}
-                className="w-full h-12 bg-transparent hover:bg-white/5 border border-gray-600 text-white font-medium transition-colors hover:border-green-500"
-                style={{ borderRadius: '2px' }}
-              >
-                Fazer Login
-              </button>
-            </div>
+
           </div>
         </div>
       </main>
