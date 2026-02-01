@@ -1,7 +1,8 @@
 /* config gerais */
 
 :root {
-  --green-neon: #39FF14;
+  --green-neon: #39FF14; /* cor principal de botoes e detalhees */
+  --green-soft: #A7FF83; /* verde suave */
   --fit-black: #000000;
   --fit-gray: #111111;
   --fit-dark-gray: #1F1F1F;
@@ -20,7 +21,7 @@
 
 body {
   background-color: var(--fit-black);
-  color: #fff !important;
+  color: #fff;
   overflow-x: hidden;
   width: 100vw;
 }
@@ -56,18 +57,18 @@ body {
 }
 
 .nav-links a {
-  text-decoration: none !important;
+  text-decoration: none;
   font-weight: 700;
   font-size: 0.9rem;
-  color: #ffffff !important;
+  color: #ffffff;
   transition: 0.3s ease;
-  text-transform: none !important;
+  text-transform: none;
   white-space: nowrap; /* nao permite que o texto quebre linha e sobreponha */
 }
 
 .nav-links a:hover {
-  color: var(--green-neon) !important;
-  text-shadow: 0 0 10px var(--green-neon);
+  color: var(--green-soft);
+  text-shadow: 0 0 10px var(--green-soft);
 }
 
 /* instagram icon */
@@ -80,8 +81,8 @@ body {
 /* botoes e titulos */
 
 .btn-main {
-  background-color: var(--green-neon) !important;
-  color: #000 !important;
+  background-color: var(--green-neon);
+  color: #000;
   padding: 18px 45px;
   font-weight: 900;
   text-transform: uppercase;
@@ -93,17 +94,8 @@ body {
 }
 
 .btn-main:hover {
-  background-color: #fff !important;
+  background-color: #fff;
   box-shadow: 0 0 15px var(--green-neon);
-}
-
-.section-title {
-  font-size: 3.2rem;
-  text-align: center;
-  text-transform: none !important; 
-  color: var(--green-neon);
-  margin-bottom: 50px;
-  margin-top: 40px; 
 }
 
 /* barra de scrollar */

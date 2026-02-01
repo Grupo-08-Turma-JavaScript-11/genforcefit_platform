@@ -23,7 +23,7 @@
   color: var(--green-neon);
 }
 
-.nav-links {
+.nav-links { /* menu */
   display: flex;
   list-style: none;
   gap: 35px; /* ajuste fino no espaço entre links */
@@ -33,18 +33,18 @@
 }
 
 .nav-links a {
-  text-decoration: none !important;
+  text-decoration: none ;
   font-weight: 700;
   font-size: 0.9rem;
-  color: #ffffff !important;
+  color: #ffffff !;
   transition: 0.3s ease;
-  text-transform: none !important;
+  text-transform: none;
   white-space: nowrap; /* impede que o texto quebre e sobreponha */
 }
 
 .nav-links a:hover {
-  color: var(--green-neon) !important;
-  text-shadow: 0 0 10px var(--green-neon);
+  color: var(--green-soft);
+  text-shadow: 0 0 2px rgba(0,0,0,0.4);
 }
 
 /* icon instagram */

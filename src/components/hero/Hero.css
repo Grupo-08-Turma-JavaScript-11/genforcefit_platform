@@ -37,7 +37,7 @@
   color: #fff;
 }
 
-.text-highlight {
+.text-highlight { /* palavra resultado */
   color: var(--green-neon);
 }
 
