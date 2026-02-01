@@ -1,0 +1,61 @@
+/* estilização do formulário de imc */
+
+.section-calculo {
+  padding: 100px 0;
+  background-color: var(--fit-black);
+}
+
+.calculo-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.calculo-form {
+  background: var(--fit-gray);
+  padding: 60px;
+  border-radius: 15px;
+  border-right: 4px solid var(--green-neon);
+  border-left: 4px solid var(--green-neon);
+  width: 100%;
+  max-width: 800px; /* mantém o padrão do cadastro */
+  text-align: center;
+}
+
+.calculo-subtitle {
+  color: #888;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  text-transform: none !important;
+}
+
+/* campo de resultado com destaque */
+
+.result-input input {
+  background: rgba(57, 255, 20, 0.05) !important;
+  border-color: rgba(57, 255, 20, 0.3) !important;
+  color: var(--green-neon) !important;
+  font-weight: 700;
+  cursor: default;
+}
+
+.calculo-form .input-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.calculo-form .class-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+/* reponsividade */
+
+@media (max-width: 768px) {
+  .calculo-form .input-group {
+    flex-direction: column;
+  }
+}

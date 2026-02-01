@@ -1,0 +1,115 @@
+.section-footer {
+  background-color: var(--fit-black);
+  color: white;
+  padding: 80px 0 40px;
+  border-top: 1px solid #111;
+}
+
+.footer-box {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.contact-details h2 {
+  color: var(--green-neon);
+  margin-bottom: 20px;
+  text-transform: none !important;
+}
+
+.contact-company-address {
+  opacity: 0.8;
+  line-height: 1.6;
+  text-transform: none !important;
+}
+
+.contact-social-links {
+  margin-top: 25px;
+  display: flex;
+  gap: 20px;
+}
+
+.contact-social-links img {
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.contact-social-links img:hover {
+  filter: drop-shadow(0 0 8px var(--green-neon));
+  transform: translateY(-3px);
+}
+
+.footer-nav h3 {
+  color: var(--green-neon);
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.footer-nav ul {
+  list-style: none;
+}
+
+.footer-nav ul li {
+  margin-bottom: 12px;
+}
+
+.footer-nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s;
+  font-size: 0.9rem;
+}
+
+.footer-nav ul li a:hover {
+  color: var(--green-neon);
+  margin-left: 5px; /* efeito sutil de deslocamento */
+}
+
+.newsletter h3 {
+  color: var(--green-neon);
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.newsletter-input-group {
+  display: flex;
+}
+
+.newsletter input {
+  padding: 12px 15px;
+  background: var(--fit-input);
+  border: 1px solid #333;
+  color: #fff;
+  outline: none;
+  width: 200px;
+}
+
+.btn-newsletter {
+  background-color: var(--green-neon);
+  color: black;
+  border: none;
+  padding: 0 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-newsletter:hover {
+  background-color: #fff;
+  box-shadow: 0 0 15px var(--green-neon);
+}
+
+/* responsividade */
+
+@media (max-width: 768px) {
+  .footer-box {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  
+  .contact-social-links {
+    justify-content: center;
+  }
+}
