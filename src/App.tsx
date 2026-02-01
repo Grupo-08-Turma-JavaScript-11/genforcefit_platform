@@ -19,12 +19,12 @@ import { Calculo } from "./components/calculo/Calculo";
 import { Cadastro } from "./components/cadastro/Cadastro";
 import { Footer } from "./components/footer/Footer";
 
-import ListarUsuarios from "./components/usuario/listarusuarios/ListarUsuarios";
 import ListarGrupoMuscular from "./components/GrupoMuscular/ListGrupoMuscular/ListGrupoMuscular";
 import FormGrupoMuscular from "./components/GrupoMuscular/formGrupoMuscular/FormGrupoMuscular";
 import DeletarGrupoMuscular from "./components/GrupoMuscular/deleteGrupoMuscular/DeleteGrupoMuscular";
 
 import "./index.css";
+import ListarUsuarios from "./components/usuario/listusuario/ListUsuario";
 
 function Home() {
   return (
