@@ -73,9 +73,7 @@ function ListarUsuarios() {
             <h1 className="text-5xl lg:text-7xl font-black text-white mb-10 leading-none tracking-tight">
               Usuários <span className="text-green-500">Cadastrados</span>
             </h1>
-            
-            <div className="h-1 w-40 bg-green-500 mx-auto mb-12"></div>
-            
+                      
             <div className="flex justify-center">
               <p className="text-xl text-gray-300 leading-relaxed max-w-2xl text-center">
                 Gerencie todos os usuários do sistema em um só lugar. 
