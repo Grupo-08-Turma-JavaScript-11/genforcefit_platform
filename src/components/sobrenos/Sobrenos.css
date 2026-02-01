@@ -23,7 +23,7 @@
 
 .instrutor-card:hover {
   transform: translateY(-10px);
-  border-color: var(--green-neon);
+  border-color: var(--green-soft);
 }
 
 .instrutor-img img {

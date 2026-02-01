@@ -12,9 +12,9 @@
   gap: 40px;
 }
 
-.contact-details h2 {
-  color: var(--green-neon);
-  margin-bottom: 20px;
+.contact-details h2 { /* titulo genforcefit */
+  color: var(--green-soft);
+  margin-bottom: 5px;
   text-transform: none !important;
 }
 
@@ -25,7 +25,7 @@
 }
 
 .contact-social-links {
-  margin-top: 25px;
+  margin-top: 7px;
   display: flex;
   gap: 20px;
 }
@@ -40,8 +40,8 @@
   transform: translateY(-3px);
 }
 
-.footer-nav h3 {
-  color: var(--green-neon);
+.footer-nav h3 { /* links rápidos */
+  color: var(--green-soft);
   margin-bottom: 20px;
   font-size: 1.2rem;
 }
@@ -62,12 +62,12 @@
 }
 
 .footer-nav ul li a:hover {
-  color: var(--green-neon);
+  color: var(--green-soft);
   margin-left: 5px; /* efeito sutil de deslocamento */
 }
 
-.newsletter h3 {
-  color: var(--green-neon);
+.newsletter h3 { /* titulo newsletter */
+  color: var(--green-soft);
   margin-bottom: 20px;
   font-size: 1.1rem;
 }
@@ -76,7 +76,7 @@
   display: flex;
 }
 
-.newsletter input {
+.newsletter input { /* campo de digitar e-mail */
   padding: 12px 15px;
   background: var(--fit-input);
   border: 1px solid #333;
@@ -85,7 +85,7 @@
   width: 200px;
 }
 
-.btn-newsletter {
+.btn-newsletter { /* botao de enviar newsletter */
   background-color: var(--green-neon);
   color: black;
   border: none;
