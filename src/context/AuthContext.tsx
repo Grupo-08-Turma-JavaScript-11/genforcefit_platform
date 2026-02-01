@@ -1,79 +1,97 @@
-import { createContext, useEffect, useState } from "react";
-import type { ReactNode } from "react";
-import type UsuarioLogin from "../models/UsuarioLogin";
-import { autenticarUsuario } from "../services/authService";
-import { ToastAlerta } from "../utils/ToastAlerta";
+import { createContext, type ReactNode, useEffect, useState } from "react"
+import type UsuarioLogin from "../models/UsuarioLogin"
+import type Usuario from "../models/Usuario"
+import { login } from "../services/Service"
+import { ToastAlerta } from "../utils/ToastAlerta"
 
 interface AuthContextProps {
-  token: string | null;
-  tipo: string | null;
-  isLoading: boolean;
-  login: (dados: UsuarioLogin) => Promise<void>;
-  logout: () => void;
+  usuario: Usuario
+  handleLogout(): void
+  handleLogin(usuario: UsuarioLogin): Promise<void>
+  isLoading: boolean
 }
 
 interface AuthProviderProps {
-  children: ReactNode;
+  children: ReactNode
 }
 
-export const AuthContext = createContext({} as AuthContextProps);
+export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [token, setToken] = useState<string | null>(null);
-  const [tipo, setTipo] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
 
-  // 🔹 Recupera auth ao recarregar a página
+  const [usuario, setUsuario] = useState<Usuario>({
+    id: 0,
+    nome: "",
+    usuario: "",
+    senha: "",
+    tipo: "",
+    altura: 0,
+    peso: 0,
+    IMC: 0,
+    foto: "",
+    token: "",
+    exercicio: []
+  })
+
+  const [isLoading, setIsLoading] = useState(false)
+
   useEffect(() => {
-    const tokenSalvo = localStorage.getItem("token");
-    const tipoSalvo = localStorage.getItem("tipo");
+    const tokenSalvo = localStorage.getItem("token")
 
-    if (tokenSalvo) setToken(tokenSalvo);
-    if (tipoSalvo) setTipo(tipoSalvo);
-  }, []);
+    if (tokenSalvo) {
+      setUsuario((prev) => ({
+        ...prev,
+        token: tokenSalvo
+      }))
+    }
+  }, [])
 
-  async function login(dados: UsuarioLogin) {
-    setIsLoading(true);
+  async function handleLogin(usuarioLogin: UsuarioLogin) {
+    setIsLoading(true)
 
     try {
-      const response = await autenticarUsuario(dados);
+      const resposta = await login("/usuarios/logar", usuarioLogin)
 
-      // ✅ token salvo já com Bearer
-      const tokenComBearer = `Bearer ${response.token}`;
+      // backend retorna Usuario completo + token
+      setUsuario(resposta.data)
+      localStorage.setItem("token", resposta.data.token)
 
-      setToken(tokenComBearer);
-      setTipo(response.tipo);
-
-      localStorage.setItem("token", tokenComBearer);
-      localStorage.setItem("tipo", response.tipo);
-
-      ToastAlerta("Login realizado com sucesso!", "sucesso");
-    } catch {
-      ToastAlerta("Email ou senha inválidos", "erro");
+      ToastAlerta("Usuário autenticado com sucesso!", "sucesso")
+    } catch (error) {
+      ToastAlerta("Usuário ou senha inválidos!", "erro")
     } finally {
-      setIsLoading(false);
+      setIsLoading(false)
     }
   }
 
-  function logout() {
-    setToken(null);
-    setTipo(null);
+  function handleLogout() {
+    setUsuario({
+      id: 0,
+      nome: "",
+      usuario: "",
+      senha: "",
+      tipo: "",
+      altura: 0,
+      peso: 0,
+      IMC: 0,
+      foto: "",
+      token: "",
+      exercicio: []
+    })
 
-    localStorage.removeItem("token");
-    localStorage.removeItem("tipo");
+    localStorage.removeItem("token")
   }
 
   return (
     <AuthContext.Provider
       value={{
-        token,
-        tipo,
-        isLoading,
-        login,
-        logout,
+        usuario,
+        handleLogin,
+        handleLogout,
+        isLoading
       }}
     >
       {children}
     </AuthContext.Provider>
-  );
+  )
 }

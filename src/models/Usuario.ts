@@ -1,14 +1,15 @@
 import type Exercicio from "./Exercicio"
 
 export default interface Usuario {
-  id?: number
+  id: number
   nome: string
   usuario: string
-  senha?: string
-  grupoMuscular?: string
-  altura?: number
-  peso?: number
-  IMC?: number
+  senha: string
+  tipo: string
+  altura: number
+  peso: number
+  IMC: number
   foto?: string
-  exercicio?: Exercicio[]
+  token: string
+  exercicio: Exercicio[]
 }

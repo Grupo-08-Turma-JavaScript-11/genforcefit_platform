@@ -1,66 +1,35 @@
-import axios from "axios";
+import axios from "axios"
 
 const api = axios.create({
-  baseURL: "https://genforcefit.onrender.com",
-});
+  baseURL: "https://genforcefit.onrender.com"
+})
 
-api.interceptors.request.use((config) => {
-  const token = localStorage.getItem("token");
+// 🔹 LOGIN
+export const login = async (url: string, dados: object) => {
+  return await api.post(url, dados);
+};
 
-  if (token) {
-    config.headers.Authorization = token;
-  }
+// 🔹 CADASTRAR USUÁRIO
+export const cadastrarUsuario = async (url: string, dados: object) => {
+  return await api.post(url, dados);
+};
 
-  return config;
-});
+// 🔹 BUSCAR (GET)
+export const buscar = async (url: string, header: object) => {
+  return await api.get(url, header);
+};
 
-export async function cadastrar(
-  url: string,
-  dados: any,
-  setDados: any
-) {
-  try {
-    const body = {
-      id: 0,
-      nome: dados.nome,
-      usuario: dados.usuario,
-      senha: dados.senha,
-      tipo: "USUARIO",
-      altura: dados.altura ?? 0,
-      peso: dados.peso ?? 0,
-      IMC: 0,
-      foto: dados.foto ?? "",
-      exercicio: [],
-    };
+// 🔹 CADASTRAR (POST com token)
+export const cadastrar = async (url: string, dados: object, header: object) => {
+  return await api.post(url, dados, header);
+};
 
-    const response = await api.post(url, body);
-    setDados(response.data);
-  } catch (error: any) {
-    console.error(
-      "❌ Erro no cadastro:",
-      error.response?.data || error
-    );
-    throw error;
-  }
-}
+// 🔹 ATUALIZAR (PUT)
+export const atualizar = async (url: string, dados: object, header: object) => {
+  return await api.put(url, dados, header);
+};
 
-export async function buscar(
-  url: string,
-  setDados: any
-) {
-  const response = await api.get(url);
-  setDados(response.data);
-}
-
-export async function deletar(url: string) {
-  await api.delete(url);
-}
-
-export async function atualizar(
-  url: string,
-  dados: object,
-  setDados: any
-) {
-  const response = await api.put(url, dados);
-  setDados(response.data);
-}
+// 🔹 DELETAR (DELETE)
+export const deletar = async (url: string, header: object) => {
+  return await api.delete(url, header);
+};
