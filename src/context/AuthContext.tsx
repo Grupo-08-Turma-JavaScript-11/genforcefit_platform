@@ -38,7 +38,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     try {
       const response = await autenticarUsuario(dados);
 
-      // ✅ token salvo JÁ com Bearer
+      // ✅ token salvo já com Bearer
       const tokenComBearer = `Bearer ${response.token}`;
 
       setToken(tokenComBearer);
