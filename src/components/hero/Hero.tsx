@@ -1,0 +1,27 @@
+import { Navbar } from "../navbar/Navbar";
+import './Hero.css';
+
+export const Hero = () => {
+  return (
+    <section className="hero-section">
+      {/* Navbar renderizada no topo da seção hero */}
+      <Navbar />
+      
+      <div className="hero-wrapper-full">
+        <div className="hero-text-box">
+          <h1 className="hero-title">
+            movimento que gera <span className="text-highlight">resultado</span>
+          </h1>
+          <p className="hero-subtitle">
+            treinamento funcional e alta performance na genforcefit 
+          </p>
+          <button className="btn-main">
+            começar agora
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

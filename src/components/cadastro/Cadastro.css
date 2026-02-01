@@ -1,0 +1,75 @@
+/* cadastro (estilo igual imc) */
+
+.section-cadastro {
+  padding: 100px 0;
+  background-color: var(--fit-black);
+}
+
+.cadastro-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.cadastro-form {
+  background: var(--fit-gray);
+  padding: 60px;
+  border-radius: 15px;
+  border-right: 4px solid var(--green-neon);
+  border-left: 4px solid var(--green-neon);
+  width: 100%;
+  max-width: 800px; /* form cumprido igual imc */
+  text-align: center;
+}
+
+.cadastro-subtitle {
+  color: #888;
+  margin-bottom: 40px;
+  font-size: 1.1rem;
+  text-transform: none !important; /* mantém minuscula */
+}
+
+.cadastro-form .input-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.cadastro-form .class-input {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.cadastro-form .class-input label {
+  color: var(--green-neon);
+  font-size: 0.8rem;
+  text-transform: none !important;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.cadastro-form .class-input input {
+  width: 100%;
+  padding: 18px;
+  background: var(--fit-input);
+  border: 1px solid #333;
+  color: #fff;
+  font-size: 1.1rem;
+  outline: none;
+  transition: 0.3s;
+}
+
+.cadastro-form .btn-main {
+  width: 100%; /* botão largo */
+  margin-top: 10px;
+}
+
+/* responsividade */
+
+@media (max-width: 768px) {
+  .cadastro-form .input-group {
+    flex-direction: column;
+  }
+}

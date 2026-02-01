@@ -1,0 +1,68 @@
+.memberships-section {
+  padding: 100px 0;
+  background-color: var(--fit-black);
+}
+
+.membership-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+
+.membership-card {
+  background-color: var(--fit-gray);
+  border: 1px solid #222;
+  padding: 50px 40px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  transition: 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.membership-card:hover {
+  border-color: var(--green-neon);
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(57, 255, 20, 0.1);
+}
+
+.membership-card h3 {
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: none !important;
+}
+
+.price-tag {
+  color: var(--green-neon);
+  font-size: 2.2rem;
+  font-weight: 900;
+  margin: 20px 0;
+  text-transform: none !important;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 35px;
+  flex-grow: 1; /* faz o botão sempre ficar alinhado embaixo */
+}
+
+.features-list li {
+  margin-bottom: 15px;
+  color: #bbb;
+  font-size: 1rem;
+  text-transform: none !important;
+  position: relative;
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+  .membership-card {
+    max-width: 100%;
+  }
+}
