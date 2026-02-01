@@ -1,12 +1,12 @@
 export const Navbar = () => {
   return (
     <header className="header-main">
-      {/* Lado Esquerdo (Logo) */}
+      {/* lado esquerdo (logo) */}
       <div className="logo-content">
         <img src="https://vfitclub.netlify.app/image/logo.png" alt="Logo" width="45" />
       </div>
       
-      {/* Lado Direito (Menu) */}
+      {/* lado direito (menu) */}
       <nav>
         <ul className="nav-links">
           <li><a href="#cadastro">Cadastre-se</a></li>
