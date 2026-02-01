@@ -9,10 +9,10 @@ export const Navbar = () => {
       {/* Lado Direito (Menu) */}
       <nav>
         <ul className="nav-links">
-          <li><a href="#planos">Sobre Nós</a></li>
-          <li><a href="#hero">Cadastre-se</a></li>
+          <li><a href="#cadastro">Cadastre-se</a></li>
           <li><a href="#planos">Planos</a></li>
           <li><a href="#calculo">Cálculo IMC</a></li>
+          <li><a href="#sobrenos">Sobre Nós</a></li>
           <li><a href="#footer">Contato</a></li>
         </ul>
       </nav>

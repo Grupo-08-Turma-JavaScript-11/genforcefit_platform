@@ -60,7 +60,7 @@
   position: relative;
 }
 
-/* Responsividade */
+/* responsividade */
 @media (max-width: 768px) {
   .membership-card {
     max-width: 100%;

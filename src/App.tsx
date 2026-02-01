@@ -2,9 +2,6 @@ import { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import './index.css';
-
-// Importando seus componentes das novas pastas
-import { Navbar } from './components/navbar/Navbar';
 import { Hero } from './components/hero/Hero';
 import { Sobrenos } from './components/sobrenos/Sobrenos';
 import { Planos } from './components/planos/Planos';
@@ -26,10 +23,10 @@ function App() {
     <>
       <main>
         <Hero />
-        <Sobrenos />
+        <Cadastro />
         <Planos />
         <Calculo />
-        <Cadastro />
+        <Sobrenos />
       </main>
       <Footer />
     </>

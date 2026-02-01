@@ -56,7 +56,8 @@
   margin-top: 5px;
 }
 
-/* Ajuste para mobile */
+/* mobile */
+
 @media (max-width: 768px) {
   .instrutores-grid {
     gap: 15px;

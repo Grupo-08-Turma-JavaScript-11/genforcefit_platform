@@ -1,4 +1,5 @@
 /* estilização do formulário de imc */
+
 .section-calculo {
   padding: 100px 0;
   background-color: var(--fit-black);
@@ -28,6 +29,7 @@
 }
 
 /* campo de resultado com destaque */
+
 .result-input input {
   background: rgba(57, 255, 20, 0.05) !important;
   border-color: rgba(57, 255, 20, 0.3) !important;
@@ -36,7 +38,6 @@
   cursor: default;
 }
 
-/* aproveitando as classes globais de input que já estão no seu css */
 .calculo-form .input-group {
   display: flex;
   gap: 20px;
@@ -50,6 +51,8 @@
   align-items: flex-start;
   margin-bottom: 20px;
 }
+
+/* reponsividade */
 
 @media (max-width: 768px) {
   .calculo-form .input-group {

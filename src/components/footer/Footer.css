@@ -100,7 +100,7 @@
   box-shadow: 0 0 15px var(--green-neon);
 }
 
-/* Responsividade */
+/* responsividade */
 @media (max-width: 768px) {
   .footer-box {
     flex-direction: column;

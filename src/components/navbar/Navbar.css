@@ -7,7 +7,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 35px 10%; /* Reduzi levemente para dar mais espaço ao centro */
+  padding: 35px 10%; /* reduz levemente para dar mais espaço ao centro */
   background: transparent;
 }
 
@@ -26,7 +26,7 @@
 .nav-links {
   display: flex;
   list-style: none;
-  gap: 35px; /* Ajuste fino no espaço entre links */
+  gap: 35px; /* ajuste fino no espaço entre links */
   align-items: center;
   margin: 0;
   padding: 0;
@@ -39,7 +39,7 @@
   color: #ffffff !important;
   transition: 0.3s ease;
   text-transform: none !important;
-  white-space: nowrap; /* ESSENCIAL: impede que o texto quebre e sobreponha */
+  white-space: nowrap; /* impede que o texto quebre e sobreponha */
 }
 
 .nav-links a:hover {
@@ -47,7 +47,8 @@
   text-shadow: 0 0 10px var(--green-neon);
 }
 
-/* Ícone do Instagram */
+/* icon instagram */
+
 .nav-instagram a {
   display: flex;
   align-items: center;
@@ -62,10 +63,11 @@
   transform: scale(1.1);
 }
 
-/* Responsividade - Menu Mobile Simples */
+/* responsividade */
+
 @media (max-width: 992px) {
   .nav-links {
-    gap: 20px; /* Encurta o espaço em telas médias antes de sumir */
+    gap: 20px; /* encurta o espaço em telas médias antes de sumir */
   }
 }
 
