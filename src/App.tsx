@@ -5,7 +5,6 @@ import { AuthProvider } from "./context/AuthContext";
 import Login from "./pages/login/Login";
 import CadastroUsuario from "./pages/cadastro/CadastroUsuario";
 import ListarUsuarios from "./components/usuario/listarusuarios/ListarUsuarios";
-import DeletarUsuario from "./components/usuario/deletarusuario/DeletarUsuario";
 import ListarGrupoMuscular from "./components/GrupoMuscular/ListGrupoMuscular/ListGrupoMuscular";
 import FormGrupoMuscular from "./components/GrupoMuscular/formGrupoMuscular/FormGrupoMuscular";
 import DeletarGrupoMuscular from "./components/GrupoMuscular/deleteGrupoMuscular/DeleteGrupoMuscular";
@@ -28,7 +27,6 @@ function App() {
 
           {/* Usuários */}
           <Route path="/listarusuarios" element={<ListarUsuarios />} />
-          <Route path="/deletarusuario/:id" element={<DeletarUsuario />} />
 
           {/* Grupo Muscular */}
           <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />

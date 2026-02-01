@@ -1,17 +1,29 @@
+import { useState } from "react"
 import type Usuario from "../../../models/Usuario"
 
 interface CardUsuarioProps {
   usuario: Usuario
+  onDeletar?: () => void
 }
 
-function CardUsuario({ usuario }: CardUsuarioProps) {
+function CardUsuario({ usuario, onDeletar }: CardUsuarioProps) {
+  const [mostrarConfirmacao, setMostrarConfirmacao] = useState(false)
+
   return (
-    <div className="bg-black/30 backdrop-blur-md border border-white/5 p-8 w-full hover:border-green-500/50 transition-all duration-300 hover:bg-white/5 shadow-lg">
+    <div className="bg-black/30 backdrop-blur-md border border-white/5 p-8 w-full hover:border-green-500/50 transition-all duration-300 hover:bg-white/5 shadow-lg relative">
+      
+      {/* Botão de deletar */}
+      <button
+        onClick={() => setMostrarConfirmacao(true)}
+        className="absolute top-4 right-4 text-red-400 hover:text-red-300 text-sm font-medium px-3 py-1 border border-red-500/30 hover:border-red-500/50 rounded-sm transition-colors z-10"
+      >
+        Excluir
+      </button>
       
       {/* Cabeçalho do Card */}
       <div className="flex flex-col items-center text-center mb-6">
         
-        {/* Avatar/Ícone */}
+        {/* Ícone */}
         <div className="w-20 h-20 rounded-full bg-gradient-to-br from-green-500/20 to-green-500/5 border-2 border-green-500/30 flex items-center justify-center mb-5">
           <svg 
             className="w-10 h-10 text-green-400" 
@@ -107,6 +119,36 @@ function CardUsuario({ usuario }: CardUsuarioProps) {
           </div>
         </div>
       </div>
+
+      {/* Modal de Confirmação */}
+      {mostrarConfirmacao && (
+        <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50 p-4">
+          <div className="bg-gray-900 border border-gray-700 rounded-sm p-8 max-w-md w-full">
+            <h3 className="text-xl font-bold text-white mb-4">Confirmar Exclusão</h3>
+            <p className="text-gray-300 mb-6">
+              Excluir usuário <span className="font-semibold text-white">{usuario.nome}</span>?
+              <span className="block text-sm text-gray-400 mt-1">Esta ação não pode ser desfeita.</span>
+            </p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setMostrarConfirmacao(false)}
+                className="flex-1 py-2 border border-gray-600 text-gray-300 hover:text-white rounded-sm"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={() => {
+                  onDeletar?.();
+                  setMostrarConfirmacao(false);
+                }}
+                className="flex-1 py-2 bg-red-500 hover:bg-red-600 text-white rounded-sm"
+              >
+                Excluir
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

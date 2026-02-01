@@ -81,7 +81,6 @@ function Login() {
         {/* Lado Direito - Formulário de Login  */}
         <div className="lg:w-1/3 max-w-md">
           
-          {/* Cartão limpo com bordas sutis */}
           <div className="bg-black/30 backdrop-blur-md border border-white/5 p-10 shadow-xl">
             
             {/* Cabeçalho */}
@@ -113,7 +112,7 @@ function Login() {
                 />
               </div>
 
-              {/* Senha - Com espaçamento e "Esqueceu?" separado */}
+              {/* Senha */}
               <div className="mb-8">
                 <label className="block text-white font-semibold mb-4 text-lg">
                   SENHA
@@ -130,7 +129,7 @@ function Login() {
                   disabled={carregando}
                 />
                 
-                {/* Esqueceu a senha? - Bem separado embaixo */}
+                {/* Esqueceu a senha? */}
                 <div className="mt-6 text-right">
                   <button
                     type="button"
@@ -142,7 +141,7 @@ function Login() {
                 </div>
               </div>
 
-              {/* Botão Entrar - Com espaço gigante acima e abaixo */}
+              {/* Botão Entrar */}
               <div className="mt-20 mb-16">
                 <button
                   type="submit"
@@ -165,7 +164,7 @@ function Login() {
             {/* Divisor visual */}
             <div className="my-12 border-t border-gray-800"></div>
 
-            {/* Cadastro - Com espaçamento adequado */}
+            {/* Cadastro */}
             <div className="text-center space-y-6">
               <p className="text-gray-400 text-base">
                 Ainda não tem uma conta?

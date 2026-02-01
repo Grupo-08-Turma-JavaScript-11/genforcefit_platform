@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { SyncLoader } from "react-spinners"
 import type Usuario from "../../../models/Usuario"
-import { buscar } from "../../../services/Service"
+import { buscar, deletar } from "../../../services/Service"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
 import CardUsuario from "../cardusuario/CardUsuario"
 
@@ -22,6 +22,17 @@ function ListarUsuarios() {
       ToastAlerta("Erro ao buscar usuários", "erro")
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  // Função para deletar usuário
+  async function deletarUsuario(id: number) {
+    try {
+      await deletar(`/usuarios/${id}`); // DESCOMENTADO
+      ToastAlerta("Usuário deletado com sucesso", "sucesso")
+      buscarUsuarios() // Atualiza a lista após deletar
+    } catch {
+      ToastAlerta("Erro ao deletar usuário", "erro")
     }
   }
 
@@ -51,7 +62,7 @@ function ListarUsuarios() {
       <main className="relative z-10 flex-1 flex flex-col items-center px-6 py-16 lg:py-20">
         <div className="w-full max-w-7xl flex flex-col items-center">
           
-          {/* Cabeçalho - COM MAIS ESPAÇO ABAIXO */}
+          {/* Cabeçalho */}
           <div className="text-center mb-24 w-full">
             <div className="mb-12">
               <span className="inline-block px-6 py-3 bg-green-500/10 border border-green-500/30 text-green-400 text-sm font-semibold tracking-widest uppercase rounded-sm">
@@ -73,7 +84,7 @@ function ListarUsuarios() {
             </div>
           </div>
 
-          {/* Stats Cards - COM MAIS ESPAÇO ACIMA E ABAIXO */}
+          {/* Stats Cards */}
           <div className="flex flex-col md:flex-row justify-center items-center gap-10 mb-20 w-full">
             {/* Card 1 - Total de Usuários */}
             <div className="bg-black/30 backdrop-blur-md border border-white/5 p-10 text-center w-full max-w-xs">
@@ -197,7 +208,7 @@ function ListarUsuarios() {
               </div>
             )}
 
-            {/* Grid de cards - COM MAIS ESPAÇO INTERNO */}
+            {/* Grid de cards */}
             {!isLoading && usuariosFiltrados.length > 0 && (
               <div className="bg-black/30 backdrop-blur-md border border-white/5 p-10 lg:p-12 shadow-xl rounded-sm">
                 {/* Container que centraliza o grid */}
@@ -208,13 +219,16 @@ function ListarUsuarios() {
                         key={usuario.id}
                         className="w-full"
                       >
-                        <CardUsuario usuario={usuario} />
+                        <CardUsuario 
+                          usuario={usuario} 
+                          onDeletar={() => deletarUsuario(usuario.id!)} 
+                        />
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Botão Atualizar - COM MAIS ESPAÇO ACIMA */}
+                {/* Botão Atualizar */}
                 <div className="mt-16 pt-10 border-t border-gray-800 text-center">
                   <button
                     onClick={buscarUsuarios}
