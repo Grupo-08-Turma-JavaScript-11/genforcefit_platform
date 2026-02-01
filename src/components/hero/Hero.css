@@ -1,0 +1,69 @@
+.hero-section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  /* Gradiente para dar leitura ao texto sobre a imagem */
+  background: linear-gradient(to right, rgba(0,0,0,0.85) 35%, transparent),
+              url("https://vfitclub.netlify.app/image/hero-background.webp") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.hero-wrapper-full {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 12%;
+  /* Imagem lateral do atleta */
+  background: url("https://vfitclub.netlify.app/image/hero-image.png") no-repeat bottom right;
+  background-size: contain;
+}
+
+.hero-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 700px;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.text-highlight {
+  color: var(--green-neon);
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 40px; 
+  color: #ccc;
+  text-transform: none !important;
+  max-width: 500px;
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .hero-wrapper-full {
+        background-image: none; /* remove a imagem lateral em telas médias para focar no texto */
+    }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .hero-text-box {
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+  }
+}

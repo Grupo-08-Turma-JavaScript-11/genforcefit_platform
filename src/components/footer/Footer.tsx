@@ -1,39 +1,48 @@
-import React from 'react';
+import './Footer.css';
 
 export const Footer = () => {
   return (
-    <footer className="section-footer" id="footer" style={{ backgroundColor: '#000', color: 'white', padding: '60px 0' }}>
-      <div className="footer-box container" style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '40px' }}>
+    <footer className="section-footer" id="footer">
+      <div className="footer-box container">
+        
+        {/* Lado Esquerdo - Detalhes */}
         <div className="contact-details">
-          <h2 style={{ color: 'var(--fit-neon)', marginBottom: '20px' }}>Gen Force Fit</h2>
-          <div className="contact-company-address" style={{ opacity: 0.8 }}>
-            Auxílio no Treino <br />
-            <br />(inserir frase)
+          <h2>gen force fit</h2>
+          <div className="contact-company-address">
+            auxílio no treino <br />
+            <br />
+            sua evolução começa aqui.
           </div>
-          <div className="contact-social-links" style={{ marginTop: '20px', display: 'flex', gap: '15px' }}>
+          <div className="contact-social-links">
             <img src="https://vfitclub.netlify.app/image/whatsapp.svg" alt="whatsapp" width="30" height="30" /> 
             <img src="https://vfitclub.netlify.app/image/facebook.svg" alt="facebook" width="30" height="30" /> 
             <img src="https://vfitclub.netlify.app/image/instagram.svg" alt="instagram" width="30" height="30" /> 
           </div>
         </div>
 
+        {/* Centro - Links */}
         <nav className="footer-nav">
-          <h3 style={{ color: 'var(--fit-neon)', marginBottom: '20px' }}>Links rápidos</h3>
-          <ul style={{ listStyle: 'none' }}>
-            <li><a href="#about" style={{ color: '#fff', textDecoration: 'none' }}>Sobre Nós</a></li>
-            <li><a href="#memberships" style={{ color: '#fff', textDecoration: 'none' }}>Login</a></li>
-           <li><a href="#about" style={{ color: '#fff', textDecoration: 'none' }}>Cadastre-se</a></li>
-            <li><a href="#memberships" style={{ color: '#fff', textDecoration: 'none' }}>Contato</a></li>
+          <h3>links rápidos</h3>
+          <ul>
+            <li><a href="#about">sobre nós</a></li>
+            <li><a href="#login">login</a></li>
+            <li><a href="#cadastro">cadastre-se</a></li>
+            <li><a href="#contato">contato</a></li>
           </ul>
         </nav>
 
+        {/* Direita - Newsletter */}
         <div className="newsletter">
-          <h3 style={{ color: 'var(--fit-neon)', marginBottom: '20px' }}>Fique por dentro das novidades:</h3>
-          <input type="email" placeholder="Insira seu e-mail aqui" style={{ padding: '10px', background: '#111', border: '1px solid #333', color: '#fff' }} />
-          {/* Botão Neon Reto */}
-          <button style={{ backgroundColor: 'var(--fit-neon)', color: 'black', border: 'none', padding: '10px 15px', fontWeight: 'bold', cursor: 'pointer' }}>✓</button>
+          <h3>fique por dentro das novidades:</h3>
+          <div className="newsletter-input-group">
+            <input type="email" placeholder="insira seu e-mail aqui" />
+            <button className="btn-newsletter">✓</button>
+          </div>
         </div>
+        
       </div>
     </footer>
   );
 };
+
+export default Footer;

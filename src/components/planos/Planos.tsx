@@ -1,4 +1,4 @@
-import React from 'react';
+import './Planos.css';
 
 export const Planos = () => {
   const plans = [
@@ -17,7 +17,7 @@ export const Planos = () => {
   return (
     <section id="planos" className="memberships-section">
       <div className="container">
-        <h2 className="section-title">Nossos Planos</h2>
+        <h2 className="section-title">nossos planos</h2>
         
         <div className="membership-grid">
           {plans.map((plan, index) => (
@@ -29,7 +29,7 @@ export const Planos = () => {
                   <li key={i}>{feature}</li>
                 ))}
               </ul>
-              <button className="btn-main">MATRICULE-SE JÁ</button>
+              <button className="btn-main">matricule-se já</button>
             </div>
           ))}
         </div>
@@ -37,3 +37,5 @@ export const Planos = () => {
     </section>
   );
 };
+
+export default Planos;

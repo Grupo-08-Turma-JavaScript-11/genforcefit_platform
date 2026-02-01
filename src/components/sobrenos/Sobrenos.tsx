@@ -1,4 +1,4 @@
-import React from 'react';
+import './Sobrenos.css';
 
 export const Sobrenos = () => {
   const instrutores = [
@@ -11,7 +11,7 @@ export const Sobrenos = () => {
   return (
     <section className="section-sobrenos" id="sobrenos">
       <div className="container">
-        <h2 className="section-title">Nossa Equipe</h2>
+        <h2 className="section-title">nossa equipe</h2>
         <div className="instrutores-grid">
           {instrutores.map((m, i) => (
             <div key={i} className="instrutor-card">
@@ -29,3 +29,5 @@ export const Sobrenos = () => {
     </section>
   );
 };
+
+export default Sobrenos;

@@ -1,0 +1,80 @@
+.header-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 10%; /* Reduzi levemente para dar mais espaço ao centro */
+  background: transparent;
+}
+
+.logo h1 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.logo span {
+  color: var(--green-neon);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 35px; /* Ajuste fino no espaço entre links */
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #ffffff !important;
+  transition: 0.3s ease;
+  text-transform: none !important;
+  white-space: nowrap; /* ESSENCIAL: impede que o texto quebre e sobreponha */
+}
+
+.nav-links a:hover {
+  color: var(--green-neon) !important;
+  text-shadow: 0 0 10px var(--green-neon);
+}
+
+/* Ícone do Instagram */
+.nav-instagram a {
+  display: flex;
+  align-items: center;
+}
+
+.nav-instagram img {
+  transition: 0.3s ease;
+}
+
+.nav-instagram a:hover img {
+  filter: drop-shadow(0 0 8px var(--green-neon));
+  transform: scale(1.1);
+}
+
+/* Responsividade - Menu Mobile Simples */
+@media (max-width: 992px) {
+  .nav-links {
+    gap: 20px; /* Encurta o espaço em telas médias antes de sumir */
+  }
+}
+
+@media (max-width: 768px) {
+  .header-main {
+    padding: 20px 5%;
+  }
+  
+  .nav-links {
+    display: none; 
+  }
+}
