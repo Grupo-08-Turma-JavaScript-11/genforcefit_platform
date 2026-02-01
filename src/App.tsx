@@ -9,8 +9,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { AuthProvider } from "./context/AuthContext";
 
-import Login from "./pages/login/Login";
-import CadastroUsuario from "./pages/cadastro/CadastroUsuario";
 
 import { Hero } from "./components/hero/Hero";
 import { Sobrenos } from "./components/sobrenos/Sobrenos";
@@ -19,10 +17,14 @@ import { Calculo } from "./components/calculo/Calculo";
 import { Cadastro } from "./components/cadastro/Cadastro";
 import { Footer } from "./components/footer/Footer";
 
-import ListarUsuarios from "./components/usuario/listarusuarios/ListarUsuarios";
 import ListarGrupoMuscular from "./components/GrupoMuscular/ListGrupoMuscular/ListGrupoMuscular";
 import FormGrupoMuscular from "./components/GrupoMuscular/formGrupoMuscular/FormGrupoMuscular";
 import DeletarGrupoMuscular from "./components/GrupoMuscular/deleteGrupoMuscular/DeleteGrupoMuscular";
+
+import LoginMariana from "./pages/login/Login";
+import CadastroMariana from "./pages/cadastro/Cadastro";
+import ListUsuario from "./components/usuario/listusuario/ListUsuario"
+
 
 import "./index.css";
 
@@ -58,10 +60,10 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<CadastroUsuario />} />
 
-          <Route path="/listarusuarios" element={<ListarUsuarios />} />
+          <Route path="/loginmariana" element={<LoginMariana />} />
+            <Route path="/cadastromariana" element={<CadastroMariana />} />
+            <Route path="/usuariosmariana" element={<ListUsuario />} />
 
           <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
           <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />

@@ -1,11 +1,11 @@
-import { createContext, type ReactNode, useEffect, useState } from "react"
+import { createContext, type ReactNode, useState } from "react"
 import type UsuarioLogin from "../models/UsuarioLogin"
 import type Usuario from "../models/Usuario"
 import { login } from "../services/Service"
 import { ToastAlerta } from "../utils/ToastAlerta"
 
 interface AuthContextProps {
-  usuario: Usuario
+  usuario: UsuarioLogin
   handleLogout(): void
   handleLogin(usuario: UsuarioLogin): Promise<void>
   isLoading: boolean
@@ -19,49 +19,31 @@ export const AuthContext = createContext({} as AuthContextProps)
 
 export function AuthProvider({ children }: AuthProviderProps) {
 
-  const [usuario, setUsuario] = useState<Usuario>({
+  const [usuario, setUsuario] = useState<UsuarioLogin>({
     id: 0,
     nome: "",
     usuario: "",
     senha: "",
     tipo: "",
-    altura: 0,
-    peso: 0,
-    IMC: 0,
     foto: "",
-    token: "",
-    exercicio: []
+    token: ""
+    
   })
 
   const [isLoading, setIsLoading] = useState(false)
-
-  useEffect(() => {
-    const tokenSalvo = localStorage.getItem("token")
-
-    if (tokenSalvo) {
-      setUsuario((prev) => ({
-        ...prev,
-        token: tokenSalvo
-      }))
-    }
-  }, [])
 
   async function handleLogin(usuarioLogin: UsuarioLogin) {
     setIsLoading(true)
 
     try {
-      const resposta = await login("/usuarios/logar", usuarioLogin)
-
-      // backend retorna Usuario completo + token
-      setUsuario(resposta.data)
-      localStorage.setItem("token", resposta.data.token)
+     await login("/usuarios/logar", usuarioLogin, setUsuario)
 
       ToastAlerta("Usuário autenticado com sucesso!", "sucesso")
     } catch (error) {
       ToastAlerta("Usuário ou senha inválidos!", "erro")
-    } finally {
+    } 
       setIsLoading(false)
-    }
+
   }
 
   function handleLogout() {
@@ -71,15 +53,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
       usuario: "",
       senha: "",
       tipo: "",
-      altura: 0,
-      peso: 0,
-      IMC: 0,
       foto: "",
       token: "",
-      exercicio: []
-    })
 
-    localStorage.removeItem("token")
+    })
   }
 
   return (

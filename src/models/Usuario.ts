@@ -10,6 +10,5 @@ export default interface Usuario {
   peso: number
   IMC: number
   foto?: string
-  token: string
   exercicio: Exercicio[]
 }

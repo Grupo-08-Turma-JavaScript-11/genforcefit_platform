@@ -1,0 +1,146 @@
+/* ===== HERO ===== */
+.login-hero {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.85) 35%, transparent),
+    url("https://vfitclub.netlify.app/image/hero-background.webp")
+    center / cover no-repeat;
+  display: flex;
+  align-items: center;
+}
+
+.login-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 100px;
+}
+
+/* ===== ESQUERDA ===== */
+.login-hero-left {
+  max-width: 620px;
+}
+
+.login-badge {
+  display: inline-block;
+  padding: 9px 20px;
+  border: 1px solid var(--green-neon);
+  color: var(--green-neon);
+  font-size: 0.75rem;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  margin-bottom: 26px;
+}
+
+.login-hero-left h1 {
+  font-size: 4.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.login-hero-left h1 span {
+  color: var(--green-neon);
+}
+
+.login-divider {
+  width: 120px;
+  height: 4px;
+  background: var(--green-neon);
+  margin: 32px 0;
+}
+
+.login-hero-left h2 {
+  font-size: 3.2rem;
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.login-hero-left h2 span {
+  color: var(--green-neon);
+}
+
+/* ===== CARD DIREITO ===== */
+.login-hero-right {
+  width: 400px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(14px);
+  padding: 36px 40px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.7);
+}
+
+/* ===== FORM ===== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-form h3 {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.login-form input {
+  height: 46px;
+  padding: 0 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: #fff;
+}
+
+.login-form input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: var(--green-neon);
+}
+
+.login-form .btn-main {
+  margin-top: 10px;
+  height: 50px;
+}
+
+/* ===== LINK LOGIN / CADASTRO ===== */
+.login-alt-action {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.login-alt-action p {
+  font-size: 0.85rem;
+  opacity: 0.65;
+  margin-bottom: 8px;
+}
+
+.login-link-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-link-btn:hover {
+  border-color: var(--green-neon);
+  color: var(--green-neon);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 900px) {
+  .login-hero-content {
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
+  }
+
+  .login-hero-right {
+    width: 100%;
+    max-width: 420px;
+  }
+}
