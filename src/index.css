@@ -1,11 +1,15 @@
 /* config gerais */
 
 :root {
-  --green-neon: #39FF14; 
-  --fit-black: #000;
-  --fit-gray: #111;
-  --fit-input: #0a0a0a;
+  --green-neon: #39FF14;
+  --fit-black: #000000;
+  --fit-gray: #111111;
+  --fit-dark-gray: #1F1F1F;
+  --fit-input: #0A0A0A;
+  --fit-white: #FFFFFF;
+  --fit-petrol-blue: #0F3D4C;
 }
+
 
 * {
   margin: 0;

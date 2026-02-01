@@ -13,7 +13,7 @@ export const Hero = () => {
             movimento que gera <span className="text-highlight">resultado</span>
           </h1>
           <p className="hero-subtitle">
-            treinamento funcional e alta performance na genforcefit 
+            Treinamento funcional e alta performance na Genforcefit 
           </p>
           <button className="btn-main">
             começar agora

@@ -101,6 +101,7 @@
 }
 
 /* responsividade */
+
 @media (max-width: 768px) {
   .footer-box {
     flex-direction: column;
