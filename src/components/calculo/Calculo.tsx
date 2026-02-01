@@ -7,23 +7,23 @@ export const Calculo = () => {
         <div className="calculo-wrapper">
           {/* onSubmit com preventDefault para a página não recarregar ao clicar no botão */}
           <form className="calculo-form" onSubmit={(e) => e.preventDefault()}>
-            <h2 className="section-title">calcule seu imc</h2>
-            <p className="calculo-subtitle">monitore sua saúde em tempo real</p>
+            <h2 className="section-title">Calcule seu IMC</h2>
+            <p className="calculo-subtitle">Monitore sua saúde em tempo real</p>
             
             <div className="input-group">
               <div className="class-input">
-                <label>peso (kg)</label>
-                <input type="number" placeholder="ex: 80" />
+              <label>Peso (kg)</label>
+              <input type="number" placeholder="ex: 80" />
               </div>
               
               <div className="class-input">
-                <label>altura (m)</label>
+                <label>Altura (m)</label>
                 <input type="number" step="0.01" placeholder="ex: 1.75" />
               </div>
             </div>
 
             <div className="class-input result-input">
-              <label>seu resultado</label>
+              <label>Seu Resultado</label>
               <input type="text" placeholder="---" readOnly />
             </div>
 
