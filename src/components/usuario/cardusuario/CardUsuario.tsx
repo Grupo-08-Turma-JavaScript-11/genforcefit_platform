@@ -60,7 +60,7 @@ const CardUsuario: React.FC<CardUsuarioProps> = ({ usuario }) => {
 
         <button
           className="login-link-btn"
-          onClick={() => navigate(`/editarmariana/${usuario.id}`)}
+          onClick={() => navigate(`/editarusuarios/${usuario.id}`)}
         >
           Editar
         </button>
@@ -68,7 +68,7 @@ const CardUsuario: React.FC<CardUsuarioProps> = ({ usuario }) => {
         <button
           className="login-link-btn"
           style={{ borderColor: "#ff4d4d", color: "#ff4d4d" }}
-          onClick={() => navigate(`/deletarmariana/${usuario.id}`)}
+          onClick={() => navigate(`/deletarusuarios/${usuario.id}`)}
         >
           Deletar
         </button>

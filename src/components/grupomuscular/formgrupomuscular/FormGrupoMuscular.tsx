@@ -1,48 +1,50 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, type FormEvent } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 
 import type GrupoMuscular from "../../../models/GrupoMuscular";
 import { buscar, cadastrar, atualizar } from "../../../services/Service";
-import { AuthContext } from "../../../context/AuthContext"
+import { AuthContext } from "../../../context/AuthContext";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormGrupoMuscular() {
   const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
 
   const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular>({
     id: 0,
     nome: "",
-    descricao: ""
+    descricao: "",
   });
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const { usuario, handleLogout } = useContext(AuthContext);
   const token = usuario.token;
-  useEffect(() => 
-{
-  if (token=== "" ) 
-    ToastAlerta("Voce precisa estar logado", "erro");
-    navigate ("/loginmariana") 
-}
-  )
+
+  const { id } = useParams<{ id: string }>();
+
   useEffect(() => {
-    if (id) {
+    if (token === "") {
+      ToastAlerta("Voce precisa estar logado", "erro");
+      navigate("/login");
+    }
+  }, [token]);
+
+  useEffect(() => {
+    if (id !== undefined) {
       buscarPorId(id);
     }
   }, [id]);
 
   async function buscarPorId(id: string) {
+    setIsLoading(true);
     try {
-      setIsLoading(true);
-      await buscar(`/grupoMuscular/${id}`, setGrupoMuscular, {headers : {
-         Autorization : token
-      }
-       
+      await buscar(`/grupoMuscular/${id}`, setGrupoMuscular, {
+        headers: {
+          Autorization: token,
+        },
       });
     } catch (error: any) {
-      if (error?.response?.status === 401) {
+      if (error.response.status === 401) {
         handleLogout();
       }
       ToastAlerta("Grupo muscular não encontrado!", "erro");
@@ -58,30 +60,31 @@ function FormGrupoMuscular() {
     });
   }
 
-  async function salvar(e: React.FormEvent) {
+  async function salvar(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-     setIsLoading(true);
+    setIsLoading(true);
 
     try {
-     
-
       if (id) {
-        await atualizar("/grupoMuscular", grupoMuscular, setGrupoMuscular,{headers : {
-         Autorization : token
-      }}
-       );
-      
+        await atualizar("/grupoMuscular", grupoMuscular, setGrupoMuscular, {
+          headers: {
+            Autorization: token,
+          },
+        });
+
         ToastAlerta("Grupo muscular atualizado com sucesso!", "sucesso");
       } else {
-        await cadastrar("/grupoMuscular", grupoMuscular, setGrupoMuscular, {headers : {
-         Autorization : token
-      }});
+        await cadastrar("/grupoMuscular", grupoMuscular, setGrupoMuscular, {
+          headers: {
+            Autorization: token,
+          },
+        });
         ToastAlerta("Grupo muscular cadastrado com sucesso!", "sucesso");
       }
 
       navigate("/grupoMuscular");
     } catch (error: any) {
-      if (error?.response?.status === 401) {
+      if (error.response.status === 401) {
         handleLogout();
       }
       ToastAlerta("Erro ao salvar grupo muscular.", "erro");

@@ -1,57 +1,81 @@
-import { useContext, useEffect, useState } from "react"
-import type Usuario from "../../../models/Usuario"
-import { buscar } from "../../../services/Service"
-import { AuthContext } from "../../../context/AuthContext"
+import { useContext, useEffect, useState } from "react";
+import type Usuario from "../../../models/Usuario";
+import { buscar } from "../../../services/Service";
+import { AuthContext } from "../../../context/AuthContext";
 
-import { Navbar } from "../../navbar/Navbar"
-import Footer from "../../footer/Footer"
-import CardUsuario from "../cardusuario/CardUsuario"
+import CardUsuario from "../cardusuario/CardUsuario";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { useNavigate } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
 
 function ListUsuario() {
-  const [usuarios, setUsuarios] = useState<Usuario[]>([])
-  const { usuario } = useContext(AuthContext)
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const [usuarios, setUsuarios] = useState<Usuario[]>([]);
+  
+  const { usuario, handleLogout } = useContext(AuthContext);
+
+  const token = usuario.token;
 
   useEffect(() => {
-    if (!usuario.token) return
+    if (token === "") {
+      ToastAlerta("Você precisa estar logado", "erro");
+      navigate("/");
+    }
+  }, [token]);
 
-    buscar(
-      "/usuarios",
-      setUsuarios,
-      {
-        headers: {
-          Authorization: usuario.token
+  useEffect(() => {
+    buscarUsuarios();
+  }, [usuarios.length]);
+
+  async function buscarUsuarios() {
+        try {
+
+            setIsLoading(true)
+
+            await buscar('/usuarios', setUsuarios, {
+                headers: { Authorization: token }
+            })
+        } catch (error: any) {
+            if (error.toString().includes('401')) {
+                handleLogout()
+            }
+        }finally {
+            setIsLoading(false)
         }
-      }
-    )
-  }, [usuario.token])
+    }
 
   return (
     <>
-      <Navbar />
 
+    
+            {isLoading && (
+                <div className="flex justify-center w-full my-8">
+                    <SyncLoader
+                        color="#312e81"
+                        size={32}
+                    />
+                </div>
+            )}
       <div
         className="container"
         style={{
           paddingTop: "120px",
-          paddingBottom: "60px"
+          paddingBottom: "60px",
         }}
       >
-        <h2 style={{ marginBottom: "30px" }}>
-          Lista de Usuários
-        </h2>
+        <h2 style={{ marginBottom: "30px" }}>Lista de Usuários</h2>
 
-        {usuarios.length === 0 && (
-          <p>Nenhum usuário cadastrado.</p>
-        )}
+        {(usuarios.length === 0 && !isLoading) && <p>Nenhum usuário cadastrado.</p>}
 
         {usuarios.map((u) => (
           <CardUsuario key={u.id} usuario={u} />
         ))}
       </div>
-
-      <Footer />
     </>
-  )
+  );
 }
 
-export default ListUsuario
+export default ListUsuario;

@@ -49,7 +49,6 @@ function DeleteUsuario() {
 
   return (
     <>
-      <Navbar />
 
       <div
         style={{
@@ -90,7 +89,6 @@ function DeleteUsuario() {
         </div>
       </div>
 
-      <Footer />
     </>
   )
 }

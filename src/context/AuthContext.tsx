@@ -26,18 +26,18 @@ export function AuthProvider({ children }: AuthProviderProps) {
     tipo: "",
     foto: "",
     token: ""
-    
   })
 
   const [isLoading, setIsLoading] = useState(false)
 
-  async function handleLogin(usuarioLogin: UsuarioLogin) {
+  async function handleLogin(usuario: UsuarioLogin) {
     setIsLoading(true)
 
     try {
-     await login("/usuarios/logar", usuarioLogin, setUsuario)
+     await login("/usuarios/logar", usuario, setUsuario)
+     console.log(usuario)
 
-      ToastAlerta("Usuário autenticado com sucesso!", "sucesso")
+      ToastAlerta(`Usuário autenticado com sucesso! `, "sucesso")
     } catch (error) {
       ToastAlerta("Usuário ou senha inválidos!", "erro")
     } 

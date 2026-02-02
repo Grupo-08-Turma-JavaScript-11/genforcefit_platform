@@ -30,7 +30,7 @@ function DeletarGrupoMuscular() {
       setIsLoading(true);
       await buscar(`/grupoMuscular/${id}`, setGrupoMuscular, header);
     } catch (error: any) {
-      if (error?.response?.status === 401) {
+      if (error.response.status === 401) {
         handleLogout();
       }
       ToastAlerta("Grupo muscular não encontrado!", "erro");
@@ -50,7 +50,7 @@ function DeletarGrupoMuscular() {
       ToastAlerta("Grupo muscular deletado com sucesso!", "sucesso");
       retornar();
     } catch (error: any) {
-      if (error?.response?.status === 401) {
+      if (error.response.status === 401) {
         handleLogout();
       }
       ToastAlerta("Erro ao deletar grupo muscular.", "erro");

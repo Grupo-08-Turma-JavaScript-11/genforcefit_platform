@@ -13,7 +13,7 @@ export const Navbar = () => {
           <li><a href="#planos">PLANOS</a></li>
           <li><a href="#calculo">CÁLCULO IMC</a></li>
           <li><a href="#sobrenos">SOBRE NÓS</a></li>
-          <li><a href="#login" className="btn-login">LOGIN</a></li> {/* igual botão newsletter */}
+          <li><a href="login" className="btn-login">LOGIN</a></li> {/* igual botão newsletter */}
         </ul>
       </nav>
     </header>

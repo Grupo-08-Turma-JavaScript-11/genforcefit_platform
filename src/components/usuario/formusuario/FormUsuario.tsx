@@ -100,7 +100,6 @@ function FormUsuario() {
 
   return (
     <>
-      <Navbar />
 
       <section className="login-hero">
         <div className="login-hero-content container">
@@ -154,7 +153,6 @@ function FormUsuario() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

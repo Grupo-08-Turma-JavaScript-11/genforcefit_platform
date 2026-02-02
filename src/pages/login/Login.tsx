@@ -13,16 +13,7 @@ function Login() {
   const navigate = useNavigate()
   const { handleLogin, isLoading, usuario } = useContext(AuthContext)
 
-  // 🔥 estado PRECISA respeitar UsuarioLogin
-  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
-    id: 0,
-    nome: "",
-    usuario: "",
-    senha: "",
-    tipo: "",
-    foto: "",
-    token: ""
-  })
+  const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({  } as UsuarioLogin)
 
   function atualizarEstado(e: React.ChangeEvent<HTMLInputElement>) {
     setUsuarioLogin({
@@ -31,17 +22,17 @@ function Login() {
     })
   }
 
-  async function entrar(e: React.FormEvent<HTMLFormElement>) {
+  async function login(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     await handleLogin(usuarioLogin)
+    console.log(usuario)
   }
 
-  // ✅ redireciona SOMENTE se autenticou
   useEffect(() => {
     if (usuario.token) {
-      navigate("/usuariosmariana")
+      navigate("/usuarios")
     }
-  }, [usuario, navigate])
+  }, [usuario])
 
   return (
     <>
@@ -68,7 +59,7 @@ function Login() {
 
           {/* LADO DIREITO */}
           <div className="login-hero-right">
-            <form onSubmit={entrar} className="login-form">
+            <form onSubmit={login} className="login-form">
 
               <h3>Login</h3>
 
