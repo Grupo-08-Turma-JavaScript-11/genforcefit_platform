@@ -9,11 +9,11 @@ export const Navbar = () => {
       {/* lado direito (menu) */}
       <nav>
         <ul className="nav-links">
-          <li><a href="#cadastro">Cadastre-se</a></li>
-          <li><a href="#planos">Planos</a></li>
-          <li><a href="#calculo">Cálculo IMC</a></li>
-          <li><a href="#sobrenos">Sobre Nós</a></li>
-          <li><a href="#footer">Contato</a></li>
+          <li><a href="#cadastro">CADASTRE-SE</a></li>
+          <li><a href="#planos">PLANOS</a></li>
+          <li><a href="#calculo">CÁLCULO IMC</a></li>
+          <li><a href="#sobrenos">SOBRE NÓS</a></li>
+          <li><a href=/*rota ainda nao criada*/"#login">LOGIN</a></li>
         </ul>
       </nav>
     </header>

@@ -17,7 +17,11 @@ export const Planos = () => {
   return (
     <section id="planos" className="memberships-section">
       <div className="container">
+
         <h2 className="section-title">Nossos Planos</h2>
+      <br />
+      <br />
+
         
         <div className="membership-grid">
           {plans.map((plan, index) => (

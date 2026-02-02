@@ -2,10 +2,10 @@ import './Sobrenos.css';
 
 export const Sobrenos = () => {
   const instrutores = [
-    { nome: "Professor Joe", cargo: "Personal Trainer", img: "JoeBloggs.jpg" },
-    { nome: "Professor Charlie", cargo: "Personal Trainer", img: "CharlieWatson.jpg" },
-    { nome: "Professora Rachel", cargo: "Personal Trainer", img: "RachelDanielle.jpg" },
-    { nome: "Professora Tay", cargo: "Personal Trainer", img: "TaylorMelé.jpg" },
+    { nome: "Professor Jonathan", cargo: "Personal Trainer", img: "JoeBloggs.jpg" },
+    { nome: "Professor Carlos", cargo: "Personal Trainer", img: "CharlieWatson.jpg" },
+    { nome: "Professora Raquel", cargo: "Personal Trainer", img: "RachelDanielle.jpg" },
+    { nome: "Professora Tais", cargo: "Personal Trainer", img: "TaylorMelé.jpg" },
   ];
 
   return (

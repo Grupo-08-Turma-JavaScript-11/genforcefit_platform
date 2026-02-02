@@ -4,7 +4,6 @@
   position: relative;
 }
 
-/* wrapper centralizando o form */
 .calculo-wrapper {
   display: flex;
   justify-content: center;
@@ -41,7 +40,6 @@
   text-transform: none !important;
 }
 
-/* campo de resultado com destaque */
 .result-input input {
   background: rgba(57, 255, 20, 0.05);
   border-color: rgba(57, 255, 20, 0.3);

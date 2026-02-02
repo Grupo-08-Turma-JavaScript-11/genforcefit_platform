@@ -7,7 +7,10 @@ export const Calculo = () => {
         <div className="calculo-wrapper">
           {/* onSubmit com preventDefault para a página não recarregar ao clicar no botão */}
           <form className="calculo-form" onSubmit={(e) => e.preventDefault()}>
+            <br />
             <h2 className="section-title">Calcule seu IMC</h2>
+            <br />
+            <br />
             <p className="calculo-subtitle">Monitore sua saúde em tempo real</p>
             
             <div className="input-group">

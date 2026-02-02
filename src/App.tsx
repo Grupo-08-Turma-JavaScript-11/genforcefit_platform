@@ -1,45 +1,13 @@
-import { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
-import { AuthProvider } from "./context/AuthContext";
-
-import Login from "./pages/login/Login";
-import CadastroUsuario from "./pages/cadastro/CadastroUsuario";
-
-import { Hero } from "./components/hero/Hero";
-import { Sobrenos } from "./components/sobrenos/Sobrenos";
-import { Planos } from "./components/planos/Planos";
-import { Calculo } from "./components/calculo/Calculo";
-import { Cadastro } from "./components/cadastro/Cadastro";
-import { Footer } from "./components/footer/Footer";
-
-import ListarGrupoMuscular from "./components/GrupoMuscular/ListGrupoMuscular/ListGrupoMuscular";
-import FormGrupoMuscular from "./components/GrupoMuscular/formGrupoMuscular/FormGrupoMuscular";
-import DeletarGrupoMuscular from "./components/GrupoMuscular/deleteGrupoMuscular/DeleteGrupoMuscular";
-
-import "./index.css";
-import ListarUsuarios from "./components/usuario/listusuario/ListUsuario";
-
-function Home() {
-  return (
-    <>
-      <main>
-        <Hero />
-        <Cadastro />
-        <Planos />
-        <Calculo />
-        <Sobrenos />
-      </main>
-      <Footer />
-    </>
-  );
-}
+import { useEffect } from 'react';
+import AOS from 'aos';
+import { Hero } from './components/hero/Hero';
+import { Sobrenos } from './components/sobrenos/Sobrenos';
+import { Planos } from './components/planos/Planos';
+import { Calculo } from './components/calculo/Calculo';
+import { Cadastro } from './components/cadastro/Cadastro';
+import { Footer } from './components/footer/Footer';
+import 'aos/dist/aos.css';
+import './index.css';
 
 function App() {
   useEffect(() => {
@@ -52,25 +20,16 @@ function App() {
   }, []);
 
   return (
-    <AuthProvider>
-      <BrowserRouter>
-        <ToastContainer />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/cadastro" element={<CadastroUsuario />} />
-
-          <Route path="/listarusuarios" element={<ListarUsuarios />} />
-
-          <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
-          <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
-          <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
-          <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
-        </Routes>
-
-      </BrowserRouter>
-    </AuthProvider>
+    <>
+      <main>
+        <Hero />
+        <Cadastro />
+        <Planos />
+        <Calculo />
+        <Sobrenos />
+      </main>
+      <Footer />
+    </>
   );
 }
 

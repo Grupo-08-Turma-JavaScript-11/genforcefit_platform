@@ -1,4 +1,3 @@
-/* seção de cadastro com imagem de fundo */
 .section-cadastro {
   padding: 100px 0;
   position: relative;
@@ -46,7 +45,6 @@
   line-height: 1.2;
 }
 
-/* subtítulo */
 .cadastro-subtitle {
   color: #aaa;
   margin-bottom: 40px;

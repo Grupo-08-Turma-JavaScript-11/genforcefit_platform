@@ -1,7 +1,7 @@
 .memberships-section {
   padding: 100px 0;
   background-color: var(--fit-black);
-  /* a imagem agora fica na secao inteira */
+  /* imagem na sessao inteira */
   background-image: url("/img/3.jpg");
   background-size: cover;
   background-position: center;
@@ -40,15 +40,15 @@
   font-size: 1.8rem;
   color: #fff;
   margin-bottom: 15px;
-  text-transform: none !important;
+  text-transform: none;
 }
 
-.price-tag { /* texto Gratuitamente */
+.price-tag { /* texto gratuitamente */
   color: var(--green-soft);
   font-size: 2.2rem;
   font-weight: 900;
   margin: 20px 0;
-  text-transform: none !important;
+  text-transform: none;
 }
 
 .features-list {
@@ -62,7 +62,7 @@
   margin-bottom: 15px;
   color: #bbb;
   font-size: 1rem;
-  text-transform: none !important;
+  text-transform: none;
   position: relative;
 }
 
