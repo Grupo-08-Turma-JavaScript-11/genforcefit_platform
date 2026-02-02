@@ -63,6 +63,26 @@
   transform: scale(1.1);
 }
 
+/* botao login */
+
+.btn-login {
+  background-color: transparent; /* fundo transparente */
+  color: var(--green-neon); /* texto verde neon */
+  border: 2px solid var(--green-neon); /* borda verde */
+  padding: 6px 18px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 15px rgba(57, 255, 20, 0.3); /* sombra suave */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+  background-color: var(--green-neon); /* fundo verde ao passar o mouse */
+  color: #000; /* texto preto no hover */
+  box-shadow: 0 6px 20px rgba(57, 255, 20, 0.5); /* sombra maior */
+  transform: translateY(-2px);
+}
 /* responsividade */
 
 @media (max-width: 992px) {

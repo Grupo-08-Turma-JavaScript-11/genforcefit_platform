@@ -10,7 +10,6 @@ export const Calculo = () => {
             <br />
             <h2 className="section-title">Calcule seu IMC</h2>
             <br />
-            <br />
             <p className="calculo-subtitle">Monitore sua saúde em tempo real</p>
             
             <div className="input-group">

@@ -104,6 +104,20 @@ body {
   box-shadow: 0 8px 25px rgba(57, 255, 20, 0.5); /* sombra maior no hover */
 }
 
+.btn-login {
+  background-color: transparent; /* fundo transparente */
+  border: 2px solid var(--green-neon); /* borda verde */
+  padding: 6px 18px;
+  font-size: 0.85rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  background-color: transparent; /* fundo verde ao passar o mouse */
+  color: transparent; /* texto preto no hover */
+  transform: translateY(-1px);
+}
 /* barra de scrollar */
 
 ::-webkit-scrollbar { width: 8px; }
