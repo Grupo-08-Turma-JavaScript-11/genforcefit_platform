@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import type GrupoMuscular from "../../../models/GrupoMuscular"
+import type GrupoMuscular from "../../../models/grupomuscular"
 import { buscar,cadastrar,atualizar } from "../../../services/Service"
 
 function FormGrupoMuscular() {
@@ -35,7 +35,7 @@ function FormGrupoMuscular() {
       await cadastrar("/grupoMuscular", grupoMuscular, setGrupoMuscular);
     }
 
-    navigate("/gruposmusculares");
+    navigate("/grupoMuscular");
   }
 
   return (

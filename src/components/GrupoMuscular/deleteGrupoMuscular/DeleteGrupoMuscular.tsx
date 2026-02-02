@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { buscar, deletar } from "../../../services/Service"
-import type GrupoMuscular from "../../../models/GrupoMuscular"
+import type GrupoMuscular from "../../../models/grupomuscular"
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function DeletarGrupoMuscular() {
@@ -14,7 +14,7 @@ function DeletarGrupoMuscular() {
 
   async function buscarPorId(id: string) {
     try {
-      await buscar(`/gruposmusculares/${id}`, setGrupoMuscular);
+      await buscar(`/grupoMuscular/${id}`, setGrupoMuscular);
     } catch {
       ToastAlerta("Grupo muscular não encontrado!", "erro");
     }
@@ -26,7 +26,7 @@ function DeletarGrupoMuscular() {
 
   async function deletarGrupoMuscular() {
     try {
-      await deletar(`/gruposmusculares/${id}`);
+      await deletar(`/grupoMuscular/${id}`);
       ToastAlerta("Grupo muscular deletado com sucesso!", "sucesso");
       retornar();
     } catch {
@@ -35,7 +35,7 @@ function DeletarGrupoMuscular() {
   }
 
   function retornar() {
-    navigate("/gruposmusculares");
+    navigate("/grupoMuscular");
   }
 
   return (
