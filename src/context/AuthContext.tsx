@@ -1,6 +1,5 @@
 import { createContext, type ReactNode, useState } from "react"
 import type UsuarioLogin from "../models/UsuarioLogin"
-import type Usuario from "../models/Usuario"
 import { login } from "../services/Service"
 import { ToastAlerta } from "../utils/ToastAlerta"
 
