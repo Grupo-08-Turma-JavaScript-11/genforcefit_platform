@@ -4,8 +4,6 @@ import type Usuario from "../../../models/Usuario"
 import { atualizar, buscar, cadastrarUsuario } from "../../../services/Service"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
 import { AuthContext } from "../../../context/AuthContext"
-import { Navbar } from "../../navbar/Navbar"
-import Footer from "../../footer/Footer"
 import "../../../pages/login/Login.css"
 
 function FormUsuario() {

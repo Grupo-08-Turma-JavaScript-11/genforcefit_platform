@@ -27,6 +27,8 @@ import DeleteUsuario from "./components/usuario/deleteUsuario/DeleteUsuario";
 
 
 import "./index.css";
+import ListExercicio from "./components/exercicio/listexercicio/ListExercicio";
+import FormExercicio from "./components/exercicio/formexercicio/FormExercicio";
 
 function Home() {
   return (
@@ -76,6 +78,12 @@ function App() {
         <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
         <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
         <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
+
+        {/* Exercicios */}
+        <Route path="/exercicios" element={<ListExercicio />} />
+        <Route path="/cadastrarExercicio" element={<FormExercicio />} />
+        <Route path="/editarExercicio/:id" element={<FormExercicio />} />
+        <Route path="/deletarExercicio/:id" element={<FormExercicio />} />
       </Routes>
     </BrowserRouter>
      </AuthProvider>

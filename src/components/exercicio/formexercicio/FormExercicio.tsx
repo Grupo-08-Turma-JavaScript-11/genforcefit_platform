@@ -18,13 +18,11 @@ function FormExercicio() {
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const [gruposMusculares, setGruposMusculares] = useState<GrupoMuscular[]>([])
-
     const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular>({} as GrupoMuscular)
 
     const [usuarioPagina, setUsuario] = useState<Usuario>({} as Usuario)
 
     const {usuario, handleLogout} = useContext(AuthContext)
-
     const token = usuario.token
 
     const {id} =  useParams<{id: string}>()
@@ -85,8 +83,8 @@ function FormExercicio() {
 
     useEffect(() => {
         if (token === ''){
-            alert("Voce precisa estar logado!")
-            navigate('/loginmariana')
+            ToastAlerta("Voce precisa estar logado!","erro")
+            navigate('/login')
         }
     }, [token])
 

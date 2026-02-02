@@ -6,9 +6,6 @@ import { buscar, deletar } from "../../../services/Service"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
 import { AuthContext } from "../../../context/AuthContext"
 
-import { Navbar } from "../../navbar/Navbar"
-import Footer from "../../footer/Footer"
-
 function DeleteUsuario() {
   const { id } = useParams<{ id: string }>()
   const navigate = useNavigate()
