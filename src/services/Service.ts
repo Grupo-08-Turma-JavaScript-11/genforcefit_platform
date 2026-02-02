@@ -1,8 +1,12 @@
 import axios from "axios"
 
 const api = axios.create({
-  baseURL: "https://genforcefit.onrender.com"
-})
+
+  baseURL: "https://genforcefit.onrender.com",
+ 
+  }
+
+)
 
 // 🔹 LOGIN
 export const login = async (url: string, dados: object, setDados: Function) => {

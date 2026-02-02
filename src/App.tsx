@@ -17,15 +17,15 @@ import { Calculo } from "./components/calculo/Calculo";
 import { Cadastro } from "./components/cadastro/Cadastro";
 import { Footer } from "./components/footer/Footer";
 
-import ListarGrupoMuscular from "./components/GrupoMuscular/ListGrupoMuscular/ListGrupoMuscular";
-import FormGrupoMuscular from "./components/GrupoMuscular/formGrupoMuscular/FormGrupoMuscular";
-import DeletarGrupoMuscular from "./components/GrupoMuscular/deleteGrupoMuscular/DeleteGrupoMuscular";
+import ListarGrupoMuscular from "./components/grupomuscular/listagrupomuscular/ListaGrupoMuscular";
+import FormGrupoMuscular from "./components/grupomuscular/formgrupomuscular/FormGrupoMuscular";
+import DeletarGrupoMuscular from "./components/grupomuscular/deletegrupomuscular/DeleteGrupoMuscular";
 
 import LoginMariana from "./pages/login/Login";
 import CadastroMariana from "./pages/cadastro/Cadastro";
 import ListUsuario from "./components/usuario/listusuario/ListUsuario"
 import FormUsuario from "./components/usuario/formusuario/FormUsuario"
-import DeleteUsuario from "./components/usuario/deleteusuario/DeleteUsuario"
+import DeleteUsuario from "./components/usuario/deleteUsuario/DeleteUsuario";
 
 
 import "./index.css";
@@ -63,11 +63,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
-          <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
-          <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
-          <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
-          <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
-
           {/* AUTH */}
           <Route path="/loginmariana" element={<LoginMariana />} />
           <Route path="/cadastromariana" element={<CadastroMariana />} />
@@ -78,10 +73,14 @@ function App() {
           <Route path="/editarmariana/:id" element={<FormUsuario />} />
           <Route path="/deletarmariana/:id" element={<DeleteUsuario />} />
 
-        </Routes>
-
-      </BrowserRouter>
-    </AuthProvider>
+        {/* GrupoMuscular */}
+        <Route path="/grupoMuscular" element={<ListarGrupoMuscular />} />
+        <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
+        <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
+        <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
+      </Routes>
+    </BrowserRouter>
+     </AuthProvider>
   );
 }
 
