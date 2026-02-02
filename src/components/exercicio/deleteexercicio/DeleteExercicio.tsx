@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type Exercicio from "../../../models/Exercicio";
 import { buscar, deletar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { AuthContext } from "../../../context/AuthContext";
 
 function DeleteExercicio() {
 
@@ -11,13 +12,27 @@ function DeleteExercicio() {
 
     const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
 
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+
+    const { usuario, handleLogout } = useContext(AuthContext)
+    const token = usuario.token
+
     async function buscarPorId(id: string) {
         try{
-            await buscar(`/exercicio/${id}`, setExercicio)
+            await buscar(`/exercicio/${id}`, setExercicio, {
+                herders: {Authorization: token}
+            })
         } catch {
             ToastAlerta("Exercicio não encontrado", "erro")
         }
     }
+
+    useEffect(() => {
+        if (token === ''){
+            alert("Voce precisa estar logado!")
+            navigate('/loginmariana')
+        }
+    }, [token])
 
     useEffect(() => {
         if(id) buscarPorId(id)
@@ -25,11 +40,18 @@ function DeleteExercicio() {
 
     async function deletarExercicio() {
         try{
-            await deletar(`/exercicio/${id}`)
+            await deletar(`/exercicio/${id}`, {
+                herders: {Authorization: token}
+            })
             ToastAlerta("Exercicio deletado com sucesso", "sucesso")
             retornar()
-        } catch {
-            ToastAlerta(" Erro ao deletar exercicio", "erro")
+        } catch (error:any){
+            if (error.toString().includes('401')){
+                handleLogout()}
+            else{    
+                ToastAlerta(" Erro ao deletar exercicio", "erro")
+                retornar()
+            }
         }
     }
 

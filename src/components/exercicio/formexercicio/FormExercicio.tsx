@@ -5,7 +5,8 @@ import { ClipLoader } from "react-spinners";
 import type GrupoMuscular from "../../../models/GrupoMuscular";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
-import { autenticarUsuario } from "../../../services/authService";
+import { AuthContext } from "../../../context/AuthContext";
+import type Usuario from "../../../models/Usuario";
 
 
 function FormExercicio() {
@@ -19,30 +20,51 @@ function FormExercicio() {
     const [gruposMusculares, setGruposMusculares] = useState<GrupoMuscular[]>([])
 
     const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular>({} as GrupoMuscular)
-    
 
-    //onst {usuario, handleLogout} = useContext(autenticarUsuario)
+    const [usuarioPagina, setUsuario] = useState<Usuario>({} as Usuario)
 
-    //const token = usuario.token
+    const {usuario, handleLogout} = useContext(AuthContext)
+
+    const token = usuario.token
 
     const {id} =  useParams<{id: string}>()
 
 
     async function buscarGrupoMuscular() {
         try {
-            await buscar('/grupoMuscular', setGruposMusculares)
+            await buscar('/grupoMuscular', setGruposMusculares, {
+                herders: {Authorization: token}
+            })
         }catch (error: any) {
             if(error.toString().includes('401')){
+                handleLogout()
             }
         }
         
     }
 
-    async function buscarExercicioPorId(id: string) {
+    async function buscarUsuarioPorId(id: string) {
         try {
-            await buscar(`/exercicio/${id}`, setExercicio)
+            await buscar(`/usuarios/${id}`, setUsuario, {
+                herders: {Authorization: token}
+            })
         }catch (error: any) {
             if(error.toString().includes('401')){
+                handleLogout()
+            }
+        }
+        
+    }
+
+
+    async function buscarExercicioPorId(id: string) {
+        try {
+            await buscar(`/exercicio/${id}`, setExercicio, {
+                herders: {Authorization: token}
+            })
+        }catch (error: any) {
+            if(error.toString().includes('401')){
+                handleLogout()
             }
         }
         
@@ -50,27 +72,30 @@ function FormExercicio() {
 
     async function buscarGrupoMuscularPorId(id: string) {
         try {
-            await buscar(`/grupoMuscular/${id}`, setGrupoMuscular)
+            await buscar(`/grupoMuscular/${id}`, setGrupoMuscular, {
+                herders: {Authorization: token}
+            })
         }catch (error: any) {
             if(error.toString().includes('401')){
+                handleLogout()
             }
         }
         
     }
 
-    /*useEffect(() => {
+    useEffect(() => {
         if (token === ''){
             alert("Voce precisa estar logado!")
-            navigate('/')
+            navigate('/loginmariana')
         }
-    }, [token]) */
+    }, [token])
 
     useEffect(() => {
         buscarGrupoMuscular()
         if (id !== undefined){
             buscarGrupoMuscularPorId(id)
         }
-    }, [id])
+    }, [grupoMuscular])
 
     useEffect(() => {
         setExercicio({
@@ -84,7 +109,7 @@ function FormExercicio() {
         setExercicio({
             ...exercicio,
             [e.target.name]: e.target.value,
-           //usuario: usuario,
+            usuario: usuarioPagina
         })
     }
 
@@ -98,20 +123,26 @@ function FormExercicio() {
 
         if(id !== undefined){
             try{
-                await atualizar(`/exercicio/:${id}`, exercicio, setExercicio)
+                await atualizar(`/exercicio/:${id}`, exercicio, setExercicio, {
+                    headers: { Authorization: token }
+                })
                 ToastAlerta("O Exercicio foi atualizado com sucesso!", "sucesso")
             }catch(error: any) {
                 if (error.toString().includes('401')){
+                    handleLogout()
                 }else {
                     ToastAlerta("O Exercico não foi localizado!", "erro")
                 }
             }
         }else {
              try {
-                await cadastrar(`/exercicio`, exercicio, setExercicio)
+                await cadastrar(`/exercicio`, exercicio, setExercicio, {
+                    headers: { Authorization: token }
+                })
                 ToastAlerta("O Exercicio foi com sucesso!", "sucesso")
             } catch (error:any) {
                 if (error.toString().includes('401')){
+                    handleLogout()
                 } else {
                     ToastAlerta('Erro ao cadastrar exercicio.', "erro")
                 }
