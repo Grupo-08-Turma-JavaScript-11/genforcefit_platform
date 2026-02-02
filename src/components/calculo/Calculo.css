@@ -1,26 +1,39 @@
 /* estilização do formulário de imc */
-
 .section-calculo {
   padding: 100px 0;
-  background-color: var(--fit-black);
+  position: relative;
 }
 
+/* wrapper centralizando o form */
 .calculo-wrapper {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
+/* formulário transparente mostrando só a imagem de fundo da sessão */
 .calculo-form {
-  background: transparent; /*fundo do form*/
+  background: rgba(0, 0, 0, 0.2); /* transparente, apenas um leve contraste */
   padding: 60px;
   border-radius: 15px;
-  /*border-right: 4px solid var(--green-neon);
-  border-left: 4px solid var(--green-neon);*/
   width: 100%;
-  max-width: 800px; /* mantém o padrão do cadastro */
+  max-width: 800px;
   text-align: center;
+  position: relative; 
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5); /* profundidade suave */
+  transition: background 0.5s ease; /* fluidez ao hover ou foco */
 }
 
+.calculo-form::before {
+  display: none;
+}
+
+.calculo-form * {
+  position: relative;
+  z-index: 2;
+}
+
+/* subtítulo */
 .calculo-subtitle {
   color: #888;
   margin-bottom: 40px;
@@ -29,21 +42,22 @@
 }
 
 /* campo de resultado com destaque */
-
 .result-input input {
-  background: rgba(57, 255, 20, 0.05) !important;
-  border-color: rgba(57, 255, 20, 0.3) !important;
-  color: var(--green-neon) !important;
+  background: rgba(57, 255, 20, 0.05);
+  border-color: rgba(57, 255, 20, 0.3);
+  color: var(--green-neon);
   font-weight: 700;
   cursor: default;
 }
 
+/* grupos de input */
 .calculo-form .input-group {
   display: flex;
   gap: 20px;
   margin-bottom: 20px;
 }
 
+/* cada input individual */
 .calculo-form .class-input {
   flex: 1;
   display: flex;
@@ -52,10 +66,71 @@
   margin-bottom: 20px;
 }
 
-/* reponsividade */
+/* labels dos inputs */
+.calculo-form .class-input label {
+  color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+  font-weight: 700;
+  display: block;
+  text-transform: none;
+}
 
+/* inputs, selects e textarea */
+.calculo-form .class-input input,
+.calculo-form .class-input select,
+.calculo-form .class-input textarea {
+  width: 100%;
+  padding: 18px;
+  background: rgba(10, 10, 10, 0.6);
+  border: 2px solid #333;
+  color: #fff;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  outline: none;
+  transition: 0.3s;
+}
+
+/* efeito de foco nos campos */
+.calculo-form .class-input input:focus,
+.calculo-form .class-input select:focus,
+.calculo-form .class-input textarea:focus {
+  border-color: var(--green-neon);
+  box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+}
+
+/* botão principal */
+.calculo-form .btn-main {
+  background: var(--green-neon);
+  color: #000;
+  font-weight: 900;
+  text-transform: uppercase;
+  padding: 18px 45px;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(57, 255, 20, 0.3);
+  margin-top: 30px;
+}
+
+/* efeito hover no botão */
+.calculo-form .btn-main:hover {
+  background: var(--green-soft);
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(57, 255, 20, 0.5);
+}
+
+/* reponsividade */
 @media (max-width: 768px) {
   .calculo-form .input-group {
     flex-direction: column;
+  }
+  
+  .calculo-form .btn-main {
+    width: 100%;
+    padding: 16px 0;
   }
 }

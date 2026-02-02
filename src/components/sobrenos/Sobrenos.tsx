@@ -11,7 +11,11 @@ export const Sobrenos = () => {
   return (
     <section className="section-sobrenos" id="sobrenos">
       <div className="container">
-        <h2 className="section-title">Nossa Equipe</h2>
+      <br />
+       <h2 className="section-title">Nossa Equipe</h2>
+       <br />
+       <br />
+       <br />
         <div className="instrutores-grid">
           {instrutores.map((m, i) => (
             <div key={i} className="instrutor-card">
