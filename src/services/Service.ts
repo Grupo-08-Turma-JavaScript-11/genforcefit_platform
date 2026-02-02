@@ -3,7 +3,7 @@ import axios from "axios";
 const api = axios.create({
   baseURL: "https://genforcefit.onrender.com",
   headers: {
-    Authorization : "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJoYW5uYUBlbWFpbC5jb20uYnIiLCJpYXQiOjE3Njk5OTU0MjMsImV4cCI6MTc2OTk5OTAyM30.-mglFV5g5_B-ZTkgA8rtpsXs8Ipo76iYVMxcavAQfVg"
+    Authorization : "Bearer xxx"
   }
 })
 

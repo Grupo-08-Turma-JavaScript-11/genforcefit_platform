@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { buscar, deletar } from "../../../services/Service"
-import type GrupoMuscular from "../../../models/grupomuscular"
+import type GrupoMuscular from "../../../models/GrupoMuscular"
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function DeletarGrupoMuscular() {

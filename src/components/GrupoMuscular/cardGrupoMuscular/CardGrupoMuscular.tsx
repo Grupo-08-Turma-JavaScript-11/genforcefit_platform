@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import type GrupoMuscular from "../../../models/grupomuscular";
+import type GrupoMuscular from "../../../models/GrupoMuscular"
 
 interface CardGrupoMuscularProps {
   grupoMuscular: GrupoMuscular;

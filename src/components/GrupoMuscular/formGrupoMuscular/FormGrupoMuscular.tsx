@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import type GrupoMuscular from "../../../models/grupomuscular"
+import type GrupoMuscular from "../../../models/GrupoMuscular"
 import { buscar,cadastrar,atualizar } from "../../../services/Service"
 
 function FormGrupoMuscular() {

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
-import type GrupoMuscular from "../../../models/grupomuscular"
+import type GrupoMuscular from "../../../models/GrupoMuscular"
 import CardGrupoMuscular from "../cardgrupomuscular/CardGrupoMuscular";
 import { buscar} from "../../../services/Service"
-import FormGrupoMuscular from "../formgrupomuscular/formgrupomuscular"
+import FormGrupoMuscular from "../formgrupomuscular/FormGrupoMuscular"
 
 function ListarGrupoMuscular() {
   const [grupos, setGrupos] = useState<GrupoMuscular[]>([]);
