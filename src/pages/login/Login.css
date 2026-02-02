@@ -1,24 +1,39 @@
-/* ===== HERO ===== */
+/* =========================
+   LOGIN / HERO
+========================= */
+
 .login-hero {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  min-height: 100svh; /* 🔥 corrige bug de 100vh no mobile */
   position: relative;
+
   background:
     linear-gradient(to right, rgba(0,0,0,0.85) 35%, transparent),
     url("https://vfitclub.netlify.app/image/hero-background.webp")
     center / cover no-repeat;
+
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  padding-top: 120px;   /* espaço navbar */
+  padding-bottom: 120px; /* espaço footer */
 }
 
 .login-hero-content {
+  width: 100%;
+  max-width: 1200px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 100px;
 }
 
-/* ===== ESQUERDA ===== */
+/* =========================
+   LADO ESQUERDO
+========================= */
+
 .login-hero-left {
   max-width: 620px;
 }
@@ -61,7 +76,10 @@
   color: var(--green-neon);
 }
 
-/* ===== CARD DIREITO ===== */
+/* =========================
+   CARD DIREITO (FORM)
+========================= */
+
 .login-hero-right {
   width: 400px;
   background: rgba(0,0,0,0.6);
@@ -71,7 +89,10 @@
   box-shadow: 0 25px 70px rgba(0,0,0,0.7);
 }
 
-/* ===== FORM ===== */
+/* =========================
+   FORMULÁRIO
+========================= */
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -105,7 +126,10 @@
   height: 50px;
 }
 
-/* ===== LINK LOGIN / CADASTRO ===== */
+/* =========================
+   LINK LOGIN / CADASTRO
+========================= */
+
 .login-alt-action {
   margin-top: 18px;
   text-align: center;
@@ -131,7 +155,10 @@
   color: var(--green-neon);
 }
 
-/* ===== RESPONSIVO ===== */
+/* =========================
+   RESPONSIVO
+========================= */
+
 @media (max-width: 900px) {
   .login-hero-content {
     flex-direction: column;
@@ -142,5 +169,20 @@
   .login-hero-right {
     width: 100%;
     max-width: 420px;
+  }
+}
+
+@media (max-width: 600px) {
+  .login-hero {
+    padding-top: 140px;
+    padding-bottom: 140px;
+  }
+
+  .login-hero-left h1 {
+    font-size: 2.6rem;
+  }
+
+  .login-hero-left h2 {
+    font-size: 2rem;
   }
 }

@@ -63,7 +63,8 @@ function Cadastro() {
       await cadastrarUsuario("/usuarios", usuario, () => {})
 
       ToastAlerta("Usuário cadastrado com sucesso!", "sucesso")
-      navigate("/usuarios")
+
+      navigate("/usuariosmariana")
     } catch (error) {
       ToastAlerta("Erro ao cadastrar usuário", "erro")
     } finally {
@@ -135,7 +136,7 @@ function Cadastro() {
                 required
               />
 
-              {/* SELECT ESTILIZADO */}
+              {/* SELECT TIPO */}
               <select
                 name="tipo"
                 value={usuario.tipo}

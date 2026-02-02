@@ -36,9 +36,10 @@ function Login() {
     await handleLogin(usuarioLogin)
   }
 
+  // ✅ redireciona SOMENTE se autenticou
   useEffect(() => {
     if (usuario.token) {
-      navigate("/home")
+      navigate("/usuariosmariana")
     }
   }, [usuario, navigate])
 

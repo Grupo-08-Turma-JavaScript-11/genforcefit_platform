@@ -24,6 +24,8 @@ import DeletarGrupoMuscular from "./components/GrupoMuscular/deleteGrupoMuscular
 import LoginMariana from "./pages/login/Login";
 import CadastroMariana from "./pages/cadastro/Cadastro";
 import ListUsuario from "./components/usuario/listusuario/ListUsuario"
+import FormUsuario from "./components/usuario/formusuario/FormUsuario"
+import DeleteUsuario from "./components/usuario/deleteusuario/DeleteUsuario"
 
 
 import "./index.css";
@@ -61,14 +63,21 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
-          <Route path="/loginmariana" element={<LoginMariana />} />
-            <Route path="/cadastromariana" element={<CadastroMariana />} />
-            <Route path="/usuariosmariana" element={<ListUsuario />} />
-
           <Route path="/gruposmusculares" element={<ListarGrupoMuscular />} />
           <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
           <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
           <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
+
+          {/* AUTH */}
+          <Route path="/loginmariana" element={<LoginMariana />} />
+          <Route path="/cadastromariana" element={<CadastroMariana />} />
+
+          {/* USUÁRIOS */}
+          <Route path="/usuariosmariana" element={<ListUsuario />} />
+          <Route path="/criarmariana" element={<FormUsuario />} />
+          <Route path="/editarmariana/:id" element={<FormUsuario />} />
+          <Route path="/deletarmariana/:id" element={<DeleteUsuario />} />
+
         </Routes>
 
       </BrowserRouter>

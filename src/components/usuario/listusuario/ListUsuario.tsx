@@ -1,24 +1,56 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import type Usuario from "../../../models/Usuario"
 import { buscar } from "../../../services/Service"
+import { AuthContext } from "../../../context/AuthContext"
+
+import { Navbar } from "../../navbar/Navbar"
+import Footer from "../../footer/Footer"
+import CardUsuario from "../cardusuario/CardUsuario"
 
 function ListUsuario() {
   const [usuarios, setUsuarios] = useState<Usuario[]>([])
+  const { usuario } = useContext(AuthContext)
 
   useEffect(() => {
-    buscar("/usuarios", setUsuarios, {})
-  }, [])
+    if (!usuario.token) return
+
+    buscar(
+      "/usuarios",
+      setUsuarios,
+      {
+        headers: {
+          Authorization: usuario.token
+        }
+      }
+    )
+  }, [usuario.token])
 
   return (
-    <div style={{ padding: "40px" }}>
-      <h2>Lista de Usuários</h2>
+    <>
+      <Navbar />
 
-      {usuarios.map((usuario) => (
-        <div key={usuario.id} style={{ marginBottom: "10px" }}>
-          <strong>{usuario.nome}</strong> — {usuario.tipo}
-        </div>
-      ))}
-    </div>
+      <div
+        className="container"
+        style={{
+          paddingTop: "120px",
+          paddingBottom: "60px"
+        }}
+      >
+        <h2 style={{ marginBottom: "30px" }}>
+          Lista de Usuários
+        </h2>
+
+        {usuarios.length === 0 && (
+          <p>Nenhum usuário cadastrado.</p>
+        )}
+
+        {usuarios.map((u) => (
+          <CardUsuario key={u.id} usuario={u} />
+        ))}
+      </div>
+
+      <Footer />
+    </>
   )
 }
 
