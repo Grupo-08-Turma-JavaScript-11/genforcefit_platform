@@ -15,7 +15,6 @@ export const Footer = () => {
           </div>
 
           <div className="contact-social-links">
-
             <img
               src="https://vfitclub.netlify.app/image/whatsapp.svg"
               alt="whatsapp"
@@ -51,7 +50,6 @@ export const Footer = () => {
         {/* centro - links */}
 
         <nav className="footer-nav">
-          <h3>Links Rápidos</h3>
           <ul>
            <li><a href="#cadastro">Cadastre-se</a></li>
            <li><a href=/*rota ainda nao criada*/"#login">Login</a></li>
