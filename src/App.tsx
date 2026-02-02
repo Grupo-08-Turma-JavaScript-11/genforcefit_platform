@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import ListarGrupoMuscular from "./components/grupomuscular/listgrupomuscular/listagrupomuscular";
+import ListarGrupoMuscular from "./components/grupomuscular/listgrupomuscular/listagrupomuscular"
 import FormGrupoMuscular from "../src/components/grupomuscular/formgrupomuscular/formgrupomuscular"
 import DeletarGrupoMuscular from "./components/grupomuscular/deletegrupomuscular/DeleteGrupoMuscular";
 function App() {
