@@ -42,9 +42,6 @@ function Login() {
           <div className="login-hero-left">
             <span className="login-badge">Espaço do Cliente</span>
 
-            <h1>
-              GEN<span>FORCE</span>FIT
-            </h1>
 
             <div className="login-divider"></div>
 
@@ -92,6 +89,7 @@ function Login() {
                   className="login-link-btn"
                   onClick={() => navigate("/#cadastro")}
                 >
+                
                   Criar conta
                 </button>
               </div>

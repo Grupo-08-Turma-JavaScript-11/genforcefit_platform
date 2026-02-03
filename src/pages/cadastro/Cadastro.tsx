@@ -87,6 +87,7 @@ function Cadastro() {
             <form onSubmit={cadastrar} className="login-form">
               <br />
               <h3>Criar Conta</h3>
+              <br />
               <input
                 type="text"
                 name="nome"
@@ -138,12 +139,13 @@ function Cadastro() {
                 onChange={atualizarEstado}
               />
 
-              <button className="btn-main" disabled={carregando}>
+              <br /><button className="btn-main" disabled={carregando}>
                 {carregando ? "Criando conta..." : "Cadastrar"}
               </button>
 
               <div className="login-alt-action">
-                <p>Já tem uma conta?</p>
+                <br /> <p>Já tem uma conta?</p>
+                <br />
                 <button
                   type="button"
                   className="login-link-btn"
