@@ -14,7 +14,7 @@ export const Hero = () => {
             Treinamento funcional e alta performance na Genforcefit 
           </p>
           <button className="btn-main">
-            começar agora
+            <a href='#cadastro'>Comecar agora</a>
           </button>
         </div>
       </div>

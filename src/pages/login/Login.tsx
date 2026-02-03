@@ -28,7 +28,7 @@ function Login() {
   useEffect(() => {
     if (usuario.token) {
 
-      navigate("/grupoMuscular")
+      navigate("/exercicios")
 
     }
   }, [usuario])

@@ -1,9 +1,18 @@
 .newsletter h3 { /* titulo newsletter */
   margin-bottom: 20px;
 }
-
 .newsletter-input-group {
   display: flex;
+}
+
+.footer-section {
+  padding: 100px 0;
+  background-color: var(--fit-black);
+  /* imagem na sessao inteira */
+  
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 /* responsividade */
 
