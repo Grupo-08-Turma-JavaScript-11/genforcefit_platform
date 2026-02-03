@@ -43,13 +43,6 @@ function Login() {
           {/* LADO ESQUERDO */}
           <div className="login-hero-left">
             <span className="login-badge">Espaço do Cliente</span>
-
-            <h1>
-              GEN<span>FORCE</span>FIT
-            </h1>
-
-            <div className="login-divider"></div>
-
             <h2>
               MOVIMENTO <br />
               <span>QUE TRANSFORMA</span>
@@ -61,7 +54,7 @@ function Login() {
             <form onSubmit={login} className="login-form">
 
               <h3>Login</h3>
-
+              <br />
               <input
                 type="email"
                 name="usuario"
