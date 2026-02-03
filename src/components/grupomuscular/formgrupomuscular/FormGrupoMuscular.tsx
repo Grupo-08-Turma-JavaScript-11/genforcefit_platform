@@ -4,10 +4,10 @@ import { useEffect, useState, useContext, type FormEvent } from "react";
 
 import {  useNavigate, useParams } from "react-router-dom";
 
-import type GrupoMuscular from "../../models/GrupoMuscular"
-import { buscar, cadastrar, atualizar } from "../../../src/services/Service"
-import { AuthContext } from "../../context/AuthContext"
-import { ToastAlerta } from "../../utils/ToastAlerta"
+import type GrupoMuscular from "../../../models/GrupoMuscular"
+import { buscar, cadastrar, atualizar } from "../../../services/Service"
+import { AuthContext } from "../../../context/AuthContext"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function FormGrupoMuscular() {
   const navigate = useNavigate();
