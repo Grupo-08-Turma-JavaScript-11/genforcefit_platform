@@ -1,7 +1,15 @@
 import { Link } from 'react-router-dom';
 import './Footer.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 export const Footer = () => {
+
+  const { usuario } = useContext(AuthContext);
+  const tipo = usuario.tipo;
+  const token = usuario.token;
+
+
   return (
     <footer className=" flex items-center bg-[var(--fit-black)] text-white pt-20 pb-10 border-t border-[#111]">
       <div className=" mt-8 flex flex-wrap gap-10 justify-start md:justify-between container">
