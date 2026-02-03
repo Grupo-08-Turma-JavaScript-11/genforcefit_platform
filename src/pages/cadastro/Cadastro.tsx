@@ -149,7 +149,7 @@ function Cadastro() {
                 <button
                   type="button"
                   className="login-link-btn"
-                  onClick={() => navigate("/loginmariana")}
+                  onClick={() => navigate("/login")}
                 >
                   Fazer Login
                 </button>

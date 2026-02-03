@@ -38,7 +38,7 @@ function DeleteUsuario() {
         }
       )
       ToastAlerta("Usuário removido com sucesso!", "sucesso")
-      navigate("/usuariosmariana")
+      navigate("/usuarios")
     } catch {
       ToastAlerta("Erro ao remover usuário", "erro")
     }
@@ -72,7 +72,7 @@ function DeleteUsuario() {
         </p>
 
         <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-          <button className="login-link-btn" onClick={() => navigate("/usuariosmariana")}>
+          <button className="login-link-btn" onClick={() => navigate("/usuarios")}>
             Cancelar
           </button>
 
