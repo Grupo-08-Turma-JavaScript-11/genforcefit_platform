@@ -25,7 +25,6 @@ function Login() {
   async function login(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     await handleLogin(usuarioLogin)
-    console.log(usuario)
   }
 
   useEffect(() => {
