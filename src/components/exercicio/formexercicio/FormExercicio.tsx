@@ -186,10 +186,10 @@ function FormExercicio() {
 
     return (
         <>
-            <section className="bg:[url('https://vfitclub.netlify.app/image/hero-background.webp')] ">
+            <section className="bg-[url('/img/fundo1.jpg')] ">
             <div className="container flex items-center justify-center mx-auto"> 
 
-                <form className="w-1/2 flex flex-col gap-4 m-28" 
+                <form className="w-1/2 flex flex-col gap-4 m-28 py-8 px-8 bg-[#000000] rounded" 
                     onSubmit={gerarNovoExercicio}>
                     <h1 className="text-[36px] text-center text-[var(--green-soft)]">
                     {id === undefined ? "Cadastrar Exercicio" : "Editar Exercicio"}
@@ -200,7 +200,7 @@ function FormExercicio() {
                             type="text"
                             name="nome"
                             placeholder="Nome do Exercicio"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2"
                             value={exercicio.nome}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
@@ -211,7 +211,7 @@ function FormExercicio() {
                             type="text"
                             name="descricao"
                             placeholder="Descrição do Exercicio"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2"
                             value={exercicio.descricao}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
@@ -222,7 +222,7 @@ function FormExercicio() {
                             type="text"
                             name="repeticoes"
                             placeholder="Repetições do Exercicio"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={exercicio.repeticoes}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
@@ -233,7 +233,7 @@ function FormExercicio() {
                             type="text"
                             name="duracao"
                             placeholder="Duração media do Exercicio"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={exercicio.duracao}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
@@ -244,7 +244,7 @@ function FormExercicio() {
                             type="text"
                             name="video"
                             placeholder="Link do video"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={exercicio.video}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
@@ -254,8 +254,8 @@ function FormExercicio() {
                         <input 
                             type="text"
                             name="equipamento"
-                            placeholder="Foto do equipamento"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            placeholder="Link da foto do equipamento"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={exercicio.equipamento}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
@@ -263,7 +263,7 @@ function FormExercicio() {
                     <div className="flex flex-col gap-2">
                         <p>Grupo Muscular</p>
                         <select
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={grupoMuscular.id ?? ""}
                             onChange={(e) => buscarGrupoMuscularPorId(e.currentTarget.value)}>
                             <option value="" disabled>Selecione o grupo muscular</option>
@@ -277,7 +277,7 @@ function FormExercicio() {
                         <select
                             name="usuario"
                             id="usuario"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={usuario?.id ?? ""}
                             onChange={(e) => buscarUsuarioPorId(e.currentTarget.value)}
                             >
@@ -318,10 +318,10 @@ function FormExercicio() {
                             justify-center
                             text-center
                             rounded-full
-                            bg-[#606b66]
+                            bg-[#A7FF83]
                             text-black
                             font-semibold
-                            hover:bg-[#13ed34]
+                            hover:bg-[#39FF14]
                             transition-all
                         "    
                     >
