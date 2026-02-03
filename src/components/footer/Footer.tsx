@@ -16,11 +16,6 @@ export const Footer = () => {
           </div>
           <div className="flex mt-2 gap-5 items-center">
 
-<<<<<<< HEAD
-          <div className="flex mt-2 gap-5 items-center">
-
-=======
->>>>>>> 5f14cdd4523ca2cf17156456fbd923c20d298f94
           <Link to="https://www.whatsapp.com"
               target="_blank"
               rel="noopener noreferrer">

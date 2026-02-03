@@ -11,11 +11,7 @@ export const Sobrenos = () => {
   return (
     <section className="py-[100px] bg-[var(--fit-black)]" id="sobrenos">
       <div className="container">
-<<<<<<< HEAD
-       <h2 className="section-title p-6">Nossa Equipe</h2>
-=======
        <h2 className="text-[var(--green-neon)] text-center text-4xl font-bold my-6">Nossa Equipe</h2>
->>>>>>> 5f14cdd4523ca2cf17156456fbd923c20d298f94
         <div className="flex justify-center flex-wrap gap-[25px] mt-[40px]">
           {instrutores.map((m, i) => (
             <div key={i} className="instrutor-card">
