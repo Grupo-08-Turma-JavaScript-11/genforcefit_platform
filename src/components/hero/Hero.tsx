@@ -1,12 +1,10 @@
-import { Navbar } from "../navbar/Navbar";
 import './Hero.css';
 
 export const Hero = () => {
   return (
     <section className="hero-section">
       {/* Navbar renderizada no topo da seção hero */}
-      <Navbar />
-      
+            
       <div className="hero-wrapper-full">
         <div className="hero-text-box">
           <h1 className="hero-title">

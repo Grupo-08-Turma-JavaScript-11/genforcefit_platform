@@ -3,9 +3,9 @@
 .login-select {
   height: 46px;
   padding: 0 40px 0 14px; /* espaço pra seta */
-  background: rgba(255,255,255,0.04);
+  background: #ffffff0a;
   border: 1px solid rgba(255,255,255,0.18);
-  color: rgba(255,255,255,0.85);
+  color: #ffffffd9;
   font-size: 0.9rem;
 
   appearance: none;
@@ -43,6 +43,19 @@
 .login-select option {
   background: #000;
   color: #fff;
+}
+
+.login-form .btn-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5px;   /* 🔼 sobe o botão */
+}
+
+.login-alt-action {
+  margin-top: 18px;
+  text-align: center;
+  margin-top: -5px;   /* 🔼 sobe o botão */
 }
 
 /*MOBILE*/

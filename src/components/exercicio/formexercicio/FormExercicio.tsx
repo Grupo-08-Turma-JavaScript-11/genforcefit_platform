@@ -57,8 +57,7 @@ function FormExercicio() {
         try {
             await buscar(`/usuarios/${id}`, setUsuarioCadastro, {
                 headers: {Authorization: token}
-            })
-            console.log(usuarioCadastro)    
+            })  
         }catch (error: any) {
             if(error.toString().includes('401')){
                 handleLogout()
@@ -91,7 +90,7 @@ function FormExercicio() {
         buscarGrupoMuscular()
         buscarUsuarioPorId(usuario.id.toString());
         if (id !== undefined){
-            buscarGrupoMuscularPorId(id)
+            buscarExercicioPorId(id)
         }
         setExercicio({
             ...exercicio,
@@ -122,9 +121,9 @@ function FormExercicio() {
     async function gerarNovoExercicio(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
 
-        if(id !== undefined){
+        if(id){
             try{
-                await atualizar(`/exercicio/${id}`, exercicio, setExercicio, {
+                await atualizar(`/exercicio`, exercicio, setExercicio, {
                     headers: { Authorization: token }
                 })
                 ToastAlerta("O Exercicio foi atualizado com sucesso!", "sucesso")
@@ -157,7 +156,7 @@ function FormExercicio() {
 
     return (
         <>
-            <div className="container flex flex items-center justify-center mx-auto bg-[#0D0D0D]"> 
+            <div className="container flex items-center justify-center mx-auto bg-[#0D0D0D]"> 
                 <h1 className="text-6x1 text-center my-8 text-white">
                     {id === undefined ? "Cadastrar Exercicio" : "Editar Exercicio"}
                 </h1>

@@ -19,8 +19,11 @@ function ListarGrupoMuscular() {
 
   useEffect(() => {
     if (token === "") {
+
+
       ToastAlerta("Você precisa estar logado", "erro");
       navigate("/");
+
     }
   }, [token]);
 
@@ -36,7 +39,7 @@ function ListarGrupoMuscular() {
         headers: { Authorization: token },
       });
     } catch (error: any) {
-      if (error.toString().includes("401")) {
+      if (error.toString().includes("")) {
         handleLogout();
       }
     } finally {
@@ -45,34 +48,50 @@ function ListarGrupoMuscular() {
   }
 
   return (
-    <section className="w-full min-h-screen py-20 bg-[#F6F8FA]">
-      <div className="max-w-6xl mx-auto px-8">
-        <h1 className="text-4xl font-bold text-center mb-12 text-[#1E3A8A]">
-          Grupos Musculares
-        </h1>
+   <section className="w-full min-h-screen bg-[#ffffff0a] flex items-center justify-center">
+  <div className="w-full max-w-6xl px-8">
 
-        {isLoading && (
-          <div className="flex justify-center w-full my-8">
-            <SyncLoader color="#312e81" size={32} />
-          </div>
-        )}
+    <h1 className="text-4xl font-bold text-center mb-6 text-[#ffffffd9]">
+      Grupos Musculares
+    </h1>
 
-        <div className="flex justify-center w-full my-4">
-          <div className="container flex flex-col">
-            {!isLoading && grupos.length === 0 && (
-              <span className="text-3xl text-center my-8">
-                Nenhum Grupo muscular foi encontrado!
-              </span>
-            )}
+    {/* BOTÃO — agora no lugar certo */}
+    <div className="flex justify-center mb-10">
+      <button
+        onClick={() => navigate("/cadastrargrupomuscular")}
+        className="
+          px-8 py-3
+          rounded-full
+          bg-[#606b66]
+          text-white
+          font-semibold
+          hover:bg-[#13ed34]
+          transition-all
+        "
+      >
+        Cadastro Grupo Muscular
+      </button>
+    </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
-              {grupos.map((grupo) => (
-                <CardGrupoMuscular key={grupo.id} grupoMuscular={grupo} />
-              ))}
-            </div>
-          </div>
-        </div>
+    {isLoading && (
+      <div className="flex justify-center w-full my-8">
+        <SyncLoader color="#606b66" size={32} />
       </div>
+    )}
+
+    {!isLoading && grupos.length === 0 && (
+      <span className="block text-3xl text-center my-8">
+        Nenhum Grupo muscular foi encontrado!
+      </span>
+    )}
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+      {grupos.map((grupo) => (
+        <CardGrupoMuscular key={grupo.id} grupoMuscular={grupo} />
+      ))}
+    </div>
+
+  </div>
     </section>
   );
 }

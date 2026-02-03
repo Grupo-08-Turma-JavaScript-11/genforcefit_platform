@@ -14,7 +14,6 @@ export const Footer = () => {
             Uma plataforma completa de treinos<br />
             <br />
           </div>
-
           <div className="flex mt-2 gap-5 items-center">
 
           <Link to="https://www.whatsapp.com"
