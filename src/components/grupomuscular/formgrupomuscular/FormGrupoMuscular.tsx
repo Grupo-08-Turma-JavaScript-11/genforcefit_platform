@@ -1,7 +1,19 @@
+<<<<<<< Updated upstream
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import type GrupoMuscular from "../../../models/GrupoMuscular"
 import { buscar,cadastrar,atualizar } from "../../../services/Service"
+=======
+import { useEffect, useState, useContext, type FormEvent } from "react";
+
+import {  useNavigate, useParams } from "react-router-dom";
+
+import type GrupoMuscular from "../../../models/GrupoMuscular";
+import { buscar, cadastrar, atualizar } from "../../../services/Service";
+import { AuthContext } from "../../../context/AuthContext";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
+import "../formgrupomuscular/FormGrupoMuscular.css"
+>>>>>>> Stashed changes
 
 function FormGrupoMuscular() {
   const navigate = useNavigate();
@@ -38,36 +50,41 @@ function FormGrupoMuscular() {
     navigate("/grupoMuscular");
   }
 
-  return (
-    <section className="w-full min-h-screen flex items-center justify-center bg-[#F6F8FA]">
-      <form
-        onSubmit={salvar}
-        className="bg-white p-10 rounded-2xl shadow-lg w-full max-w-lg"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center text-[#1E3A8A]">
-          {id ? "Editar Grupo Muscular" : "Cadastrar Grupo Muscular"}
-        </h2>
+ return (
+  <section className="form-container">
+    <form onSubmit={salvar} className="form-card">
 
-        <input
-          type="text"
-          name="nome"
-          placeholder="Nome do grupo muscular"
-          value={grupoMuscular.nome}
-          onChange={atualizarEstado}
-          className="w-full p-3 mb-4 border rounded-lg"
-          required
-        />
+      <h2>
+        {id ? "Editar Grupo Muscular" : "Cadastrar Grupo Muscular"}
+      </h2>
 
-        <input
-          type="text"
-          name="descricao"
-          placeholder="Descrição"
-          value={grupoMuscular.descricao}
-          onChange={atualizarEstado}
-          className="w-full p-3 mb-6 border rounded-lg"
-          required
-        />
+      <input
+        type="text"
+        name="nome"
+        placeholder="Nome do grupo muscular"
+        value={grupoMuscular.nome}
+        onChange={atualizarEstado}
+        required
+      />
 
+      <input
+        type="text"
+        name="descricao"
+        placeholder="Descrição"
+        value={grupoMuscular.descricao}
+        onChange={atualizarEstado}
+        required
+      />
+
+      <button type="submit" disabled={isLoading} className="btn-primary">
+        {isLoading ? "Salvando..." : "Salvar"}
+      </button>
+
+    </form>
+  </section>
+);
+
+<<<<<<< Updated upstream
         <button
           type="submit"
           className="w-full py-3 rounded-full bg-[#1E3A8A] text-white font-semibold"
@@ -77,6 +94,8 @@ function FormGrupoMuscular() {
       </form>
     </section>
   );
+=======
+>>>>>>> Stashed changes
 }
 
 export default FormGrupoMuscular;

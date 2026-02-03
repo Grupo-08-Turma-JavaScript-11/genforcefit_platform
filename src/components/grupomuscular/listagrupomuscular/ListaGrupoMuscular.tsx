@@ -1,36 +1,97 @@
-import { useEffect, useState } from "react"
-import type GrupoMuscular from "../../../models/GrupoMuscular"
+import { useContext, useEffect, useState } from "react";
+import type GrupoMuscular from "../../../models/GrupoMuscular";
+import { buscar } from "../../../services/Service";
 import CardGrupoMuscular from "../cardgrupomuscular/CardGrupoMuscular";
-import { buscar} from "../../../services/Service"
-import FormGrupoMuscular from "../formgrupomuscular/FormGrupoMuscular"
+import { AuthContext } from "../../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { SyncLoader } from "react-spinners";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListarGrupoMuscular() {
+  const navigate = useNavigate();
+
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const { usuario, handleLogout } = useContext(AuthContext);
+  const token = usuario.token;
+
   const [grupos, setGrupos] = useState<GrupoMuscular[]>([]);
 
   useEffect(() => {
-    buscar("/grupoMuscular", setGrupos);
-  }, []);
+    if (token === "") {
+
+
+      ToastAlerta("Você precisa estar logado", "erro");
+      navigate("/");
+
+    }
+  }, [token]);
+
+  useEffect(() => {
+    buscarGruposMusculares();
+  }, [grupos.length]);
+
+  async function buscarGruposMusculares() {
+    try {
+      setIsLoading(true);
+
+      await buscar("/grupoMuscular", setGrupos, {
+        headers: { Authorization: token },
+      });
+    } catch (error: any) {
+      if (error.toString().includes("")) {
+        handleLogout();
+      }
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
-    <section className="w-full min-h-screen py-20 bg-[#F6F8FA]">
-      <div className="max-w-6xl mx-auto px-8">
+   <section className="w-full min-h-screen bg-[#ffffff0a] flex justify-center">
+<div className="w-full max-w-6xl px-8 pt-48">
 
-        <h1 className="text-4xl font-bold text-center mb-12 text-[#1E3A8A]">
-          Grupos Musculares
-        </h1>
-            <FormGrupoMuscular>
+    <h1 className="text-4xl font-bold text-center mb-6 text-[#ffffffd9]">
+  Grupos Musculares
+</h1>
 
-            </FormGrupoMuscular>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
-          {grupos.map((grupo) => (
-            <CardGrupoMuscular
-              key={grupo.id}
-              grupoMuscular={grupo}
-            />
-          ))}
-        </div>
+    {/* BOTÃO — agora no lugar certo */}
+    <div className="flex justify-center mb-10">
+      <button
+        onClick={() => navigate("/cadastrargrupomuscular")}
+        className="
+          px-8 py-3
+          rounded-full
+          bg-[#606b66]
+          text-white
+          font-semibold
+          hover:bg-[#13ed34]
+          transition-all
+        "
+      >
+        Cadastro Grupo Muscular
+      </button>
+    </div>
 
+    {isLoading && (
+      <div className="flex justify-center w-full my-8">
+        <SyncLoader color="#606b66" size={32} />
       </div>
+    )}
+
+    {!isLoading && grupos.length === 0 && (
+      <span className="block text-3xl text-center my-8">
+        Nenhum Grupo muscular foi encontrado!
+      </span>
+    )}
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+      {grupos.map((grupo) => (
+        <CardGrupoMuscular key={grupo.id} grupoMuscular={grupo} />
+      ))}
+    </div>
+
+  </div>
     </section>
   );
 }

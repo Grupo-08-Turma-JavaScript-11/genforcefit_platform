@@ -1,0 +1,115 @@
+.card-grupomuscular {
+  width: 100%;
+  max-width: 360px;
+  background-color: #0f0f0f;
+  border: 1px solid #1f1f1f;
+  border-radius: 16px;
+  padding: 24px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* CONTEÚDO */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-icon {
+  font-size: 22px;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* AÇÕES */
+.card-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.card-actions a {
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.card-actions .edit {
+  background-color: #2563eb;
+  color: #fff;
+}
+
+.card-actions .edit:hover {
+  background-color: #1d4ed8;
+}
+
+.card-actions .delete {
+  background-color: #22c55e;
+  color: #fff;
+}
+
+.card-actions .delete:hover {
+  background-color: #16a34a;
+}
+
+.card-actions .edit {
+  padding: 8px 20px;
+  border-radius: 999px;
+
+  background-color: #22c55e; /* verde */
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.card-actions .edit:hover {
+  background-color: #16a34a;
+  transform: translateY(-1px);
+}
+.card-actions .delete {
+  padding: 8px 20px;
+  border-radius: 999px;
+
+  background-color: #ef4444; /* vermelho */
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition: all 0.3s ease;
+}
+
+.card-actions .delete:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+}

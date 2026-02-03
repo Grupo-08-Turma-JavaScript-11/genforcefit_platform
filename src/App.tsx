@@ -1,7 +1,13 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import ListarGrupoMuscular from "../src/components/grupomuscular/listagrupomuscular/ListaGrupoMuscular"
-import FormGrupoMuscular from "./components/grupomuscular/formgrupomuscular/FormGrupoMuscular"
+import "aos/dist/aos.css";
+
+import "react-toastify/dist/ReactToastify.css";
+
+
+import ListarGrupoMuscular from "./components/grupomuscular/listagrupomuscular/ListaGrupoMuscular"
+import FormGrupoMuscular from "./components/grupomuscular/formgrupomuscular/FormGrupoMuscular";
+
 import DeletarGrupoMuscular from "./components/grupomuscular/deletegrupomuscular/DeleteGrupoMuscular";
 function App() {
   return (

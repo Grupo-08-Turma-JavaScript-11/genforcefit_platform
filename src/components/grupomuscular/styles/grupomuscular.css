@@ -1,0 +1,66 @@
+/* DASHBOARD BASE */
+.dashboard {
+  min-height: 100vh;
+  background: #0a0a0a; /* fundo escuro */
+  display: flex;
+  justify-content: center;
+}
+
+/* CONTAINER PRINCIPAL */
+.dashboard-container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 160px 32px 80px; /* espaço do navbar */
+}
+
+/* TÍTULO */
+.dashboard-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgba(14, 250, 6, 0.9);
+  margin-bottom: 24px;
+}
+
+/* BOTÃO PRINCIPAL */
+.dashboard-action {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 48px;
+}
+
+/* GRID DE CARDS */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 32px;
+  justify-items: center;
+}
+.dashboard-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+/* BOTÃO PRINCIPAL */
+.btn-cadastro {
+  padding: 20px 64px;       /* AQUI ele cresce */
+  font-size: 22px;
+  font-weight: 700;
+
+  border-radius: 999px;
+  background-color: #606b66;
+  color: #ffffff;
+
+  border: none;
+  cursor: pointer;
+
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s ease;
+}
+
+.btn-cadastro:hover {
+  background-color: #13ed34;
+  transform: translateY(-3px);
+  box-shadow: 0 20px 40px rgba(19, 237, 52, 0.45);
+}
