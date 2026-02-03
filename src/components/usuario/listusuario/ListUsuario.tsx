@@ -11,6 +11,10 @@ import { SyncLoader } from "react-spinners";
 function ListUsuario() {
   const navigate = useNavigate();
 
+  function novoUsuario() {
+  navigate("/cadastrarusuarios");
+}
+
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
@@ -67,6 +71,15 @@ function ListUsuario() {
         }}
       >
         <h2 style={{ marginBottom: "30px" }}>Lista de Usuários</h2>
+
+      <button
+        onClick={novoUsuario}
+        className="btn-main"
+        style={{ marginBottom: "30px" }}
+      >
+        + Cadastrar novo usuário
+      </button>
+
 
         {(usuarios.length === 0 && !isLoading) && <p>Nenhum usuário cadastrado.</p>}
 
