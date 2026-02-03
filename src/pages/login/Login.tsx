@@ -30,7 +30,7 @@ function Login() {
 
   useEffect(() => {
     if (usuario.token) {
-      navigate("/usuarios")
+      navigate("/grupoMuscular")
     }
   }, [usuario])
 

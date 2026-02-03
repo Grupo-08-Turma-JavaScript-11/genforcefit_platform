@@ -19,8 +19,8 @@ function ListarGrupoMuscular() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("Você precisa estar logado"+token, "erro");
-      navigate("/");
+     ToastAlerta("Você precisa estar logado"+token, "erro");
+      navigate("/login");
     }
   }, [token]);
 
@@ -36,7 +36,7 @@ function ListarGrupoMuscular() {
         headers: { Authorization: token },
       });
     } catch (error: any) {
-      if (error.toString().includes("401")) {
+      if (error.toString().includes("")) {
         handleLogout();
       }
     } finally {
@@ -73,6 +73,23 @@ function ListarGrupoMuscular() {
           </div>
         </div>
       </div>
+      <div className="flex justify-center mb-10">
+  <button
+    onClick={() => navigate("/cadastrargrupomuscular")}
+    className="
+      px-8 py-3
+      rounded-full
+      bg-[#22C55E]
+      text-white
+      font-semibold
+      hover:bg-[#16A34A]
+      transition-all
+    "
+  >
+    + Cadastrar Grupo Muscular
+  </button>
+</div>
+
     </section>
   );
 }
