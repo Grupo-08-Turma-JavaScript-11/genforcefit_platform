@@ -1,6 +1,5 @@
 import { Hero } from "../../components/hero/Hero";
 import { useAos } from "../../hooks/useAos";
-import { Footer } from "../../components/footer/Footer";
 import { Sobrenos } from "../../components/sobrenos/Sobrenos";
 import { Calculo } from "../../components/calculo/Calculo";
 import Planos from "../../components/planos/Planos";
@@ -16,7 +15,6 @@ export const Home = () => {
       <Cadastro />
       <Planos /> 
       <Calculo />
-      <Footer />
     </main>
   );
 };

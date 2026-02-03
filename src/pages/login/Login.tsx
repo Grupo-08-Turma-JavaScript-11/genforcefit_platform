@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom"
 import type UsuarioLogin from "../../models/UsuarioLogin"
 import { AuthContext } from "../../context/AuthContext"
 
-import { Navbar } from "../../components/navbar/Navbar"
-import Footer from "../../components/footer/Footer"
 
 import "./Login.css"
 
@@ -29,13 +27,13 @@ function Login() {
 
   useEffect(() => {
     if (usuario.token) {
-      navigate("/cadastrarExercicio")
+      navigate("/exercicios")
     }
   }, [usuario])
 
   return (
     <>
-      <Navbar />
+      
 
       <section className="login-hero">
         <div className="login-hero-content container">
@@ -87,7 +85,7 @@ function Login() {
                 <button
                   type="button"
                   className="login-link-btn"
-                  onClick={() => navigate("/cadastromariana")}
+                  onClick={() => navigate("/#cadastro")}
                 >
                   Criar conta
                 </button>
@@ -99,7 +97,6 @@ function Login() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }
