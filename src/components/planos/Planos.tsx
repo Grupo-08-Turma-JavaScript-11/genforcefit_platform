@@ -19,7 +19,7 @@ export const Planos = () => {
       <div className="container">
 
         <h2 className="text-[var(--green-neon)] text-center text-4xl font-bold my-6">Nossos Planos</h2>
-        
+        <br />
         <div className="membership-grid">
           {plans.map((plan, index) => (
             <div className="membership-card" key={index}>
@@ -30,7 +30,7 @@ export const Planos = () => {
                   <li key={i}>{feature}</li>
                 ))}
               </ul>
-              <button className="btn-main"><a href='#cadastro'>matricule-se já</a></button>
+              <button className="btn-main"><a href='#cadastro'>Matricule-se Já</a></button>
             </div>
           ))}
         </div>

@@ -9,22 +9,31 @@ export const Sobrenos = () => {
   ];
 
   return (
-    <section className="py-[100px] bg-[var(--fit-black)]" id="sobrenos">
+    <section className="instructor-section" id="sobrenos">
       <div className="container">
-       <h2 className="text-[var(--green-neon)] text-center text-4xl font-bold my-6">Nossa Equipe</h2>
-        <div className="flex justify-center flex-wrap gap-[25px] mt-[40px]">
+
+        <h2 className="section-title">Nossa Equipe</h2>
+       <br />
+        <div className="instrutores-grid">
           {instrutores.map((m, i) => (
             <div key={i} className="instrutor-card">
+
               <div className="instrutor-img">
-                <img src={`https://vfitclub.netlify.app/image/${m.img}`} alt={m.nome}/>
+                <img
+                  src={`https://vfitclub.netlify.app/image/${m.img}`}
+                  alt={m.nome}
+                />
               </div>
+
               <div className="instrutor-info">
-                <div className="font-bold text-[1.1rem] text-white normal-case">{m.nome}</div>
-                <div className="text-[var(--green-neon)] text-[0.9rem] normal-case mt-[5px]">{m.cargo}</div>
+                <div className="nome">{m.nome}</div>
+                <div className="cargo">{m.cargo}</div>
               </div>
+
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

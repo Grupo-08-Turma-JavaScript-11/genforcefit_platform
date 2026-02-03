@@ -1,3 +1,38 @@
+/* instructor section */
+
+.instructor-section {
+  padding: 60px 0;
+  background:
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+    url("/fundo.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* titulo */
+
+.section-title {
+  margin-top: -30px;
+  margin-bottom: 40px;
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: var(--green-soft);
+}
+
+/* grid */
+
+.instrutores-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+/* cards */
+
 .instrutor-card {
   background-color: var(--fit-gray);
   width: 260px;
@@ -13,6 +48,8 @@
   border-color: var(--green-soft);
 }
 
+/* imagem */
+
 .instrutor-img img {
   width: 100%;
   height: 320px;
@@ -25,18 +62,33 @@
   filter: grayscale(0%);
 }
 
+/* info */
+
 .instrutor-info {
   padding: 20px;
+}
+
+.nome {
+  font-weight: bold;
+  color: white;
+}
+
+.cargo {
+  color: var(--green-neon);
+  font-size: 0.9rem;
+  margin-top: 5px;
 }
 
 /* mobile */
 
 @media (max-width: 768px) {
-  .instrutores-grid {
-    gap: 15px;
-  }
   .instrutor-card {
     width: 100%;
     max-width: 300px;
+  }
+
+  .section-title {
+    margin-top: -15px;
+    font-size: 1.8rem;
   }
 }
