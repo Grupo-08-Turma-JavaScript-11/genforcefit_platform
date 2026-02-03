@@ -79,6 +79,7 @@ function Login() {
 
               <div className="login-alt-action">
                 <p>Ainda não tem conta?</p>
+                <br />
                 <button
                   type="button"
                   className="login-link-btn"
