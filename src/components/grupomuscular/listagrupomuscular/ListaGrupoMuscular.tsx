@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import type GrupoMuscular from "../../../models/GrupoMuscular";
 import { buscar } from "../../../services/Service";
-import CardGrupoMuscular from "../cardgrupomuscular/CardGrupoMuscular";
+import CardGrupoMuscular from "../cardgrupomuscular/Cardgrupomuscular";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
@@ -55,23 +55,7 @@ function ListarGrupoMuscular() {
       Grupos Musculares
     </h1>
 
-    {/* BOTÃO — agora no lugar certo */}
-    <div className="flex justify-center mb-10">
-      <button
-        onClick={() => navigate("/cadastrargrupomuscular")}
-        className="
-          px-8 py-3
-          rounded-full
-          bg-[#606b66]
-          text-white
-          font-semibold
-          hover:bg-[#13ed34]
-          transition-all
-        "
-      >
-        Cadastro Grupo Muscular
-      </button>
-    </div>
+   
 
     {isLoading && (
       <div className="flex justify-center w-full my-8">
@@ -85,12 +69,30 @@ function ListarGrupoMuscular() {
       </span>
     )}
 
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+    <div className="grupos-grid">
+      
       {grupos.map((grupo) => (
         <CardGrupoMuscular key={grupo.id} grupoMuscular={grupo} />
       ))}
     </div>
-
+ {/* BOTÃO — agora no lugar certo */}
+  
+      <div className="flex justify-center mt-8 mb-12">
+      <button
+        onClick={() => navigate("/cadastrargrupomuscular")}
+        className="
+          px-8 py-3
+          rounded-full
+          bg-[#606b66]
+          text-white
+          font-semibold
+          hover:bg-[#13ed34]
+          transition-all
+        "
+      >
+        Cadastro 
+      </button>
+    </div>
   </div>
     </section>
   );

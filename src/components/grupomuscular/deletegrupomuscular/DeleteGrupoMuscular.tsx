@@ -1,9 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-import { buscar, deletar } from "../../../services/Service";
-import type GrupoMuscular from "../../../models/GrupoMuscular";
-import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { buscar, deletar } from "../../../services/Service"
+import type GrupoMuscular from "../../../models/GrupoMuscular"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 import { AuthContext } from "../../../context/AuthContext"
 
 function DeletarGrupoMuscular() {
