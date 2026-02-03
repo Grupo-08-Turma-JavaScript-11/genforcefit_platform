@@ -8,40 +8,24 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AuthProvider } from "./context/AuthContext";
 
-import { Hero } from "./components/hero/Hero";
-import { Sobrenos } from "./components/sobrenos/Sobrenos";
-import { Planos } from "./components/planos/Planos";
-import { Calculo } from "./components/calculo/Calculo";
-import { Cadastro } from "./components/cadastro/Cadastro";
-import { Footer } from "./components/footer/Footer";
-
 import ListarGrupoMuscular from "./components/grupomuscular/listagrupomuscular/ListaGrupoMuscular";
 import FormGrupoMuscular from "./components/grupomuscular/formgrupomuscular/FormGrupoMuscular";
 import DeletarGrupoMuscular from "./components/grupomuscular/deletegrupomuscular/DeleteGrupoMuscular";
 
 import Login from "./pages/login/Login";
-import CadastroMariana from "./pages/cadastro/Cadastro";
-import ListUsuario from "./components/usuario/listusuario/ListUsuario"
-import FormUsuario from "./components/usuario/formusuario/FormUsuario"
+import ListUsuario from "./components/usuario/listusuario/ListUsuario";
+import FormUsuario from "./components/usuario/formusuario/FormUsuario";
 import DeleteUsuario from "./components/usuario/deleteUsuario/DeleteUsuario";
 
-
 import "./index.css";
-
-function Home() {
-  return (
-    <>
-      <main>
-        <Hero />
-        <Cadastro />
-        <Planos />
-        <Calculo />
-        <Sobrenos />
-      </main>
-      <Footer />
-    </>
-  );
-}
+import ListExercicio from "./components/exercicio/listexercicio/ListExercicio";
+import FormExercicio from "./components/exercicio/formexercicio/FormExercicio";
+import DeleteExercicio from "./components/exercicio/deleteexercicio/DeleteExercicio";
+import { RequireAuth } from "./routes/RequireAuth";
+import { RequireRole } from "./routes/RequireRole";
+import { Home } from "./pages/home/Home";
+import { Navbar } from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
 
 function App() {
   useEffect(() => {
@@ -57,28 +41,46 @@ function App() {
     <AuthProvider>
       <BrowserRouter>
         <ToastContainer />
-
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-
-          {/* AUTH */}
           <Route path="/login" element={<Login />} />
-          <Route path="/cadastromariana" element={<CadastroMariana />} />
 
-          {/* USUÁRIOS */}
-          <Route path="/usuarios" element={<ListUsuario />} />
-          <Route path="/cadastrarusuarios" element={<FormUsuario />} />
-          <Route path="/editarusuarios/:id" element={<FormUsuario />} />
-          <Route path="/deletarusuarios/:id" element={<DeleteUsuario />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/exercicios" element={<ListExercicio />} />
 
-        {/* GrupoMuscular */}
-        <Route path="/grupoMuscular" element={<ListarGrupoMuscular />} />
-        <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
-        <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
-        <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
-      </Routes>
-    </BrowserRouter>
-     </AuthProvider>
+              <Route element={<RequireRole allowed={["Professor"]} />}>
+              <Route path="/usuarios" element={<ListUsuario />} />
+              <Route path="/cadastrarusuarios" element={<FormUsuario />} />
+              <Route path="/editarusuarios/:id" element={<FormUsuario />} />
+              <Route path="/deletarusuarios/:id" element={<DeleteUsuario />} />
+
+              <Route path="/grupomuscular" element={<ListarGrupoMuscular />} />
+              <Route
+                path="/cadastrargrupomuscular"
+                element={<FormGrupoMuscular />}
+              />
+              <Route
+                path="/editargrupomuscular/:id"
+                element={<FormGrupoMuscular />}
+              />
+              <Route
+                path="/deletargrupomuscular/:id"
+                element={<DeletarGrupoMuscular />}
+              />
+
+              <Route path="/cadastrarExercicio" element={<FormExercicio />} />
+              <Route path="/editarExercicio/:id" element={<FormExercicio />} />
+              <Route
+                path="/deletarExercicio/:id"
+                element={<DeleteExercicio />}
+              />
+            </Route>
+          </Route>
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

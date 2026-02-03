@@ -35,8 +35,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     try {
      await login("/usuarios/logar", usuario, setUsuario)
-     console.log(usuario)
-
       ToastAlerta(`Usuário autenticado com sucesso! `, "sucesso")
     } catch (error) {
       ToastAlerta("Usuário ou senha inválidos!", "erro")

@@ -5,9 +5,6 @@ import type Usuario from "../../models/Usuario"
 import { cadastrarUsuario } from "../../services/Service"
 import { ToastAlerta } from "../../utils/ToastAlerta"
 
-import { Navbar } from "../../components/navbar/Navbar"
-import Footer from "../../components/footer/Footer"
-
 import "../login/Login.css"
 import "./Cadastro.css"
 
@@ -19,7 +16,7 @@ function Cadastro() {
     nome: "",
     usuario: "",
     senha: "",
-    tipo: "",
+    tipo: "Aluno",
     altura: 0,
     peso: 0,
     IMC: 0,
@@ -60,11 +57,11 @@ function Cadastro() {
     try {
       setCarregando(true)
 
-      await cadastrarUsuario("/usuarios", usuario, () => {})
+      await cadastrarUsuario("/usuarios", usuario)
 
       ToastAlerta("Usuário cadastrado com sucesso!", "sucesso")
 
-      navigate("/usuariosmariana")
+      navigate("/login")
     } catch (error) {
       ToastAlerta("Erro ao cadastrar usuário", "erro")
     } finally {
@@ -74,33 +71,22 @@ function Cadastro() {
 
   return (
     <>
-      <Navbar />
-
+      
       <section className="login-hero">
         <div className="login-hero-content container">
-
           {/* LADO ESQUERDO */}
           <div className="login-hero-left">
             <span className="login-badge">Transforme seu corpo</span>
-
-            <h1>
-              GEN<span>FORCE</span>FIT
-            </h1>
-
-            <div className="login-divider"></div>
-
             <h2>
               SUA JORNADA <br />
               <span>COMEÇA AQUI</span>
             </h2>
           </div>
-
           {/* LADO DIREITO */}
           <div className="login-hero-right">
             <form onSubmit={cadastrar} className="login-form">
-
+              <br />
               <h3>Criar Conta</h3>
-
               <input
                 type="text"
                 name="nome"
@@ -135,21 +121,6 @@ function Cadastro() {
                 onChange={(e) => setConfirmarSenha(e.target.value)}
                 required
               />
-
-              {/* SELECT TIPO */}
-              <select
-                name="tipo"
-                value={usuario.tipo}
-                onChange={atualizarEstado}
-                className="login-select"
-                required
-              >
-                <option value="" disabled>
-                  Selecione o tipo de usuário
-                </option>
-                <option value="aluno">Aluno</option>
-                <option value="professor">Professor</option>
-              </select>
 
               <input
                 type="number"
@@ -188,7 +159,7 @@ function Cadastro() {
         </div>
       </section>
 
-      <Footer />
+      
     </>
   )
 }

@@ -1,7 +1,19 @@
 .section-sobrenos {
   padding: 100px 0;
   background-color: var(--fit-black);
+  /* imagem na sessao inteira */
+  background-image: url("/img/fundo1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
+
+/*
+.section-sobrenos {
+  padding: 100px 0;
+  background-color: var(--fit-black);
+}
+*/
 
 .instrutores-grid {
   display: flex;

@@ -6,7 +6,6 @@
   width: 100%;
   min-height: 100svh; /* 🔥 corrige bug de 100vh no mobile */
   position: relative;
-
   background:
     linear-gradient(to right, rgba(0,0,0,0.85) 35%, transparent),
     url("https://vfitclub.netlify.app/image/hero-background.webp")
@@ -15,15 +14,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   padding-top: 120px;   /* espaço navbar */
   padding-bottom: 120px; /* espaço footer */
+}
+
+.login-form h3 {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--green-soft);
 }
 
 .login-hero-content {
   width: 100%;
   max-width: 1200px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -53,10 +56,12 @@
   font-size: 4.2rem;
   font-weight: 900;
   line-height: 1;
+  color: var(--green-soft);
+
 }
 
 .login-hero-left h1 span {
-  color: var(--green-neon);
+  color: var(--green-soft);
 }
 
 .login-divider {
@@ -80,14 +85,21 @@
    CARD DIREITO (FORM)
 ========================= */
 
+/*
 .login-hero-right {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 400px;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(14px);
   padding: 36px 40px;
   border: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 25px 70px rgba(0,0,0,0.7);
-}
+}*/
+
+
 
 /* =========================
    FORMULÁRIO
@@ -97,6 +109,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  
 }
 
 .login-form h3 {
@@ -107,13 +120,12 @@
 .login-form input {
   height: 46px;
   padding: 0 14px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.55);
   color: #fff;
 }
 
 .login-form input::placeholder {
-  color: rgba(255,255,255,0.45);
+  color: rgba(350,255,255,0.45);
 }
 
 .login-form input:focus {
@@ -122,8 +134,9 @@
 }
 
 .login-form .btn-main {
-  margin-top: 10px;
-  height: 50px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 /* =========================
@@ -137,7 +150,7 @@
 
 .login-alt-action p {
   font-size: 0.85rem;
-  opacity: 0.65;
+  opacity: 0.80;
   margin-bottom: 8px;
 }
 
@@ -153,6 +166,10 @@
 .login-link-btn:hover {
   border-color: var(--green-neon);
   color: var(--green-neon);
+}
+
+.login-btn {
+  border-radius: 5px;
 }
 
 /* =========================

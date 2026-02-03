@@ -31,7 +31,7 @@ function CardExercicio({exercicio}: CardExercicioProps){
                    <Link to={`/editarexercicio/${exercicio.id}`} className="w-full bg:[#6FD904] shadow-[#6FD904]/50 hover:[#1B7302] text-[#0D0D0D] flex items-center justify-center py-2">
                         <button>Editar</button> 
                     </Link>
-                    <Link to={`/deletarexercicio/${exercicio.id}`} className="text-white bg-red-400
+                    <Link to={`/deletarExercicio/${exercicio.id}`} className="text-white bg-red-400
                         hover:bg-red-700 w-full flex items-center justify-center">
                         <button>Deletar</button>
                     </Link>

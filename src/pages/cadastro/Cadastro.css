@@ -45,6 +45,19 @@
   color: #fff;
 }
 
+.login-form .btn-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -5px;   /* 🔼 sobe o botão */
+}
+
+.login-alt-action {
+  margin-top: 18px;
+  text-align: center;
+  margin-top: -5px;   /* 🔼 sobe o botão */
+}
+
 /*MOBILE*/
 
 @media (max-width: 600px) {

@@ -4,8 +4,6 @@ import type Usuario from "../../../models/Usuario"
 import { atualizar, buscar, cadastrarUsuario } from "../../../services/Service"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
 import { AuthContext } from "../../../context/AuthContext"
-import { Navbar } from "../../navbar/Navbar"
-import Footer from "../../footer/Footer"
 import "../../../pages/login/Login.css"
 
 function FormUsuario() {
@@ -86,7 +84,7 @@ function FormUsuario() {
         )
         ToastAlerta("Usuário atualizado com sucesso!", "sucesso")
       } else {
-        await cadastrarUsuario("/usuarios", usuario, () => {})
+        await cadastrarUsuario("/usuarios", usuario)
         ToastAlerta("Usuário cadastrado com sucesso!", "sucesso")
       }
 
@@ -136,8 +134,8 @@ function FormUsuario() {
 
               <select name="tipo" value={usuario.tipo} onChange={atualizarEstado} className="login-select" required>
                 <option value="">Selecione o tipo</option>
-                <option value="aluno">Aluno</option>
-                <option value="professor">Professor</option>
+                <option value="Aluno">Aluno</option>
+                <option value="Professor">Professor</option>
               </select>
 
               <input name="altura" type="number" placeholder="Altura (cm)" value={usuario.altura || ""} onChange={atualizarEstado} />

@@ -19,8 +19,11 @@ function ListarGrupoMuscular() {
 
   useEffect(() => {
     if (token === "") {
-     ToastAlerta("Você precisa estar logado"+token, "erro");
-      navigate("/login");
+
+
+      ToastAlerta("Você precisa estar logado", "erro");
+      navigate("/");
+
     }
   }, [token]);
 
