@@ -1,0 +1,36 @@
+.list-container {
+  min-height: calc(100vh - 120px);
+  padding: 32px;
+}
+
+.dashboard-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;      /* 👈 empurra pra baixo */
+  margin-bottom: 48px;  /* 👈 afasta dos cards */
+
+}
+
+.btn-cadastro {
+  padding: 20px 64px;
+  font-size: 22px;
+  font-weight: 700;
+  border-radius: 999px;
+  border: none;
+  background-color: #22c55e;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cadastro:hover {
+  background-color: #16a34a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+}
+
+.list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
+}

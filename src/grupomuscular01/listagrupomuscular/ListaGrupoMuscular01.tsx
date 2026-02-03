@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import type GrupoMuscular from "../../../models/GrupoMuscular";
 import { buscar } from "../../../services/Service";
-import CardGrupoMuscular from "../cardgrupomuscular/Cardgrupomuscular";
+import CardGrupoMuscular from "../cardgrupomuscular/Cardgrupomuscular01";
 import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
