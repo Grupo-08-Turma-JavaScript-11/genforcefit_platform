@@ -30,7 +30,7 @@ export const Planos = () => {
                   <li key={i}>{feature}</li>
                 ))}
               </ul>
-              <button className="btn-main">matricule-se já</button>
+              <button className="btn-main"><a href='#cadastro'>matricule-se já</a></button>
             </div>
           ))}
         </div>

@@ -72,7 +72,7 @@ function Cadastro() {
   return (
     <>
       
-      <section className="login-hero">
+      <section id="cadastro" className="login-hero">
         <div className="login-hero-content container">
           {/* LADO ESQUERDO */}
           <div className="login-hero-left">

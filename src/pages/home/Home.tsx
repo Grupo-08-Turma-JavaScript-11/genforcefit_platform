@@ -10,11 +10,11 @@ export const Home = () => {
 
   return (
     <main style={{ backgroundColor: '#000' }}>
-      <Hero />        
-      <Sobrenos />      
-      <Cadastro />
+      <Hero />             
       <Planos /> 
+      <Cadastro />
       <Calculo />
+      <Sobrenos />   
     </main>
   );
 };
