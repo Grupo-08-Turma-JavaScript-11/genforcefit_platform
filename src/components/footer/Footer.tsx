@@ -105,7 +105,7 @@ export const Footer = () => {
               transition" />
             <button
               type="submit"
-              className="bg-[var(--green-neon)] text-black font-bold px-5 h-[49px] w-[44px]
+              className="bg-[var(--green-neon)] text-black font-bold px-5 h-[49px] w-[49px]
               transition-all duration-300 ease-out
               hover:bg-white
               hover:shadow-[0_0_15px_var(--green-neon)]
