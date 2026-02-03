@@ -20,7 +20,7 @@ function DeleteExercicio() {
     async function buscarPorId(id: string) {
         try{
             await buscar(`/exercicio/${id}`, setExercicio, {
-                herders: {Authorization: token}
+                headers: {Authorization: token}
             })
         } catch {
             ToastAlerta("Exercicio não encontrado", "erro")
@@ -30,7 +30,7 @@ function DeleteExercicio() {
     useEffect(() => {
         if (token === ''){
             alert("Voce precisa estar logado!")
-            navigate('/loginmariana')
+            navigate('/login')
         }
     }, [token])
 
@@ -41,7 +41,7 @@ function DeleteExercicio() {
     async function deletarExercicio() {
         try{
             await deletar(`/exercicio/${id}`, {
-                herders: {Authorization: token}
+                headers: {Authorization: token}
             })
             ToastAlerta("Exercicio deletado com sucesso", "sucesso")
             retornar()
