@@ -10,8 +10,7 @@ function CardExercicio({exercicio}: CardExercicioProps){
 
     return(
         <>
-            <div className="border-bg-[#0D0D0D] flex flex-col rounded 
-                overflow-hidden justify-between">
+            <div className="py-[100px] bg-[var(--fit-black)]">
                 <div>
                     <div  className="flex w-full bg-slate-400 py-2 px-4 items-center gap-4">
                         <h3 className="text-lg font-bold text-center uppercase text-[#0D0D0D]">

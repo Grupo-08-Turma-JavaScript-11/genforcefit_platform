@@ -18,10 +18,7 @@ export const Planos = () => {
     <section id="planos" className="memberships-section">
       <div className="container">
 
-        <h2 className="section-title">Nossos Planos</h2>
-      <br />
-      <br />
-
+        <h2 className="text-[var(--green-neon)] text-center text-4xl font-bold my-6">Nossos Planos</h2>
         
         <div className="membership-grid">
           {plans.map((plan, index) => (
