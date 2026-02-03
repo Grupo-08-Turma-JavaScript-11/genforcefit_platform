@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import type GrupoMuscular from "../../../models/GrupoMuscular"
 
-import "./CardGrupoMuscular.css";
+import './CardGrupoMuscular.css';
 
 
 interface CardGrupoMuscularProps {
