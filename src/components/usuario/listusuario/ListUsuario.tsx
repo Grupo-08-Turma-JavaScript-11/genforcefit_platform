@@ -70,8 +70,9 @@ function ListUsuario() {
           paddingBottom: "60px",
         }}
       >
-        <h2 style={{ marginBottom: "30px" }}>Lista de Usuários</h2>
-
+        <h1 className="text-[36px] font-bold text-center text-[var(--green-soft)] my-8">
+                    Usuários
+                    </h1>
       <button
         onClick={novoUsuario}
         className="btn-main"
@@ -79,7 +80,6 @@ function ListUsuario() {
       >
         + Cadastrar novo usuário
       </button>
-
 
         {(usuarios.length === 0 && !isLoading) && <p>Nenhum usuário cadastrado.</p>}
 

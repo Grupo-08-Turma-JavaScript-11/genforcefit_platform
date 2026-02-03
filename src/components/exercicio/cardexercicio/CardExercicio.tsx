@@ -1,43 +1,89 @@
-import { Link } from "react-router-dom";
-import type Exercicio from "../../../models/Exercicio";
+import { Link } from "react-router-dom"
+import type Exercicio from "../../../models/Exercicio"
 
-
-interface CardExercicioProps{
-    exercicio: Exercicio
+interface CardExercicioProps {
+  exercicio: Exercicio
 }
 
-function CardExercicio({exercicio}: CardExercicioProps){
+function CardExercicio({ exercicio }: CardExercicioProps) {
+  return (
+    <div className="py-8 bg-[var(--fit-black)] border rounded-[20px] mx-8 my-10">
+      
+      {/* Card principal */}
+      <div
+        className="
+          w-full max-w-md mx-auto
+          bg-black/60 backdrop-blur-md
+          rounded-[20px]
+          p-6
+          flex flex-col gap-4
+          shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+          transition-all duration-300 ease-in-out
+          hover:-translate-y-[5px]
+          hover:shadow-[0_12px_35px_rgba(0,0,0,0.6)]
+        "
+      >
 
-    return(
-        <>
-            <div className="py-[100px] bg-[var(--fit-black)]">
-                <div>
-                    <div  className="flex w-full bg-slate-400 py-2 px-4 items-center gap-4">
-                        <h3 className="text-lg font-bold text-center uppercase text-[#0D0D0D]">
-                            {exercicio.nome}
-                        </h3> 
-                    </div>
-                    <div className="p-4">
-                        <h4 className="text-lg font-semibold uppercase text-[#0D0D0D]">
-                            Informalções do exercicio
-                        </h4>
-                        <p>{exercicio.descricao}</p>
-                        <p><span className="font-semibold">Repetições:</span> {exercicio.repeticoes} </p>
-                        <p><span className="font-semibold">Duração:</span> {exercicio.duracao} </p> 
-                    </div>
-                </div>
-                <div className="flex">
-                   <Link to={`/editarexercicio/${exercicio.id}`} className="w-full bg:[#6FD904] shadow-[#6FD904]/50 hover:[#1B7302] text-[#0D0D0D] flex items-center justify-center py-2">
-                        <button>Editar</button> 
-                    </Link>
-                    <Link to={`/deletarExercicio/${exercicio.id}`} className="text-white bg-red-400
-                        hover:bg-red-700 w-full flex items-center justify-center">
-                        <button>Deletar</button>
-                    </Link>
-                </div>
-            </div>
-        </>
-    )
+        {/* Nome */}
+        <h3 className="text-[25px] font-bold text-center uppercase text-[var(--green-soft)]">
+          {exercicio.nome}
+        </h3>
+
+        {/* Imagem do equipamento */}
+        {exercicio.equipamento && (
+          <img
+            src={exercicio.equipamento}
+            alt={`Equipamento do exercício ${exercicio.nome}`}
+            className="w-60 h-40 object-cover rounded bg-black/400 mx-auto my-4"
+            onError={(e) => (e.currentTarget.style.display = "none")}
+          />
+        )}
+
+        {/* Informações */}
+        <div>
+          <h4 className="text-lg font-semibold uppercase text-[var(--green-soft)]">
+            Informações do exercício
+          </h4>
+          <p>{exercicio.descricao}</p>
+          <p>
+            <span className="font-semibold">Repetições:</span> {exercicio.repeticoes}
+          </p>
+          <p>
+            <span className="font-semibold">Duração:</span> {exercicio.duracao}
+          </p>
+        </div>
+
+        {/* Ações */}
+        <div className="flex justify-center gap-6 mt-4">
+          <Link
+            to={`/editarexercicio/${exercicio.id}`}
+            className="
+              px-8 py-3 w-[150px]
+              text-center rounded-full
+              bg-[#A7FF83] text-black font-semibold
+              hover:bg-[#39FF14]
+              transition-all
+            "
+          >
+            Editar
+          </Link>
+
+          <Link
+            to={`/deletarExercicio/${exercicio.id}`}
+            className="
+              px-8 py-3 w-[150px]
+              text-center rounded-full
+              bg-[#606b66] text-black font-semibold
+              hover:bg-[#D99A41]
+              transition-all
+            "
+          >
+            Deletar
+          </Link>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default CardExercicio
