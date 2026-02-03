@@ -1,14 +1,19 @@
-import { Link } from "react-router-dom"
-import type Exercicio from "../../../models/Exercicio"
+import { Link } from "react-router-dom";
+import type Exercicio from "../../../models/Exercicio";
+import { AuthContext } from "../../../context/AuthContext";
+import { useContext } from "react";
 
 interface CardExercicioProps {
-  exercicio: Exercicio
+  exercicio: Exercicio;
 }
 
 function CardExercicio({ exercicio }: CardExercicioProps) {
+  const { usuario } = useContext(AuthContext);
+
+  const tipo = usuario.tipo;
+
   return (
     <div className="py-8 bg-[var(--fit-black)] border rounded-[20px] mx-8 my-10">
-      
       {/* Card principal */}
       <div
         className="
@@ -23,7 +28,6 @@ function CardExercicio({ exercicio }: CardExercicioProps) {
           hover:shadow-[0_12px_35px_rgba(0,0,0,0.6)]
         "
       >
-
         {/* Nome */}
         <h3 className="text-[25px] font-bold text-center uppercase text-[var(--green-soft)]">
           {exercicio.nome}
@@ -46,44 +50,49 @@ function CardExercicio({ exercicio }: CardExercicioProps) {
           </h4>
           <p>{exercicio.descricao}</p>
           <p>
-            <span className="font-semibold">Repetições:</span> {exercicio.repeticoes}
+            <span className="font-semibold">Repetições:</span>{" "}
+            {exercicio.repeticoes}
           </p>
           <p>
             <span className="font-semibold">Duração:</span> {exercicio.duracao}
           </p>
         </div>
 
-        {/* Ações */}
-        <div className="flex justify-center gap-6 mt-4">
-          <Link
-            to={`/editarexercicio/${exercicio.id}`}
-            className="
+        {tipo === "Professor" && (
+          <>
+            {/* Ações */}
+            <div className="flex justify-center gap-6 mt-4">
+              <Link
+                to={`/editarexercicio/${exercicio.id}`}
+                className="
               px-8 py-3 w-[150px]
               text-center rounded-full
               bg-[#A7FF83] text-black font-semibold
               hover:bg-[#39FF14]
               transition-all
             "
-          >
-            Editar
-          </Link>
+              >
+                Editar
+              </Link>
 
-          <Link
-            to={`/deletarExercicio/${exercicio.id}`}
-            className="
+              <Link
+                to={`/deletarExercicio/${exercicio.id}`}
+                className="
               px-8 py-3 w-[150px]
               text-center rounded-full
               bg-[#606b66] text-black font-semibold
               hover:bg-[#D99A41]
               transition-all
             "
-          >
-            Deletar
-          </Link>
-        </div>
+              >
+                Deletar
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
-  )
+  );
 }
 
-export default CardExercicio
+export default CardExercicio;
