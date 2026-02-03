@@ -21,30 +21,18 @@ import DeletarGrupoMuscular from "./components/grupomuscular/deletegrupomuscular
 
 import Login from "./pages/login/Login";
 import CadastroMariana from "./pages/cadastro/Cadastro";
-import ListUsuario from "./components/usuario/listusuario/ListUsuario"
-import FormUsuario from "./components/usuario/formusuario/FormUsuario"
+import ListUsuario from "./components/usuario/listusuario/ListUsuario";
+import FormUsuario from "./components/usuario/formusuario/FormUsuario";
 import DeleteUsuario from "./components/usuario/deleteUsuario/DeleteUsuario";
-
 
 import "./index.css";
 import ListExercicio from "./components/exercicio/listexercicio/ListExercicio";
 import FormExercicio from "./components/exercicio/formexercicio/FormExercicio";
 import DeleteExercicio from "./components/exercicio/deleteexercicio/DeleteExercicio";
+import { RequireAuth } from "./routes/RequireAuth";
+import { RequireRole } from "./routes/RequireRole";
+import { Home } from "./pages/home/Home";
 
-function Home() {
-  return (
-    <>
-      <main>
-        <Hero />
-        <Cadastro />
-        <Planos />
-        <Calculo />
-        <Sobrenos />
-      </main>
-      <Footer />
-    </>
-  );
-}
 
 function App() {
   useEffect(() => {
@@ -63,31 +51,49 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-
-          {/* AUTH */}
           <Route path="/login" element={<Login />} />
-          <Route path="/cadastromariana" element={<CadastroMariana />} />
 
-          {/* USUÁRIOS */}
-          <Route path="/usuarios" element={<ListUsuario />} />
-          <Route path="/cadastrarusuarios" element={<FormUsuario />} />
-          <Route path="/editarusuarios/:id" element={<FormUsuario />} />
-          <Route path="/deletarusuarios/:id" element={<DeleteUsuario />} />
+          <Route element={<RequireAuth />}>
+            
+            <Route path="/exercicios" element={<ListExercicio />} />
 
-        {/* GrupoMuscular */}
-        <Route path="/grupoMuscular" element={<ListarGrupoMuscular />} />
-        <Route path="/cadastrargrupomuscular" element={<FormGrupoMuscular />} />
-        <Route path="/editargrupomuscular/:id" element={<FormGrupoMuscular />} />
-        <Route path="/deletargrupomuscular/:id" element={<DeletarGrupoMuscular />} />
+            <Route path="/cadastro" element={<CadastroMariana />} />
 
-        {/* Exercicios */}
-        <Route path="/exercicios" element={<ListExercicio />} />
-        <Route path="/cadastrarExercicio" element={<FormExercicio />} />
-        <Route path="/editarExercicio/:id" element={<FormExercicio />} />
-        <Route path="/deletarExercicio/:id" element={<DeleteExercicio />} />
-      </Routes>
-    </BrowserRouter>
-     </AuthProvider>
+            <Route element={<RequireRole allowed={["Professor"]} />}>
+              
+              <Route path="/usuarios" element={<ListUsuario />} />
+              <Route path="/cadastrarusuarios" element={<FormUsuario />} />
+              <Route path="/editarusuarios/:id" element={<FormUsuario />} />
+              <Route path="/deletarusuarios/:id" element={<DeleteUsuario />} />
+
+              
+              <Route path="/grupomuscular" element={<ListarGrupoMuscular />} />
+              <Route
+                path="/cadastrargrupomuscular"
+                element={<FormGrupoMuscular />}
+              />
+              <Route
+                path="/editargrupomuscular/:id"
+                element={<FormGrupoMuscular />}
+              />
+              <Route
+                path="/deletargrupomuscular/:id"
+                element={<DeletarGrupoMuscular />}
+              />
+
+              
+              
+              <Route path="/cadastrarExercicio" element={<FormExercicio />} />
+              <Route path="/editarExercicio/:id" element={<FormExercicio />} />
+              <Route
+                path="/deletarExercicio/:id"
+                element={<DeleteExercicio />}
+              />
+            </Route>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

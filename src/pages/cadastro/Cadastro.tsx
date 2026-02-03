@@ -5,9 +5,6 @@ import type Usuario from "../../models/Usuario"
 import { cadastrarUsuario } from "../../services/Service"
 import { ToastAlerta } from "../../utils/ToastAlerta"
 
-import { Navbar } from "../../components/navbar/Navbar"
-import Footer from "../../components/footer/Footer"
-
 import "../login/Login.css"
 import "./Cadastro.css"
 
@@ -19,7 +16,7 @@ function Cadastro() {
     nome: "",
     usuario: "",
     senha: "",
-    tipo: "",
+    tipo: "Aluno",
     altura: 0,
     peso: 0,
     IMC: 0,
@@ -60,11 +57,11 @@ function Cadastro() {
     try {
       setCarregando(true)
 
-      await cadastrarUsuario("/usuarios", usuario, () => {})
+      await cadastrarUsuario("/usuarios", usuario)
 
       ToastAlerta("Usuário cadastrado com sucesso!", "sucesso")
 
-      navigate("/usuariosmariana")
+      navigate("/login")
     } catch (error) {
       ToastAlerta("Erro ao cadastrar usuário", "erro")
     } finally {
@@ -74,7 +71,7 @@ function Cadastro() {
 
   return (
     <>
-      <Navbar />
+      
       <section className="login-hero">
         <div className="login-hero-content container">
           {/* LADO ESQUERDO */}
@@ -125,21 +122,6 @@ function Cadastro() {
                 required
               />
 
-              {/* SELECT TIPO */}
-              <select
-                name="tipo"
-                value={usuario.tipo}
-                onChange={atualizarEstado}
-                className="login-select"
-                required
-              >
-                <option value="" disabled>
-                  Selecione o tipo de usuário
-                </option>
-                <option value="aluno">Aluno</option>
-                <option value="professor">Professor</option>
-              </select>
-
               <input
                 type="number"
                 name="altura"
@@ -177,7 +159,7 @@ function Cadastro() {
         </div>
       </section>
 
-      <Footer />
+      
     </>
   )
 }
