@@ -19,8 +19,8 @@ function ListarGrupoMuscular() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("Você precisa estar logado"+token, "erro");
-      navigate("/login");
+      ToastAlerta("Você precisa estar logado", "erro");
+      navigate("/");
     }
   }, [token]);
 
@@ -50,7 +50,8 @@ function ListarGrupoMuscular() {
         <h1 className="text-4xl font-bold text-center mb-12 text-[#1E3A8A]">
           Grupos Musculares
         </h1>
-{isLoading && (
+
+        {isLoading && (
           <div className="flex justify-center w-full my-8">
             <SyncLoader color="#312e81" size={32} />
           </div>

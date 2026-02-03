@@ -29,6 +29,7 @@ import DeleteUsuario from "./components/usuario/deleteUsuario/DeleteUsuario";
 import "./index.css";
 import ListExercicio from "./components/exercicio/listexercicio/ListExercicio";
 import FormExercicio from "./components/exercicio/formexercicio/FormExercicio";
+import DeleteExercicio from "./components/exercicio/deleteexercicio/DeleteExercicio";
 
 function Home() {
   return (
@@ -83,7 +84,7 @@ function App() {
         <Route path="/exercicios" element={<ListExercicio />} />
         <Route path="/cadastrarExercicio" element={<FormExercicio />} />
         <Route path="/editarExercicio/:id" element={<FormExercicio />} />
-        <Route path="/deletarExercicio/:id" element={<FormExercicio />} />
+        <Route path="/deletarExercicio/:id" element={<DeleteExercicio />} />
       </Routes>
     </BrowserRouter>
      </AuthProvider>
