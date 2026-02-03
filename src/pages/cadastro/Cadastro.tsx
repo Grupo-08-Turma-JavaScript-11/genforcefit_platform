@@ -75,32 +75,21 @@ function Cadastro() {
   return (
     <>
       <Navbar />
-
       <section className="login-hero">
         <div className="login-hero-content container">
-
           {/* LADO ESQUERDO */}
           <div className="login-hero-left">
             <span className="login-badge">Transforme seu corpo</span>
-
-            <h1>
-              GEN<span>FORCE</span>FIT
-            </h1>
-
-            <div className="login-divider"></div>
-
             <h2>
               SUA JORNADA <br />
               <span>COMEÇA AQUI</span>
             </h2>
           </div>
-
           {/* LADO DIREITO */}
           <div className="login-hero-right">
             <form onSubmit={cadastrar} className="login-form">
-
+              <br />
               <h3>Criar Conta</h3>
-
               <input
                 type="text"
                 name="nome"
