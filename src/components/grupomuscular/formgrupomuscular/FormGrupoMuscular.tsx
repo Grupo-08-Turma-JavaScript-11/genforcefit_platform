@@ -1,4 +1,7 @@
 import { useEffect, useState, useContext, type FormEvent } from "react";
+
+
+
 import {  useNavigate, useParams } from "react-router-dom";
 
 import type GrupoMuscular from "../../../models/GrupoMuscular";
@@ -25,7 +28,7 @@ function FormGrupoMuscular() {
   useEffect(() => {
     if (token === "") {
       ToastAlerta("Voce precisa estar logado", "erro");
-      navigate("/login");
+      navigate("/");
     }
   }, [token]);
 
@@ -39,10 +42,11 @@ function FormGrupoMuscular() {
     setIsLoading(true);
     try {
       await buscar(`/grupoMuscular/${id}`, setGrupoMuscular, {
-        headers: {
-          Autorization: token,
-        },
-      });
+  headers: {
+    Authorization: token,
+  },
+});
+
     } catch (error: any) {
       if (error.response.status === 401) {
         handleLogout();
@@ -68,7 +72,7 @@ function FormGrupoMuscular() {
       if (id) {
         await atualizar("/grupoMuscular", grupoMuscular, setGrupoMuscular, {
           headers: {
-            Autorization: token,
+            Authorization: token,
           },
         });
 
@@ -76,7 +80,7 @@ function FormGrupoMuscular() {
       } else {
         await cadastrar("/grupoMuscular", grupoMuscular, setGrupoMuscular, {
           headers: {
-            Autorization: token,
+            Authorization: token,
           },
         });
         ToastAlerta("Grupo muscular cadastrado com sucesso!", "sucesso");
