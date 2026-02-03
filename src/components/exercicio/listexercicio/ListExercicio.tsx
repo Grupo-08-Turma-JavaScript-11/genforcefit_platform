@@ -17,6 +17,7 @@ function ListExercicio() {
   const { usuario, handleLogout } = useContext(AuthContext);
 
   const token = usuario.token;
+  const tipo = usuario.tipo;
 
   useEffect(() => {
     if (token === "") {
@@ -48,28 +49,49 @@ function ListExercicio() {
   return (
     <>
       {isLoading && (
-                <div className="flex justify-center w-full my-8">
-                    <SyncLoader
-                        color="#312e81"
-                        size={32}
-                    />
-                </div>
-            )}
+        <div className="flex justify-center w-full my-8">
+          <SyncLoader color="#312e81" size={32} />
+        </div>
+      )}
 
-            <div className="flex justify-center w-full my-4">
-                <div className="container flex flex-col">
-
-                    {(!isLoading && exercicios.length === 0) && (
-                            <span className="text-3xl text-center my-8">
-                                Nenhuma Postagem foi encontrada!
-                            </span>
-                    )}
+      <div className="flex justify-center w-full my-35">
+        <div className="container flex flex-col">
+          <h1 className="text-[36px] font-bold text-center text-[var(--green-soft)] my-8">
+            Exercicios
+          </h1>
+          {!isLoading && exercicios.length === 0 && (
+            <span className="text-3xl text-center my-8">
+              Nenhum Exercicio foi encontrado!
+            </span>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
             {exercicios.map((exercicio) => (
               <CardExercicio key={exercicio.id} exercicio={exercicio} />
             ))}
           </div>
+          {tipo === "Professor" && (
+            <div className="flex justify-center mb-10">
+              <button
+                onClick={() => navigate("/cadastrarexercicio")}
+                className="
+                    px-8 py-3
+                    w-[300px]
+                    items-center 
+                    justify
+                    text-center
+                    rounded-full
+                    bg-[#A7FF83]
+                    text-black
+                    font-semibold
+                    hover:bg-[#39FF14]
+                    transition-all
+                  "
+              >
+                Cadastrar Exercicio
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </>

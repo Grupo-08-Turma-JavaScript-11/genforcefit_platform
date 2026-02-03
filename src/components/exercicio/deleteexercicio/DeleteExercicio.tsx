@@ -1,98 +1,132 @@
-import { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import type Exercicio from "../../../models/Exercicio";
-import { buscar, deletar } from "../../../services/Service";
-import { ToastAlerta } from "../../../utils/ToastAlerta";
-import { AuthContext } from "../../../context/AuthContext";
+import { useContext, useEffect, useState } from "react"
+import { useNavigate, useParams } from "react-router-dom"
+import type Exercicio from "../../../models/Exercicio"
+import { buscar, deletar } from "../../../services/Service"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
+import { AuthContext } from "../../../context/AuthContext"
 
 function DeleteExercicio() {
+  const navigate = useNavigate()
+  const { id } = useParams<{ id: string }>()
 
-    const navigate = useNavigate()
-    const { id } = useParams<{ id: string }>()
+  const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
 
-    const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
+  const { usuario, handleLogout } = useContext(AuthContext)
+  const token = usuario.token
 
 
-    const { usuario, handleLogout } = useContext(AuthContext)
-    const token = usuario.token
-
-    async function buscarPorId(id: string) {
-        try{
-            await buscar(`/exercicio/${id}`, setExercicio, {
-                headers: {Authorization: token}
-            })
-        } catch {
-            ToastAlerta("Exercicio não encontrado", "erro")
-        }
+  async function buscarPorId(id: string) {
+    try {
+      await buscar(`/exercicio/${id}`, setExercicio, {
+        headers: { Authorization: token },
+      })
+    } catch {
+      ToastAlerta("Exercício não encontrado", "erro")
+      navigate("/exercicios")
     }
+  }
 
-    useEffect(() => {
-        if (token === ''){
-            alert("Voce precisa estar logado!")
-            navigate('/login')
-        }
-    }, [token])
-
-    useEffect(() => {
-        if(id) buscarPorId(id)
-    }, [id])
-
-    async function deletarExercicio() {
-        try{
-            await deletar(`/exercicio/${id}`, {
-                headers: {Authorization: token}
-            })
-            ToastAlerta("Exercicio deletado com sucesso", "sucesso")
-            retornar()
-        } catch (error:any){
-            if (error.toString().includes('401')){
-                handleLogout()}
-            else{    
-                ToastAlerta(" Erro ao deletar exercicio", "erro")
-                retornar()
-            }
-        }
+  useEffect(() => {
+    if (token === "") {
+      ToastAlerta("Você precisa estar logado", "erro")
+      navigate("/login")
     }
+  }, [token])
 
-    function retornar() {
-    navigate("/exercicios");
+  useEffect(() => {
+    if (id) buscarPorId(id)
+  }, [id])
+
+  async function deletarExercicio() {
+    try {
+      await deletar(`/exercicio/${id}`, {
+        headers: { Authorization: token },
+      })
+      ToastAlerta("Exercício deletado com sucesso", "sucesso")
+      navigate("/exercicios")
+    } catch (error: any) {
+      if (error.toString().includes("401")) {
+        handleLogout()
+      } else {
+        ToastAlerta("Erro ao deletar exercício", "erro")
+      }
+    }
   }
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center px-6">
-        <div className="absolute inset-0 bg-[#0D0D0D]">
-            <div className="relative z-10 w-full max-w-xl bg-slate-300
-                backdrop-blur-md border border-white/40 rounded-3xl shadow-2xl
-                p-8 flex flex-col gap-6">
-                <h1 className="text-4xl font-extrabold text-center 
-                    text-[#0D0D0D]">
-                Deletar Exercicio
-                </h1>
-                <p className="text-center text-[#1E3A8A]/80 font-medium">
-                    Você tem certeza que deseja deletar este exercicio?
-                </p>
-                <div className="flex">
-                    {exercicio.id}
-                </div> 
-                <div className="flex gap-4 mt-4">
+    <div className="min-h-screen flex items-center justify-center bg-[var(--fit-black)] px-6">
+      
+      {/* Card de confirmação */}
+      <div
+        className="
+          w-full max-w-md
+          bg-black/60 backdrop-blur-md
+          rounded-[20px]
+          border
+          p-6
+          flex flex-col gap-6
+          shadow-[0_8px_30px_rgba(0,0,0,0.5)]
+        "
+      >
+        {/* Título */}
+        <h1 className="text-3xl font-bold text-center text-red-500">
+          Deletar Exercício
+        </h1>
 
-                    <button onClick={deletarExercicio}
-                        className="flex-1 rounded-full bg-[#22C55E] py-3 
-                            text-whitefont-black text-lg shadow-lg hover:bg-[#16a34a]
-                            transition-all hover:-translate-y-1 active:scale-95">
-                        Sim, deletar
-                    </button>
+        <p className="text-center text-slate-300">
+          Você tem certeza que deseja deletar este exercício?
+        </p>
 
-                    <button
-                        onClick={retornar}
-                        className="flex-1 rounded-full bg-[#1E3A8A] py-3 text-white font-black 
-                            text-lg shadow-lg hover:bg-[#162c63] transition-all 
-                            hover:-translate-y-1 active:scale-95">
-                        Cancelar
-                    </button>
-                </div>    
-            </div>
+        {/* Nome */}
+        <h2 className="text-xl font-bold text-center uppercase text-[var(--green-soft)]">
+          {exercicio.nome}
+        </h2>
+
+        {/* Imagem do equipamento */}
+        {exercicio.equipamento && (
+          <img
+            src={exercicio.equipamento}
+            alt={`Equipamento do exercício ${exercicio.nome}`}
+            className="
+              w-56 h-36
+              object-cover
+              rounded-2xl
+              mx-auto
+              shadow-md
+            "
+            onError={(e) => (e.currentTarget.style.display = "none")}
+          />
+        )}
+
+        {/* Ações */}
+        <div className="flex justify-center gap-6 mt-4">
+          <button
+            onClick={deletarExercicio}
+            className="
+              px-8 py-3 w-[150px]
+              rounded-full
+              bg-red-600 text-white font-semibold
+              hover:bg-red-700
+              transition-all
+            "
+          >
+            Sim, Deletar
+          </button>
+
+          <button
+            onClick={() => navigate("/exercicios")}
+            className="
+              px-8 py-3 w-[150px]
+              rounded-full
+              bg-[#606b66] text-black font-semibold
+              hover:bg-[#D99A41]
+              transition-all
+            "
+          >
+            Cancelar
+          </button>
         </div>
+      </div>
     </div>
   )
 }

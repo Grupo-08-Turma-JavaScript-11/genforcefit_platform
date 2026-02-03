@@ -8,6 +8,7 @@ import type GrupoMuscular from "../../../models/GrupoMuscular"
 import { buscar, cadastrar, atualizar } from "../../../services/Service"
 import { AuthContext } from "../../../context/AuthContext"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
+import"../formgrupomuscular/FormGrupoMuscular.css"
 
 function FormGrupoMuscular() {
   const navigate = useNavigate();
@@ -97,15 +98,10 @@ function FormGrupoMuscular() {
     }
   }
 
-  return (
-    <section className="w-full min-h-screen flex items-center justify-center bg-[#F6F8FA]">
-      <form
-        onSubmit={salvar}
-        className="bg-white p-10 rounded-2xl shadow-lg w-full max-w-lg"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center text-[#1E3A8A]">
-          {id ? "Editar Grupo Muscular" : "Cadastrar Grupo Muscular"}
-        </h2>
+   return (
+    <section className="form-container">
+      <form className="form-card" onSubmit={salvar}>
+        <h2>Cadastro Grupo Muscular</h2>
 
         <input
           type="text"
@@ -113,7 +109,6 @@ function FormGrupoMuscular() {
           placeholder="Nome do grupo muscular"
           value={grupoMuscular.nome}
           onChange={atualizarEstado}
-          className="w-full p-3 mb-4 border rounded-lg"
           required
         />
 
@@ -123,21 +118,10 @@ function FormGrupoMuscular() {
           placeholder="Descrição"
           value={grupoMuscular.descricao}
           onChange={atualizarEstado}
-          className="w-full p-3 mb-6 border rounded-lg"
           required
         />
 
-        <button
-          type="submit"
-          disabled={isLoading}
-          className="
-            w-full py-3 rounded-full
-            bg-[#1E3A8A] text-white font-semibold
-            hover:bg-[#162c63]
-            transition-all
-            disabled:opacity-50 disabled:cursor-not-allowed
-          "
-        >
+        <button className="btn-primary" disabled={isLoading}>
           {isLoading ? "Salvando..." : "Salvar"}
         </button>
       </form>

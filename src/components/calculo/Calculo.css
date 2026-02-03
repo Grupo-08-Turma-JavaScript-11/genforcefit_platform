@@ -27,7 +27,7 @@
   display: none;
 }
 
-.calculo-form * {
+.calculo-form {
   position: relative;
   z-index: 2;
 }
@@ -39,7 +39,6 @@
   font-size: 1.1rem;
   text-transform: none !important;
 }
-
 .result-input input {
   background: rgba(57, 255, 20, 0.05);
   border-color: rgba(57, 255, 20, 0.3);
@@ -126,7 +125,7 @@
   .calculo-form .input-group {
     flex-direction: column;
   }
-  
+
   .calculo-form .btn-main {
     width: 100%;
     padding: 16px 0;
