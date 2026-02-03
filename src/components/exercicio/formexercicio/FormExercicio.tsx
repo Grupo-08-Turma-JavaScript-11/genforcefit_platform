@@ -87,23 +87,51 @@ function FormExercicio() {
     }, [token])
 
     useEffect(() => {
-        buscarGrupoMuscular()
-        buscarUsuarioPorId(usuario.id.toString());
-        if (id !== undefined){
-            buscarExercicioPorId(id)
-        }
-        setExercicio({
-            ...exercicio,
-            usuario: usuarioCadastro
-        });
-    }, [gruposMusculares.length])
+    buscarGrupoMuscular()
+    buscarUsuarioPorId(usuario.id.toString())
+
+    if (id) {
+        buscarExercicioPorId(id)
+    }
+}, [])
+
+
+    //useEffect(() => {
+    //    buscarGrupoMuscular()
+    //    buscarUsuarioPorId(usuario.id.toString());
+    //    if (id !== undefined){
+   //         buscarExercicioPorId(id)
+   //     }
+    //    setExercicio({
+    //        ...exercicio,
+    //        usuario: usuarioCadastro
+   //     });
+   // }, [gruposMusculares.length])
+
+    //useEffect(() => {
+    //    setExercicio({
+   //         ...exercicio,
+   //         grupoMuscular: grupoMuscular,
+   //     })
+  //  }, [grupoMuscular])
 
     useEffect(() => {
-        setExercicio({
-            ...exercicio,
-            grupoMuscular: grupoMuscular,
-        })
+    if (grupoMuscular.id) {
+        setExercicio(prev => ({
+        ...prev,
+        grupoMuscular: grupoMuscular
+        }))
+    }
     }, [grupoMuscular])
+
+    useEffect(() => {
+        if (usuarioCadastro.id) {
+            setExercicio(prev => ({
+            ...prev,
+            usuario: usuarioCadastro
+            }))
+        }
+    }, [usuarioCadastro])
 
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
@@ -120,6 +148,8 @@ function FormExercicio() {
 
     async function gerarNovoExercicio(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
+        setIsLoading(true)
+
 
         if(id){
             try{
@@ -156,19 +186,21 @@ function FormExercicio() {
 
     return (
         <>
-            <div className="container flex items-center justify-center mx-auto bg-[#0D0D0D]"> 
-                <h1 className="text-6x1 text-center my-8 text-white">
-                    {id === undefined ? "Cadastrar Exercicio" : "Editar Exercicio"}
-                </h1>
-                <form className="w-1/2 flex flex-col gap-4" 
+            <section className="bg-[url('/img/fundo1.jpg')] ">
+            <div className="container flex items-center justify-center mx-auto"> 
+
+                <form className="w-1/2 flex flex-col gap-4 m-28 py-8 px-8 bg-[#000000] rounded" 
                     onSubmit={gerarNovoExercicio}>
+                    <h1 className="text-[36px] text-center text-[var(--green-soft)]">
+                    {id === undefined ? "Cadastrar Exercicio" : "Editar Exercicio"}
+                    </h1>
                     <div className="flex flex-col gap-2">
                         <label htmlFor="nome">Nome</label>
                         <input 
                             type="text"
                             name="nome"
                             placeholder="Nome do Exercicio"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2"
                             value={exercicio.nome}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
@@ -179,7 +211,7 @@ function FormExercicio() {
                             type="text"
                             name="descricao"
                             placeholder="Descrição do Exercicio"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2"
                             value={exercicio.descricao}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
@@ -190,7 +222,7 @@ function FormExercicio() {
                             type="text"
                             name="repeticoes"
                             placeholder="Repetições do Exercicio"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={exercicio.repeticoes}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
@@ -201,7 +233,7 @@ function FormExercicio() {
                             type="text"
                             name="duracao"
                             placeholder="Duração media do Exercicio"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={exercicio.duracao}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
@@ -212,7 +244,7 @@ function FormExercicio() {
                             type="text"
                             name="video"
                             placeholder="Link do video"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={exercicio.video}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
@@ -222,27 +254,76 @@ function FormExercicio() {
                         <input 
                             type="text"
                             name="equipamento"
-                            placeholder="Foto do equipamento"
-                            className="border-2 border-slate-700 rounded p-2 bg-slate-300"
+                            placeholder="Link da foto do equipamento"
+                            className="border-2 border-slate-700 rounded p-2 "
                             value={exercicio.equipamento}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         /> 
                     </div>
                     <div className="flex flex-col gap-2">
                         <p>Grupo Muscular</p>
-                        <select name="grupomuscular" id="grupomuscular"
-                                className="border-2 border-slate-700 rounded p-2 bg-slate-300" 
-                                onChange={(e) => buscarGrupoMuscularPorId(e.currentTarget.value)}>
-                            <option value="" selected disabled>Selecione o grupo muscular</option>
+                        <select
+                            className="border-2 border-slate-700 rounded p-2 "
+                            value={grupoMuscular.id ?? ""}
+                            onChange={(e) => buscarGrupoMuscularPorId(e.currentTarget.value)}>
+                            <option value="" disabled>Selecione o grupo muscular</option>
                             {gruposMusculares.map((grupoMuscular) => (
                                         <option value={grupoMuscular.id}> {grupoMuscular.nome}</option>
                                     ))}
                         </select>
                     </div>
+                    <div className="flex flex-col gap-2">
+                        <p>Usuario</p>
+                        <select
+                            name="usuario"
+                            id="usuario"
+                            className="border-2 border-slate-700 rounded p-2 "
+                            value={usuario?.id ?? ""}
+                            onChange={(e) => buscarUsuarioPorId(e.currentTarget.value)}
+                            >
+                            <option value="" disabled>
+                                Selecione o usuário
+                            </option>
+
+                            {usuario && (
+                                <option value={usuario.id}>
+                                {usuario.nome}
+                                </option>
+                            )}
+                        </select>
+                    </div>
+                    <div className="flex m-8 gap-8 justify-center">
+                    <button 
+                        type="button"
+                        onClick={retornar}
+                        className="px-8 py-3
+                            w-[150px]
+                            items-center 
+                            justify-center
+                            text-center
+                            rounded-full
+                            bg-[#606b66]
+                            text-black
+                            font-semibold
+                            hover:bg-[#D99A41]
+                            transition-all
+                        "    
+                    >Cancelar</button>
+
                     <button 
                         type="submit"
-                        className="rounded disabled:bg-slate-200  bg:[#6FD904] shadow-[#6FD904]/50 hover:[#1B7302] text-[#0D0D0D] font-bold w-1/2 mx-auto py-2 flex justify-center"
-                        
+                        className="px-8 py-3
+                            w-[150px]
+                            items-center 
+                            justify-center
+                            text-center
+                            rounded-full
+                            bg-[#A7FF83]
+                            text-black
+                            font-semibold
+                            hover:bg-[#39FF14]
+                            transition-all
+                        "    
                     >
                         {isLoading ?
                             <ClipLoader
@@ -252,8 +333,10 @@ function FormExercicio() {
                             <span>{ id === undefined ? "Cadastrar" : "Atualizar" }</span>    
                         }
                     </button>
+                    </div>
                 </form>
             </div>
+            </section>
         </>
     )
 }

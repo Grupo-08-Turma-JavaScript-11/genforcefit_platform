@@ -1,7 +1,7 @@
 /* cadastro */
 
 .login-hero {
-  width: 100%;
+  width: 100vw;
   min-height: 100svh; /* 🔥 corrige bug de 100vh no mobile */
   position: relative;
   background:
@@ -27,13 +27,16 @@
   max-width: 1200px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 100px;
+  justify-content: center;
+  gap: 4rem;
 }
 
 /* =========================
    LADO ESQUERDO
 ========================= */
+
+
+
 
 .login-hero-left {
   max-width: 620px;
@@ -108,7 +111,7 @@
 .login-form input {
   height: 46px;
   padding: 0 14px;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   color: #fff;
 }
 

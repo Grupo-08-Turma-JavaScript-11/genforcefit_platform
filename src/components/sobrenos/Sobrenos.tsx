@@ -9,7 +9,7 @@ export const Sobrenos = () => {
   ];
 
   return (
-    <section className="py-[100px] bg-[var(--fit-black)]" id="sobrenos">
+    <section className="py-[100px] bg-[url('/img/fundo1.jpg')]" id="sobrenos">
       <div className="container">
        <h2 className="text-[var(--green-neon)] text-center text-4xl font-bold my-6">Nossa Equipe</h2>
         <div className="flex justify-center flex-wrap gap-[25px] mt-[40px]">
