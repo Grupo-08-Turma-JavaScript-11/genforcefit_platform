@@ -29,7 +29,7 @@ function Login() {
 
   useEffect(() => {
     if (usuario.token) {
-      navigate("/grupoMuscular")
+      navigate("/cadastrarExercicio")
     }
   }, [usuario])
 
