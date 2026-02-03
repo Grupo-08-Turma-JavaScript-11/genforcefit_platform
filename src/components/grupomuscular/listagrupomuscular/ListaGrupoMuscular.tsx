@@ -6,6 +6,7 @@ import { AuthContext } from "../../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { SyncLoader } from "react-spinners";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import "../listagrupomuscular/ListaGrupoMuscular.css"
 
 function ListarGrupoMuscular() {
   const navigate = useNavigate();
@@ -51,9 +52,9 @@ function ListarGrupoMuscular() {
    <section className="w-full min-h-screen bg-[#ffffff0a] flex items-center justify-center">
   <div className="w-full max-w-6xl px-8">
 
-    <h1 className="text-4xl font-bold text-center mb-6 text-[#ffffffd9]">
-      Grupos Musculares
-    </h1>
+  <h1 className="text-4xl font-bold text-center mb-6 titulo-neon">
+  Grupos Musculares
+</h1>
 
    
 
