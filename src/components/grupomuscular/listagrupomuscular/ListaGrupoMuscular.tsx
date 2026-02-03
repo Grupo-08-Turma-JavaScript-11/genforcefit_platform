@@ -56,7 +56,8 @@ function ListarGrupoMuscular() {
     </h1>
 
     {/* BOTÃO — agora no lugar certo */}
-    <div className="flex justify-center mb-10">
+  
+      <div className="flex justify-center mt-8 mb-12">
       <button
         onClick={() => navigate("/cadastrargrupomuscular")}
         className="
