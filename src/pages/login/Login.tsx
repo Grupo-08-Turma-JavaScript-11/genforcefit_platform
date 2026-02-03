@@ -78,32 +78,24 @@ function Login() {
                 onChange={atualizarEstado}
                 required
               />
-
               <button className="btn-main" disabled={isLoading}>
                 {isLoading ? "Aguarde..." : "Entrar"}
               </button>
-
               <div className="login-alt-action">
                 <p>Ainda não tem conta?</p>
-                <br />
                 <button
                   type="button"
                   className="login-link-btn"
                   onClick={() => navigate("/#cadastro")}
                 >
-                
                   Criar conta
                 </button>
               </div>
-
             </form>
           </div>
-
         </div>
       </section>
-
     </>
   )
 }
-
 export default Login

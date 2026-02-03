@@ -1,5 +1,4 @@
 /* Select e editar */
-
 .login-select {
   height: 46px;
   padding: 0 40px 0 14px; /* espaço pra seta */
@@ -7,11 +6,9 @@
   border: 1px solid rgba(255,255,255,0.18);
   color: rgba(255,255,255,0.85);
   font-size: 0.9rem;
-
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-
   cursor: pointer;
   position: relative;
 
@@ -57,6 +54,7 @@
   text-align: center;
   margin-top: -5px;   /* 🔼 sobe o botão */
 }
+
 
 /*MOBILE*/
 

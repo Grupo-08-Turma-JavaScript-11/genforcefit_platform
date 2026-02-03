@@ -85,15 +85,8 @@
 
 .login-hero-right {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 400px;
-  background: transparent;
-  backdrop-filter: blur(14px);
   padding: 36px 40px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 25px 70px rgba(0,0,0,0.7);
 }
 
 /* =========================
