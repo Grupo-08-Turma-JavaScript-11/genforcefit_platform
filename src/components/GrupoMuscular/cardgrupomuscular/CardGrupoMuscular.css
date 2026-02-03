@@ -28,7 +28,7 @@
 }
 
 .card-content h3 {
-  color: #ffffff;
+  color:  #22c55e;
   font-size: 18px;
   font-weight: 700;
 }
@@ -74,4 +74,10 @@
 .card-actions .delete:hover {
   background-color: #dc2626;
   transform: translateY(-1px);
+}
+.grupos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 420px); /* tamanho fixo */
+  justify-content: center;
+  gap: 32px;
 }

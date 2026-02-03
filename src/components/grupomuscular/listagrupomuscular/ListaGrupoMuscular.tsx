@@ -55,7 +55,27 @@ function ListarGrupoMuscular() {
       Grupos Musculares
     </h1>
 
-    {/* BOTÃO — agora no lugar certo */}
+   
+
+    {isLoading && (
+      <div className="flex justify-center w-full my-8">
+        <SyncLoader color="#606b66" size={32} />
+      </div>
+    )}
+
+    {!isLoading && grupos.length === 0 && (
+      <span className="block text-3xl text-center my-8">
+        Nenhum Grupo muscular foi encontrado!
+      </span>
+    )}
+
+    <div className="grupos-grid">
+      
+      {grupos.map((grupo) => (
+        <CardGrupoMuscular key={grupo.id} grupoMuscular={grupo} />
+      ))}
+    </div>
+ {/* BOTÃO — agora no lugar certo */}
   
       <div className="flex justify-center mt-8 mb-12">
       <button
@@ -70,28 +90,9 @@ function ListarGrupoMuscular() {
           transition-all
         "
       >
-        Cadastro Grupo Muscular
+        Cadastro 
       </button>
     </div>
-
-    {isLoading && (
-      <div className="flex justify-center w-full my-8">
-        <SyncLoader color="#606b66" size={32} />
-      </div>
-    )}
-
-    {!isLoading && grupos.length === 0 && (
-      <span className="block text-3xl text-center my-8">
-        Nenhum Grupo muscular foi encontrado!
-      </span>
-    )}
-
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
-      {grupos.map((grupo) => (
-        <CardGrupoMuscular key={grupo.id} grupoMuscular={grupo} />
-      ))}
-    </div>
-
   </div>
     </section>
   );
