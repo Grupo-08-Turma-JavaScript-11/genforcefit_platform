@@ -1,16 +1,3 @@
-.section-sobrenos {
-  padding: 100px 0;
-  background-color: var(--fit-black);
-}
-
-.instrutores-grid {
-  display: flex;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: wrap;
-  margin-top: 40px;
-}
-
 .instrutor-card {
   background-color: var(--fit-gray);
   width: 260px;
@@ -40,20 +27,6 @@
 
 .instrutor-info {
   padding: 20px;
-}
-
-.instrutor-nome {
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #fff;
-  text-transform: none;
-}
-
-.instrutor-cargo {
-  color: var(--green-neon);
-  font-size: 0.9rem;
-  text-transform: none;
-  margin-top: 5px;
 }
 
 /* mobile */
