@@ -12,7 +12,6 @@ function DeleteExercicio() {
 
     const [exercicio, setExercicio] = useState<Exercicio>({} as Exercicio)
 
-    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
