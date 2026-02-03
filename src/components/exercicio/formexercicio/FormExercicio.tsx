@@ -20,18 +20,30 @@ function FormExercicio() {
     const [gruposMusculares, setGruposMusculares] = useState<GrupoMuscular[]>([])
     const [grupoMuscular, setGrupoMuscular] = useState<GrupoMuscular>({} as GrupoMuscular)
 
-    const [usuarioPagina, setUsuario] = useState<Usuario>({} as Usuario)
+    const [usuarioCadastro, setUsuarioCadastro] = useState<Usuario>({} as Usuario)
 
     const {usuario, handleLogout} = useContext(AuthContext)
     const token = usuario.token
 
     const {id} =  useParams<{id: string}>()
 
+    async function buscarExercicioPorId(id: string) {
+        try {
+            await buscar(`/exercicio/${id}`, setExercicio, {
+                headers: {Authorization: token}
+            })
+        }catch (error: any) {
+            if(error.toString().includes('401')){
+                handleLogout()
+            }
+        }
+        
+    }
 
     async function buscarGrupoMuscular() {
         try {
             await buscar('/grupoMuscular', setGruposMusculares, {
-                herders: {Authorization: token}
+                headers: {Authorization: token}
             })
         }catch (error: any) {
             if(error.toString().includes('401')){
@@ -43,23 +55,10 @@ function FormExercicio() {
 
     async function buscarUsuarioPorId(id: string) {
         try {
-            await buscar(`/usuarios/${id}`, setUsuario, {
-                herders: {Authorization: token}
+            await buscar(`/usuarios/${id}`, setUsuarioCadastro, {
+                headers: {Authorization: token}
             })
-        }catch (error: any) {
-            if(error.toString().includes('401')){
-                handleLogout()
-            }
-        }
-        
-    }
-
-
-    async function buscarExercicioPorId(id: string) {
-        try {
-            await buscar(`/exercicio/${id}`, setExercicio, {
-                herders: {Authorization: token}
-            })
+            console.log(usuarioCadastro)    
         }catch (error: any) {
             if(error.toString().includes('401')){
                 handleLogout()
@@ -71,7 +70,7 @@ function FormExercicio() {
     async function buscarGrupoMuscularPorId(id: string) {
         try {
             await buscar(`/grupoMuscular/${id}`, setGrupoMuscular, {
-                herders: {Authorization: token}
+                headers: {Authorization: token}
             })
         }catch (error: any) {
             if(error.toString().includes('401')){
@@ -90,10 +89,15 @@ function FormExercicio() {
 
     useEffect(() => {
         buscarGrupoMuscular()
+        buscarUsuarioPorId(usuario.id.toString());
         if (id !== undefined){
             buscarGrupoMuscularPorId(id)
         }
-    }, [grupoMuscular])
+        setExercicio({
+            ...exercicio,
+            usuario: usuarioCadastro
+        });
+    }, [gruposMusculares.length])
 
     useEffect(() => {
         setExercicio({
@@ -106,8 +110,7 @@ function FormExercicio() {
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
         setExercicio({
             ...exercicio,
-            [e.target.name]: e.target.value,
-            usuario: usuarioPagina
+            [e.target.name]: e.target.value
         })
     }
 
@@ -121,7 +124,7 @@ function FormExercicio() {
 
         if(id !== undefined){
             try{
-                await atualizar(`/exercicio/:${id}`, exercicio, setExercicio, {
+                await atualizar(`/exercicio/${id}`, exercicio, setExercicio, {
                     headers: { Authorization: token }
                 })
                 ToastAlerta("O Exercicio foi atualizado com sucesso!", "sucesso")
@@ -150,7 +153,7 @@ function FormExercicio() {
         retornar()
     }
 
-    const carregandoGrupoMuscular = grupoMuscular.nome === ''
+    //const carregandoGrupoMuscular = grupoMuscular.nome === ''
 
     return (
         <>
@@ -161,7 +164,7 @@ function FormExercicio() {
                 <form className="w-1/2 flex flex-col gap-4" 
                     onSubmit={gerarNovoExercicio}>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="descricao">Nome</label>
+                        <label htmlFor="nome">Nome</label>
                         <input 
                             type="text"
                             name="nome"
@@ -183,10 +186,10 @@ function FormExercicio() {
                         />
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="descricao">Repetição</label>
+                        <label htmlFor="repeticoes">Repetição</label>
                         <input 
                             type="text"
-                            name="Repeticao"
+                            name="repeticoes"
                             placeholder="Repetições do Exercicio"
                             className="border-2 border-slate-700 rounded p-2 bg-slate-300"
                             value={exercicio.repeticoes}
@@ -194,10 +197,10 @@ function FormExercicio() {
                         /> 
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="descricao">Duração</label>
+                        <label htmlFor="duracao">Duração</label>
                         <input 
                             type="text"
-                            name="duraçao"
+                            name="duracao"
                             placeholder="Duração media do Exercicio"
                             className="border-2 border-slate-700 rounded p-2 bg-slate-300"
                             value={exercicio.duracao}
@@ -205,7 +208,7 @@ function FormExercicio() {
                         /> 
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="descricao">Video</label>
+                        <label htmlFor="video">Video</label>
                         <input 
                             type="text"
                             name="video"
@@ -216,7 +219,7 @@ function FormExercicio() {
                         /> 
                     </div>
                     <div className="flex flex-col gap-2">
-                        <label htmlFor="descricao">Equipamento</label>
+                        <label htmlFor="equipamento">Equipamento</label>
                         <input 
                             type="text"
                             name="equipamento"
@@ -240,7 +243,7 @@ function FormExercicio() {
                     <button 
                         type="submit"
                         className="rounded disabled:bg-slate-200  bg:[#6FD904] shadow-[#6FD904]/50 hover:[#1B7302] text-[#0D0D0D] font-bold w-1/2 mx-auto py-2 flex justify-center"
-                        disabled={carregandoGrupoMuscular}
+                        
                     >
                         {isLoading ?
                             <ClipLoader
