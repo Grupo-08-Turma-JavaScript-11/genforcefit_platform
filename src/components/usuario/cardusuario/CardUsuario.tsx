@@ -46,11 +46,11 @@ const CardUsuario: React.FC<CardUsuarioProps> = ({ usuario }) => {
             fontSize: "0.75rem",
             fontWeight: 700,
             background:
-              usuario.tipo === "professor"
+              usuario.tipo === "Professor"
                 ? "#39FF14"
                 : "#1f1f1f",
             color:
-              usuario.tipo === "professor"
+              usuario.tipo === "Professor"
                 ? "#000"
                 : "#fff"
           }}
