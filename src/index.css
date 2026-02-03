@@ -14,11 +14,7 @@
   --fit-petrol-blue: #0F3D4C;
 }
 
-
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
