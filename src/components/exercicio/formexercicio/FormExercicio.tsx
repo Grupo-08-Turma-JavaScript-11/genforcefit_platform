@@ -156,7 +156,7 @@ function FormExercicio() {
 
     return (
         <>
-            <div className="container flex flex items-center justify-center mx-auto bg-[#0D0D0D]"> 
+            <div className="container flex items-center justify-center mx-auto bg-[#0D0D0D]"> 
                 <h1 className="text-6x1 text-center my-8 text-white">
                     {id === undefined ? "Cadastrar Exercicio" : "Editar Exercicio"}
                 </h1>
