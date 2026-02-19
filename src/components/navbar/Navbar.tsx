@@ -136,6 +136,18 @@ export const Navbar = () => {
               </>
             )}
             <li>
+    <Link 
+    to="/fichas" 
+    className="text-white no-underline font-bold text-[0.9rem]
+      whitespace-nowrap normal-case
+      transition duration-300 ease-out
+      hover:text-[var(--green-soft)]
+      hover:shadow-[0_0_2px_rgba(0,0,0,0.4)]"
+  >
+    Fichas
+  </Link>
+</li>
+            <li>
               <button onClick={handleLogout} className="bg-transparent text-[#D99A41] font-bold
                   border-2 border-[#D99A41]
                   px-[18px] py-[6px]

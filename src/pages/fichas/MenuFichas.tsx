@@ -1,57 +1,64 @@
-import { Link } from "react-router-dom";
+import "./MenuFichas.css";
+import { useNavigate } from "react-router-dom";
 
 function MenuFichas() {
+
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-6">
+    <div className="fichas-container">
+      <div className="fichas-content">
 
-      <h1 className="text-3xl font-bold mb-4">
-        Minhas Fichas
-      </h1>
+        <h1 className="titulo">Minhas Fichas</h1>
 
-      <button className="bg-green-500 hover:bg-green-600 text-black font-semibold px-4 py-2 rounded mb-6">
-        + Criar Novo Treino
-      </button>
+        <button 
+          className="btn-criar"
+          onClick={() => navigate("/criar-treino")}
+        >
+          + Criar Novo Treino
+        </button>
 
-      <h2 className="text-xl font-semibold mb-3">
-        Meus Treinos
-      </h2>
+        <h2 className="subtitulo">Meus Treinos</h2>
 
-      <div className="grid md:grid-cols-2 gap-4">
+        <div className="treinos-grid">
+          <div className="card">
+            <h3>Treino A</h3>
+            <p>Nível: Intermediário</p>
+            <p>8 exercícios</p>
 
-        <div className="bg-gray-800 p-4 rounded shadow">
-          <h3 className="text-lg font-bold">Treino A</h3>
-          <p>Nível: Intermediário</p>
-          <p>8 exercícios</p>
+            <div className="acoes">
+              <button 
+                className="btn-ver"
+                onClick={() => navigate("/treino/1")}
+              >
+                Ver
+              </button>
 
-          <div className="flex gap-2 mt-3">
-            <button className="bg-blue-500 px-3 py-1 rounded">
-              Ver
-            </button>
-            <button className="bg-yellow-500 px-3 py-1 rounded text-black">
-              Editar
-            </button>
+              <button 
+                className="btn-editar"
+                onClick={() => navigate("/editar-treino/1")}
+              >
+                Editar
+              </button>
+            </div>
           </div>
         </div>
 
+        <h2 className="subtitulo">Treinos Prontos</h2>
+
+        <div className="card">
+          <h3>Corpo Inteiro - Iniciante</h3>
+          <p className="badge">Pré-definido</p>
+
+          <button 
+            className="btn-usar"
+            onClick={() => navigate("/criar-treino")}
+          >
+            Usar Treino
+          </button>
+        </div>
+
       </div>
-
-      <h2 className="text-xl font-semibold mt-8 mb-3">
-        Treinos Prontos
-      </h2>
-
-      <div className="bg-gray-800 p-4 rounded shadow">
-        <h3 className="text-lg font-bold">
-          Corpo Inteiro - Iniciante
-        </h3>
-        <p className="text-sm text-green-400">
-          Pré-definido
-        </p>
-
-        <button className="bg-purple-500 px-3 py-1 rounded mt-3">
-          Usar Treino
-        </button>
-      </div>
-
     </div>
   );
 }

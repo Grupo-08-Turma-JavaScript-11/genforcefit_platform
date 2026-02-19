@@ -28,6 +28,10 @@ import { Navbar } from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 
 import MenuFichas from "./pages/fichas/MenuFichas";
+import CriarTreino from "./pages/fichas/criarTreino/CriarTreino";
+import DetalheTreino from "./pages/fichas/detalheTreino/DetalheTreino";
+import EditarTreino from "./pages/fichas/editarTreino/EditarTreino";
+
 
 function App() {
   useEffect(() => {
@@ -77,9 +81,13 @@ function App() {
               <Route
                 path="/deletarExercicio/:id"
                 element={<DeleteExercicio />}
-
-              />
+                />
               <Route path="/fichas" element={<MenuFichas />} />
+              <Route path="/criar-treino" element={<CriarTreino />} />
+              <Route path="/treino/:id" element={<DetalheTreino />} />
+              <Route path="/editar-treino/:id" element={<EditarTreino />} 
+              
+              />
             </Route>
           </Route>
         </Routes>

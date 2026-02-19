@@ -37,8 +37,8 @@
 
 /* 🔥 TÍTULO NEON */
 .titulo-neon {
-  color: #2efc79;
+  color: #62ee05;
   text-shadow:
-    0 0 6px rgba(34, 197, 94, 0.6),
-    0 0 12px rgba(34, 197, 94, 0.4);
+    0 0 6px rgba(60, 240, 5, 0.959),
+    0 0 12px rgba(140, 197, 34, 0.4);
 }

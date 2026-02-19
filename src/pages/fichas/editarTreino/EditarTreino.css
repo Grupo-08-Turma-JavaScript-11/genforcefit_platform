@@ -1,0 +1,65 @@
+.pagina-container {
+  min-height: 100vh;
+  background: linear-gradient(145deg, #0f0f0f, #1a1a1a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.card-editar {
+  background-color: #111;
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+}
+
+.form-editar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-editar input,
+.form-editar select {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1f1f1f;
+  color: white;
+}
+
+.form-editar input:focus,
+.form-editar select:focus {
+  outline: 2px solid #39ff14;
+}
+
+.acoes-editar {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-salvar {
+  background-color: #39ff14;
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-salvar:hover {
+  transform: scale(1.05);
+}
+
+.btn-cancelar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}

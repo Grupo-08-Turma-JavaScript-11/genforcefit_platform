@@ -1,0 +1,32 @@
+.lista-exercicios {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.lista-exercicios li {
+  background-color: #1f1f1f;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.acoes-detalhe {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.btn-editar {
+  background-color: #39ff14;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-editar:hover {
+  transform: scale(1.05);
+}
