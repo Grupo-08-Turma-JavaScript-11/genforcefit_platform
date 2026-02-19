@@ -27,6 +27,8 @@ import { Home } from "./pages/home/Home";
 import { Navbar } from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 
+import MenuFichas from "./pages/fichas/MenuFichas";
+
 function App() {
   useEffect(() => {
     AOS.init({
@@ -48,6 +50,7 @@ function App() {
 
           <Route element={<RequireAuth />}>
             <Route path="/exercicios" element={<ListExercicio />} />
+
 
               <Route element={<RequireRole allowed={["Professor"]} />}>
               <Route path="/usuarios" element={<ListUsuario />} />
@@ -74,7 +77,9 @@ function App() {
               <Route
                 path="/deletarExercicio/:id"
                 element={<DeleteExercicio />}
+
               />
+              <Route path="/fichas" element={<MenuFichas />} />
             </Route>
           </Route>
         </Routes>

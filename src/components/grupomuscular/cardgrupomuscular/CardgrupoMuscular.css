@@ -28,7 +28,7 @@
 }
 
 .card-content h3 {
-  color:  #22c55e;
+  color:  #eeeeee;
   font-size: 18px;
   font-weight: 700;
 }
@@ -48,7 +48,7 @@
 .card-actions .edit {
   padding: 8px 20px;
   border-radius: 999px;
-  background-color: #22c55e;
+  background-color: #39FF14;
   color: #ffffff;
   font-weight: 600;
   text-decoration: none;
@@ -56,7 +56,7 @@
 }
 
 .card-actions .edit:hover {
-  background-color: #16a34a;
+  background-color: #e5ece8;
   transform: translateY(-1px);
 }
 

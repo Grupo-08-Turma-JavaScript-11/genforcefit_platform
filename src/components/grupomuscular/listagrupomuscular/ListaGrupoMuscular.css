@@ -17,15 +17,15 @@
   border-radius: 999px;
   border: none;
   background-color: #22c55e;
-  color: #ffffff;
+  color: #5dfc3dea;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .btn-cadastro:hover {
-  background-color: #16a34a;
+  background-color: #00ff5e;
   transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
+  box-shadow: 0 10px 25px rgb(42, 245, 116);
 }
 
 .list-grid {
@@ -37,7 +37,7 @@
 
 /* 🔥 TÍTULO NEON */
 .titulo-neon {
-  color: #22c55e;
+  color: #2efc79;
   text-shadow:
     0 0 6px rgba(34, 197, 94, 0.6),
     0 0 12px rgba(34, 197, 94, 0.4);
