@@ -26,6 +26,7 @@ import { RequireRole } from "./routes/RequireRole";
 import { Home } from "./pages/home/Home";
 import { Navbar } from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import Perfil from "./pages/perfil/Perfil";
 
 import MenuFichas from "./pages/fichas/MenuFichas";
 import CriarTreino from "./pages/fichas/criarTreino/CriarTreino";
@@ -51,9 +52,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          
 
           <Route element={<RequireAuth />}>
             <Route path="/exercicios" element={<ListExercicio />} />
+            <Route path="/perfil" element={<Perfil />} />
 
 
               <Route element={<RequireRole allowed={["Professor"]} />}>
