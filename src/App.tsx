@@ -26,6 +26,7 @@ import { RequireRole } from "./routes/RequireRole";
 import { Home } from "./pages/home/Home";
 import { Navbar } from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import Perfil from "./pages/perfil/Perfil";
 
 function App() {
   useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/perfil" element={<Perfil />} />
 
           <Route element={<RequireAuth />}>
             <Route path="/exercicios" element={<ListExercicio />} />

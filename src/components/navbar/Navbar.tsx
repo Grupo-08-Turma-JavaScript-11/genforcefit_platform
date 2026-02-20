@@ -107,6 +107,15 @@ export const Navbar = () => {
             {usuario.tipo === "Professor" && (
               <>
                 <li>
+                  <Link to="/perfil" className="text-white no-underline font-bold text-[0.9rem]
+                    whitespace-nowrap normal-case
+                    transition duration-300 ease-out
+                    hover:text-[var(--green-soft)]
+                    hover:shadow-[0_0_2px_rgba(0,0,0,0.4)]">
+                    Perfil
+                  </Link>
+                </li>
+                <li>
                   <Link to="/exercicios" className="text-white no-underline font-bold text-[0.9rem]
                     whitespace-nowrap normal-case
                     transition duration-300 ease-out
